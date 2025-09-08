@@ -5,7 +5,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
 import {
   Card,
   CardContent,
@@ -14,7 +13,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import { Button } from "@/components/ui/button";
 
 export const NowPlayingCard = () => {
@@ -24,12 +22,11 @@ export const NowPlayingCard = () => {
         <CardContent>
           <CardHeader>Now Playing:</CardHeader>
           <CardTitle>Wicked</CardTitle>
-
           <CardDescription>
             Elphaba, a misunderstood young woman because of her green skin, and
             Glinda, a popular girl, become friends at Shiz University in the
             Land of Oz. After an encounter with the Wonderful Wizard of Oz,
-            their friendship reaches a crossroads.{" "}
+            their friendship reaches a crossroads.
           </CardDescription>
           <Button>Watch Trailer</Button>
         </CardContent>

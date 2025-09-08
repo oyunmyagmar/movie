@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
-
 import {
   Card,
   CardContent,
@@ -17,16 +16,11 @@ type MovieCardProps = {
 
 export const MovieCard = ({ title, score, image }: MovieCardProps) => {
   return (
-    <Card className="w-[230px] p-0 overflow-hidden bg-[#F4F4F5] flex gap-1">
+    <Card className="w-[230px] p-0 overflow-hidden bg-[#F4F4F5] flex flex-col gap-1">
       <CardContent className="p-0">
-        <Image
-          src={image}
-          alt=""
-          width={230}
-          height={340}
-          unoptimized
-          layout="responsive"
-        />
+        <div className="w-full h-[340px] relative">
+          <Image src={image} alt="" fill unoptimized className="object-cover" />
+        </div>
       </CardContent>
       <CardFooter className="flex flex-col items-start p-2">
         <CardDescription className="flex gap-1 items-center text-sm leading-[23px] font-medium">

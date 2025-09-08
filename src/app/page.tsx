@@ -1,8 +1,9 @@
-import { MovieCard, NowPlayingCard } from "@/components/home";
+import { MovieCard, Navigation, NowPlayingCard } from "@/components/home";
 
 const Home = () => {
   return (
     <div className="w-screen h-screen">
+      <Navigation></Navigation>
       <NowPlayingCard></NowPlayingCard>
       <div className="pt-8 px-20 flex gap-8 flex-wrap">
         <MovieCard
