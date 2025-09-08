@@ -1,8 +1,9 @@
-import { MovieCard } from "@/components/home/MovieCard";
+import { MovieCard, NowPlayingCard } from "@/components/home";
 
 const Home = () => {
   return (
     <div className="w-screen h-screen">
+      <NowPlayingCard></NowPlayingCard>
       <div className="pt-8 px-20 flex gap-8 flex-wrap">
         <MovieCard
           title="Dear Santa"
@@ -15,14 +16,14 @@ const Home = () => {
           image="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTLhLTo24-Thdfk9GLYhNV4Z7XgW0tldQDBjxDdF7v75EekpDZ0CWwO5bX3yN0ecYatbHQ-"
         ></MovieCard>
         <MovieCard
-          title="Dear Santa"
+          title="Alien Romulus"
           score={6.9}
-          image="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5LufXuKTxUHK3QRI-MUZXyFsHAv-FVZJcRGi-G2fzdYPkqxAsV1nh4SNVWr5F09P6v928"
+          image="https://upload.wikimedia.org/wikipedia/en/c/cb/Alien_Romulus_2024_%28poster%29.jpg"
         ></MovieCard>
         <MovieCard
-          title="Dear Santa"
+          title="From the Ashes"
           score={6.9}
-          image="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5LufXuKTxUHK3QRI-MUZXyFsHAv-FVZJcRGi-G2fzdYPkqxAsV1nh4SNVWr5F09P6v928"
+          image="https://m.media-amazon.com/images/M/MV5BNzg2Mzc2OTEtZGNlZS00NTk5LThlMjYtZjM5MDZiOWZiM2RiXkEyXkFqcGc@._V1_FMjpg_UY2048_.jpg"
         ></MovieCard>
       </div>
     </div>
