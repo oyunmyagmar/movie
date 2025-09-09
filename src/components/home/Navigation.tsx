@@ -1,9 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-
+import { IoSearchOutline } from "react-icons/io5";
 import { NavigationMenuDemo, ThemeToggler } from "@/components/home";
 import { Input } from "@/components/ui/input";
-import { IoSearchOutline } from "react-icons/io5";
 
 export const Navigation = () => {
   return (

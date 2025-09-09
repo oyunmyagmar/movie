@@ -1,8 +1,7 @@
 "use client";
-
 import * as React from "react";
 import Link from "next/link";
-
+import { FiChevronRight } from "react-icons/fi";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,8 +11,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-
-import { FiChevronRight } from "react-icons/fi";
 
 const components: { title: string; href: string }[] = [
   {
