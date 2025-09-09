@@ -14,6 +14,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function NowPlayingCard() {
   return (
@@ -35,13 +36,56 @@ export function NowPlayingCard() {
               </CardDescription>
             </CardContent>
             <CardFooter>
+              <Link href="">
+                <Button>Watch Trailer</Button>
+              </Link>
+            </CardFooter>
+          </Card>
+        </CarouselItem>
+        <CarouselItem>
+          <Card>
+            <CardHeader>
+              <p>Now Playing:</p>
+              <CardTitle>Wicked</CardTitle>
+              <p>6.9/10</p>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                Elphaba, a misunderstood young woman because of her green skin,
+                and Glinda, a popular girl, become friends at Shiz University in
+                the Land of Oz. After an encounter with the Wonderful Wizard of
+                Oz, their friendship reaches a crossroads.{" "}
+              </CardDescription>
+            </CardContent>
+            <CardFooter>
               <Button>Watch Trailer</Button>
             </CardFooter>
           </Card>
         </CarouselItem>
-        <CarouselItem></CarouselItem>
-        <CarouselItem></CarouselItem>
+        <CarouselItem>
+          <Card>
+            <CardHeader>
+              <p>Now Playing:</p>
+              <CardTitle>Wicked</CardTitle>
+              <p>6.9/10</p>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                Elphaba, a misunderstood young woman because of her green skin,
+                and Glinda, a popular girl, become friends at Shiz University in
+                the Land of Oz. After an encounter with the Wonderful Wizard of
+                Oz, their friendship reaches a crossroads.{" "}
+              </CardDescription>
+            </CardContent>
+            <CardFooter>
+              <Button>Watch Trailer</Button>
+            </CardFooter>
+          </Card>
+          s
+        </CarouselItem>
       </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
     </Carousel>
   );
 }
