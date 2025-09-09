@@ -2,9 +2,11 @@ import Image from "next/image";
 import { FaStar } from "react-icons/fa";
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
+  CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
@@ -23,10 +25,14 @@ export const MovieCard = ({ title, score, image }: MovieCardProps) => {
         </div>
       </CardContent>
       <CardFooter className="flex flex-col items-start p-2">
-        <CardDescription className="flex gap-1 items-center text-sm leading-[23px] font-medium">
+        <CardDescription className="flex gap-1 items-center mb-[3px]">
           <FaStar className="w-4 h-4" color="#FDE047" />
-          <span className="text-[#09090B]">{score}</span>
-          <span className="text-[#71717A]">/10</span>
+          <div>
+            <span className="text-[#09090B] text-sm leading-5 font-medium">
+              {score}
+            </span>
+            <span className="text-[#71717A] text-xs leading-4">/10</span>
+          </div>
         </CardDescription>
         <CardTitle className="text-lg leading-7 text-[#09090B] font-sans">
           {title}
