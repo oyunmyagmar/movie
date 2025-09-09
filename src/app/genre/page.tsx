@@ -1,12 +1,15 @@
-import { Navigation, NowPlayingCard, MovieCard } from "@/components/home";
-import { CarouselDemo } from "@/components/home/CarouselDemo";
+import React from "react";
 
-const Home = () => {
+import {
+  Navigation,
+  NavigationMenuDemo,
+  NowPlayingCard,
+  MovieCard,
+} from "@/components/home";
+
+const Genre = () => {
   return (
     <div className="w-screen h-screen flex flex-col items-center">
-      <Navigation></Navigation>
-      <NowPlayingCard></NowPlayingCard>
-      <CarouselDemo></CarouselDemo>
       <div className="pt-8 px-20 flex gap-8 flex-wrap">
         <MovieCard
           title="Dear Santa"
@@ -32,4 +35,4 @@ const Home = () => {
     </div>
   );
 };
-export default Home;
+export default Genre;
