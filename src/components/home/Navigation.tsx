@@ -18,7 +18,7 @@ export const Navigation = () => {
           <Input
             type="search"
             placeholder="Search.."
-            className="w-[379px] px-3 pl-[38px] border border-[#E4E4E7] rounded-lg text-[#71717A] text-sm leading-5 flex items-center"
+            className="w-[379px] px-3 py-[7px] pl-[38px] border border-[#E4E4E7]-foreground rounded-lg text-[#71717A]-foreground text-sm leading-5 flex items-center box-border"
           />
         </div>
       </div>
@@ -26,9 +26,3 @@ export const Navigation = () => {
     </div>
   );
 };
-
-{
-  /* <div className="w-[97px] h-[36px] px-4 py-2 border border-[#E4E4E7] rounded-md box-border">
-  Genre
-</div>; */
-}

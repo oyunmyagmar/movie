@@ -14,7 +14,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-import { GoChevronRight } from "react-icons/go";
+import { FiChevronRight } from "react-icons/fi";
 
 const components: { title: string; href: string }[] = [
   {
@@ -133,7 +133,9 @@ export function NavigationMenuDemo() {
     <NavigationMenu viewport={true}>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Genre</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="flex gap-2 items-center border border-[#E4E4E7]-foreground text-[#18181B]-foreground">
+            Genres
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="w-[577px] flex gap-4 flex-wrap">
               {components.map((component) => (
@@ -153,7 +155,6 @@ export function NavigationMenuDemo() {
 
 function ListItem({
   title,
-  children,
   href,
   ...props
 }: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
@@ -161,16 +162,12 @@ function ListItem({
     <li {...props}>
       <NavigationMenuLink asChild>
         <Link href={href}>
-          <div className="flex gap-2 py-0.5 pl-2.5 border border-[#E4E4E7] rounded-full">
-            <div className="text-xs leading-4 font-semibold text-[#09090B]">
+          <div className="flex gap-2 py-0.5 pl-2.5 pr-1 border border-[foreground] rounded-full items-center">
+            <div className="text-xs leading-4 font-semibold text-[#09090B]-[foreground]">
               {title}
             </div>
-            <GoChevronRight width={16} height={16} color="#09090B" />
+            <FiChevronRight width={16} height={16} color="foreground" />
           </div>
-
-          {/* <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-            {children}
-          </p> */}
         </Link>
       </NavigationMenuLink>
     </li>
