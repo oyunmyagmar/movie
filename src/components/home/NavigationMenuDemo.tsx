@@ -1,130 +1,45 @@
 "use client";
 import * as React from "react";
 import Link from "next/link";
-import { FiChevronRight } from "react-icons/fi";
+import { ChevronRight } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
+  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
+  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 
-const components: { title: string; href: string }[] = [
-  {
-    title: "Action",
-    href: "/genre",
-  },
-  {
-    title: "Adventure",
-    href: "/docs/primitives/hover-card",
-  },
-  {
-    title: "Animation",
-    href: "/docs/primitives/progress",
-  },
-  {
-    title: "Biography",
-    href: "/docs/primitives/scroll-area",
-  },
-  {
-    title: "Comedy",
-    href: "/docs/primitives/tabs",
-  },
-  {
-    title: "Crime",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Documentary",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Drama",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Family",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Fantasy",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Film-Noir",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Game-Show",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "History",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Horror",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Music",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Musical",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Mystery",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "News",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Reality-TV",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Romance",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Sci-Fi",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Short",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Sport",
-    href: "/docs/primitives/tooltip",
-  },
+type MovieGenres = {
+  id: number;
+  name: string;
+};
 
-  {
-    title: "Talk-Show",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Thriller",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "War",
-    href: "/docs/primitives/tooltip",
-  },
-  {
-    title: "Western",
-    href: "/docs/primitives/tooltip",
-  },
-];
+export const NavigationMenuDemo = () => {
+  const [genres, setGenres] = React.useState<MovieGenres[]>([]);
+  console.log(genres);
 
-export function NavigationMenuDemo() {
+  React.useEffect(() => {
+    const url =
+      "https://api.themoviedb.org/3/genre/movie/list?api_key=75d880915800e2d2a9928e5fe720c261&language=en";
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NWQ4ODA5MTU4MDBlMmQyYTk5MjhlNWZlNzIwYzI2MSIsIm5iZiI6MTc1NzQ5MzY0Ni4wNTQwMDAxLCJzdWIiOiI2OGMxMzk4ZWVkNGMzYzU0NGMwNmFkYmQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.t_xWd75ZUn5fBdF6Khse5nZE2oVDHnnYyJ92JTb9cAM",
+      },
+    };
+
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((json) => setGenres(json.results))
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
     <NavigationMenu viewport={true}>
       <NavigationMenuList>
@@ -133,24 +48,26 @@ export function NavigationMenuDemo() {
             Genres
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <p>ddkljhdlfhs</p>
+            <p>Genres</p>
+            <p>See lists of movies by genre</p>
             <ul className="w-[577px] flex gap-4 flex-wrap">
-              {components.map((component) => (
+              {/* {movGenres?.map((genre) => (
                 <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
+                  key={genre.id}
+                  title={genre.name}
+                  href="/genre"
                 ></ListItem>
-              ))}
+              ))} */}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );
-}
+};
 
 function ListItem({
+  key,
   title,
   href,
   ...props
@@ -160,10 +77,8 @@ function ListItem({
       <NavigationMenuLink asChild>
         <Link href={href}>
           <div className="flex gap-2 py-0.5 pl-2.5 pr-1 border border-[foreground] rounded-full items-center">
-            <div className="text-xs leading-4 font-semibold text-[#09090B]-[foreground]">
-              {title}
-            </div>
-            <FiChevronRight width={16} height={16} color="foreground" />
+            <div className="text-xs leading-4 font-semibold text-[#09090B]-[foreground]"></div>
+            <ChevronRight width={16} height={16} color="foreground" />
           </div>
         </Link>
       </NavigationMenuLink>

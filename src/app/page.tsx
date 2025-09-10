@@ -22,7 +22,6 @@ const Home = () => {
   const [moviesUpComing, setMoviesUpComing] = React.useState<MovieUp[]>([]);
   const [moviesPopular, setMoviesPopular] = React.useState<MoviePopTop[]>([]);
   const [moviesTopRated, setMoviesTopRated] = React.useState<MoviePopTop[]>([]);
-  console.log(moviesTopRated);
 
   React.useEffect(() => {
     const url =
