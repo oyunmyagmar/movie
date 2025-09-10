@@ -8,7 +8,9 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 export const HeroCarousel = () => {
   const heroCardData = [
@@ -43,24 +45,46 @@ export const HeroCarousel = () => {
     },
   ];
 
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+  const [count, setCount] = React.useState(0);
+  React.useEffect(() => {
+    if (!api) {
+      return;
+    }
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+    api.on("select", () => setCurrent(api.selectedScrollSnap() + 1));
+  }, [api]);
+
   return (
-    <Carousel className="w-[1440px] h-[600px] bg-amber-400 mt-6">
-      <CarouselContent>
-        {heroCardData.map((el, index) => (
-          <CarouselItem>
-            <HeroCard
-              image={el.image}
-              label={el.label}
-              title={el.title}
-              score={el.score}
-              description={el.description}
-              btnName={el.btnName}
-            ></HeroCard>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious className="left-11" />
-      <CarouselNext className="right-11" />
-    </Carousel>
+    <div>
+      <Carousel
+        className="w-[1440px] h-[600px] mt-6"
+        // plugins={[Autoplay({ delay: 2000 })]}
+        setApi={setApi}
+      >
+        <CarouselContent>
+          {heroCardData.map((el, index) => (
+            <CarouselItem key={index}>
+              <HeroCard
+                image={el.image}
+                label={el.label}
+                title={el.title}
+                score={el.score}
+                description={el.description}
+                btnName={el.btnName}
+              ></HeroCard>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="left-11" />
+        <CarouselNext className="right-11" />
+      </Carousel>
+      <div>
+        Slide {current} of {count}
+        <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+      </div>
+    </div>
   );
 };

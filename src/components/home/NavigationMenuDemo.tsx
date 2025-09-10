@@ -133,6 +133,7 @@ export function NavigationMenuDemo() {
             Genres
           </NavigationMenuTrigger>
           <NavigationMenuContent>
+            <p>ddkljhdlfhs</p>
             <ul className="w-[577px] flex gap-4 flex-wrap">
               {components.map((component) => (
                 <ListItem
