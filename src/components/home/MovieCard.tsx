@@ -21,7 +21,13 @@ export const MovieCard = ({ title, score, image }: MovieCardProps) => {
     <Card className="w-[230px] p-0 overflow-hidden bg-[#F4F4F5] flex flex-col gap-1">
       <CardContent className="p-0">
         <div className="w-full h-[340px] relative">
-          <Image src={image} alt="" fill unoptimized className="object-cover" />
+          <Image
+            src={image}
+            alt={title}
+            fill
+            unoptimized
+            className="object-cover"
+          />
         </div>
       </CardContent>
       <CardFooter className="flex flex-col items-start p-2">
