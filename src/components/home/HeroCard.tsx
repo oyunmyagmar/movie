@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaStar } from "react-icons/fa";
-import { FiPlay } from "react-icons/fi";
+import { IoIosStar } from "react-icons/io";
+import { LuPlay } from "react-icons/lu";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -31,17 +31,17 @@ export const HeroCard = ({
   btnName,
 }: HeroCardProps) => {
   return (
-    <Card className="w-1440px h-150 relative">
+    <Card className="w-1440px h-150 relative p-0 border-0">
       <Image src={image} alt="" fill unoptimized objectFit="cover" />
-      <div className="absolute top-[178px] left-[140px] flex flex-col gap-4">
-        <CardHeader>
+      <div className="absolute top-[178px] left-29 flex flex-col gap-4">
+        <CardHeader className="gap-0">
           <p className="text-base leading-6 text-white">{label}</p>
           <CardTitle className="text-4xl leading-10 font-bold text-white">
             {title}
           </CardTitle>
           <div className="flex gap-1 items-center">
-            <FaStar className="w-7 h-7" color="#FDE047" />
-            <p className="text-lg leading-7 font-semibold text-[#FAFAFA]">
+            <IoIosStar className="w-7 h-7" color="#FDE047"/>
+            <p className="text-lg leading-7 font-semibold text-[#FAFAFA] py-2.5">
               {score}
               <span className="text-base leading-6 font-normal text-[#71717A]">
                 /10
@@ -56,13 +56,13 @@ export const HeroCard = ({
         </CardContent>
         <CardFooter>
           <Link href="/genre">
-            <Button variant="secondary">
-              <FiPlay />
+            <Button variant="secondary" >
+              <LuPlay />
               {btnName}
             </Button>
           </Link>
         </CardFooter>
-      </div>
+      </div> 
     </Card>
   );
 };

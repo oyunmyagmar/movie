@@ -58,10 +58,9 @@ export const HeroCarousel = () => {
   }, [api]);
 
   return (
-    <div>
       <Carousel
-        className="w-[1440px] h-[600px] mt-6"
-        // plugins={[Autoplay({ delay: 2000 })]}
+        className="w-[1440px] h-[600px] mt-6 relative"
+        plugins={[Autoplay({ delay: 2000 })]}
         setApi={setApi}
       >
         <CarouselContent>
@@ -74,17 +73,16 @@ export const HeroCarousel = () => {
                 score={el.score}
                 description={el.description}
                 btnName={el.btnName}
-              ></HeroCard>
+              />
             </CarouselItem>
           ))}
         </CarouselContent>
         <CarouselPrevious className="left-11" />
         <CarouselNext className="right-11" />
+        <div className="flex gap-2 absolute bottom-[37px] left-175">
+          {Array.from({length: count}).map((_, index) => (
+       <div onClick={()=>{api?.scrollTo(index)}} className={`w-2 h-2 rounded-full ${(index+1 === current) ? "bg-white" : "bg-white opacity-80"}`}/> ))}
+        </div>
       </Carousel>
-      <div>
-        Slide {current} of {count}
-        <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-      </div>
-    </div>
   );
 };

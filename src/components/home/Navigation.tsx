@@ -8,7 +8,7 @@ export const Navigation = () => {
   return (
     <header className="w-full">
       <div className="w-[1440px] flex justify-between items-center px-20 py-[11.5px] m-auto">
-        <Link href="/genre">
+        <Link href="">
           <Image src="/Logo.png" alt="" width={92} height={20} />
         </Link>
         <div className="flex gap-6">

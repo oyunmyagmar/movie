@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FaStar } from "react-icons/fa";
+import { GoStarFill } from "react-icons/go";
 import {
   Card,
   CardAction,
@@ -32,12 +32,11 @@ export const MovieCard = ({ title, score, image }: MovieCardProps) => {
       </CardContent>
       <CardFooter className="flex flex-col items-start p-2">
         <CardDescription className="flex gap-1 items-center mb-[3px]">
-          <FaStar className="w-4 h-4" color="#FDE047" />
+          <GoStarFill className="w-4 h-4" color="#FDE047" />
           <div>
-            <span className="text-[#09090B] text-sm leading-5 font-medium">
-              {score}
-            </span>
-            <span className="text-[#71717A] text-xs leading-4">/10</span>
+            <p className="text-[#09090B] text-sm leading-5 font-medium">
+              {score} <span className="text-[#71717A] text-xs leading-4">/10</span>
+            </p>
           </div>
         </CardDescription>
         <CardTitle className="text-lg leading-7 text-[#09090B] font-sans">
