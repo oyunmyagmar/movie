@@ -81,8 +81,9 @@ export const HeroCarousel = () => {
         <CarouselNext className="right-11" />
         <div className="flex gap-2 absolute bottom-[37px] left-175">
           {Array.from({length: count}).map((_, index) => (
-       <div onClick={()=>{api?.scrollTo(index)}} className={`w-2 h-2 rounded-full ${(index+1 === current) ? "bg-white" : "bg-white opacity-80"}`}/> ))}
+       <div onClick={()=>{api?.scrollTo(index)}} key={index} className={`w-2 h-2 rounded-full ${(index+1 === current) ? "bg-white" : "bg-white opacity-80"}`}/> ))}
         </div>
       </Carousel>
   );
 };
+// 75d880915800e2d2a9928e5fe720c261

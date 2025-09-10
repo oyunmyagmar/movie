@@ -1,3 +1,4 @@
+import * as React from "react";
 import Image from "next/image";
 import { GoStarFill } from "react-icons/go";
 import {
@@ -12,17 +13,18 @@ import {
 
 type MovieCardProps = {
   title: string;
-  score: number;
-  image: string;
+  vote_average: number;
+  poster_path: string;
 };
 
-export const MovieCard = ({ title, score, image }: MovieCardProps) => {
+export const MovieCard = ({ title, vote_average, poster_path }: MovieCardProps) => {
+
   return (
     <Card className="w-[230px] p-0 overflow-hidden bg-[#F4F4F5] flex flex-col gap-1">
       <CardContent className="p-0">
         <div className="w-full h-[340px] relative">
           <Image
-            src={image}
+            src={poster_path}
             alt={title}
             fill
             unoptimized
@@ -35,7 +37,7 @@ export const MovieCard = ({ title, score, image }: MovieCardProps) => {
           <GoStarFill className="w-4 h-4" color="#FDE047" />
           <div>
             <p className="text-[#09090B] text-sm leading-5 font-medium">
-              {score} <span className="text-[#71717A] text-xs leading-4">/10</span>
+              {vote_average} <span className="text-[#71717A] text-xs leading-4">/10</span>
             </p>
           </div>
         </CardDescription>
