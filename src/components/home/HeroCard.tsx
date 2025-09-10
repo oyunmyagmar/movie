@@ -32,7 +32,7 @@ export const HeroCard = ({
 }: HeroCardProps) => {
   return (
     <Card className="w-1440px h-150 relative p-0 border-0">
-      <Image src={image} alt="" fill unoptimized objectFit="cover" />
+      <Image src={image} alt="" fill unoptimized priority />
       <div className="absolute top-[178px] left-29 flex flex-col gap-4">
         <CardHeader className="gap-0">
           <p className="text-base leading-6 text-white">{label}</p>
@@ -40,10 +40,10 @@ export const HeroCard = ({
             {title}
           </CardTitle>
           <div className="flex gap-1 items-center">
-            <IoIosStar className="w-7 h-7" color="#FDE047"/>
+            <IoIosStar className="w-7 h-7" color="#FDE047" />
             <p className="text-lg leading-7 font-semibold text-[#FAFAFA] py-2.5">
               {score}
-              <span className="text-base leading-6 font-normal text-[#71717A]">
+              <span className="text-base leading-6 font-normal text-muted-foreground">
                 /10
               </span>
             </p>
@@ -56,13 +56,13 @@ export const HeroCard = ({
         </CardContent>
         <CardFooter>
           <Link href="/genre">
-            <Button variant="secondary" >
+            <Button variant="secondary">
               <LuPlay />
               {btnName}
             </Button>
           </Link>
         </CardFooter>
-      </div> 
+      </div>
     </Card>
   );
 };

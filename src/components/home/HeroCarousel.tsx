@@ -1,6 +1,5 @@
 "use client";
 import * as React from "react";
-
 import { HeroCard } from "@/components/home";
 import {
   Carousel,
@@ -12,42 +11,40 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
+type MovieNowPlaying = {
+  id: number;
+  backdrop_path: string | null;
+  title: string;
+  vote_average: number;
+  overview: string;
+};
+
 export const HeroCarousel = () => {
-  const heroCardData = [
-    {
-      image:
-        "https://cdn2.nbcuni.com/NBCUniversal/styles/newsroom_stories_16_9_image_style/s3/2024-11/WKD_TVSlide_1920x1080pxH_Reach_8.jpg?VersionId=oZ2_V7nGiB8s1LNXgKNOMBkGktfvzSzy&h=d1cb525d&itok=SIZUx0XE",
-      label: "Now Playing:",
-      title: "Wicked",
-      score: 6.9,
-      description:
-        "Elphaba, a misunderstood young woman because of her green skin, and Glinda, a popular girl, become friends at Shiz University in the Land of Oz. After an encounter with the Wonderful Wizard of Oz, their friendship reaches a crossroads.",
-      btnName: "Watch Trailer",
-    },
-    {
-      image:
-        "https://i2.wp.com/pocculture.com/wp-content/uploads/2024/07/G2_DOM_Online_Teaser_1-Sheet_07_FIN4-min-e1720569522171.jpg?w=999&ssl=1",
-      label: "Now Playing:",
-      title: "Gladiator II",
-      score: 6.9,
-      description:
-        "After his home is conquered by the tyrannical emperors who now lead Rome, Lucius is forced to enter the Colosseum and must look to his past to find strength to return the glory of Rome to its people.",
-      btnName: "Watch Trailer",
-    },
-    {
-      image: "https://sussex.ca/media/moana.jpg",
-      label: "Now Playing:",
-      title: "Moana 2",
-      score: 6.9,
-      description:
-        "After receiving an unexpected call from her wayfinding ancestors, Moana must journey to the far seas of Oceania and into dangerous, long-lost waters for an adventure unlike anything she's ever faced.",
-      btnName: "Watch Trailer",
-    },
-  ];
+  const [moviesNowPlaying, setMoviesNowPlaying] = React.useState<
+    MovieNowPlaying[]
+  >([]);
+
+  React.useEffect(() => {
+    const url =
+      "https://api.themoviedb.org/3/movie/now_playing?api_key=75d880915800e2d2a9928e5fe720c261&language=en-US&page=1";
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NWQ4ODA5MTU4MDBlMmQyYTk5MjhlNWZlNzIwYzI2MSIsIm5iZiI6MTc1NzQ5MzY0Ni4wNTQwMDAxLCJzdWIiOiI2OGMxMzk4ZWVkNGMzYzU0NGMwNmFkYmQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.t_xWd75ZUn5fBdF6Khse5nZE2oVDHnnYyJ92JTb9cAM",
+      },
+    };
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((json) => setMoviesNowPlaying(json.results))
+      .catch((err) => console.error(err));
+  }, []);
 
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
+
   React.useEffect(() => {
     if (!api) {
       return;
@@ -58,32 +55,41 @@ export const HeroCarousel = () => {
   }, [api]);
 
   return (
-      <Carousel
-        className="w-[1440px] h-[600px] mt-6 relative"
-        plugins={[Autoplay({ delay: 2000 })]}
-        setApi={setApi}
-      >
-        <CarouselContent>
-          {heroCardData.map((el, index) => (
-            <CarouselItem key={index}>
-              <HeroCard
-                image={el.image}
-                label={el.label}
-                title={el.title}
-                score={el.score}
-                description={el.description}
-                btnName={el.btnName}
-              />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="left-11" />
-        <CarouselNext className="right-11" />
-        <div className="flex gap-2 absolute bottom-[37px] left-175">
-          {Array.from({length: count}).map((_, index) => (
-       <div onClick={()=>{api?.scrollTo(index)}} key={index} className={`w-2 h-2 rounded-full ${(index+1 === current) ? "bg-white" : "bg-white opacity-80"}`}/> ))}
-        </div>
-      </Carousel>
+    <Carousel
+      className="w-[1440px] h-[600px] mt-6 relative"
+      // plugins={[Autoplay({ delay: 2000 })]}
+      setApi={setApi}
+    >
+      <CarouselContent>
+        {moviesNowPlaying.slice(4, 8).map((movie) => (
+          <CarouselItem key={movie.id}>
+            <HeroCard
+              image={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+              label="Now Playing:"
+              title={movie.title}
+              score={movie.vote_average}
+              description={movie.overview}
+              btnName="Watch Trailer"
+            />
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious className="left-11" />
+      <CarouselNext className="right-11" />
+
+      <div className="flex gap-2 absolute bottom-[37px] left-1/2 z-10">
+        {Array.from({ length: count }).map((_, index) => (
+          <div
+            onClick={() => {
+              api?.scrollTo(index);
+            }}
+            key={index}
+            className={`w-20 h-20 rounded-full ${
+              index + 1 === current ? "bg-white" : "bg-white opacity-80"
+            }`}
+          />
+        ))}
+      </div>
+    </Carousel>
   );
 };
-// 75d880915800e2d2a9928e5fe720c261

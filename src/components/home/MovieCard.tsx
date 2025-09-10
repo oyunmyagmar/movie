@@ -1,4 +1,3 @@
-import * as React from "react";
 import Image from "next/image";
 import { GoStarFill } from "react-icons/go";
 import {
@@ -13,35 +12,31 @@ import {
 
 type MovieCardProps = {
   title: string;
-  vote_average: number;
-  poster_path: string;
+  score: number;
+  image: string;
 };
 
-export const MovieCard = ({ title, vote_average, poster_path }: MovieCardProps) => {
-
+export const MovieCard = ({ title, score, image }: MovieCardProps) => {
   return (
-    <Card className="w-[230px] p-0 overflow-hidden bg-[#F4F4F5] flex flex-col gap-1">
+    <Card className="w-[230px] p-0 overflow-hidden bg-secondary flex flex-col gap-1">
       <CardContent className="p-0">
         <div className="w-full h-[340px] relative">
-          <Image
-            src={poster_path}
-            alt={title}
-            fill
-            unoptimized
-            className="object-cover"
-          />
+          <Image src={image} alt="" fill unoptimized className="object-cover" />
         </div>
       </CardContent>
       <CardFooter className="flex flex-col items-start p-2">
         <CardDescription className="flex gap-1 items-center mb-[3px]">
           <GoStarFill className="w-4 h-4" color="#FDE047" />
           <div>
-            <p className="text-[#09090B] text-sm leading-5 font-medium">
-              {vote_average} <span className="text-[#71717A] text-xs leading-4">/10</span>
+            <p className="text-foreground text-sm leading-5 font-medium">
+              {score.toFixed(1)}
+              <span className="text-muted-foreground text-xs leading-4">
+                /10
+              </span>
             </p>
           </div>
         </CardDescription>
-        <CardTitle className="text-lg leading-7 text-[#09090B] font-sans">
+        <CardTitle className="text-lg leading-7 text-foreground font-sans">
           {title}
         </CardTitle>
       </CardFooter>

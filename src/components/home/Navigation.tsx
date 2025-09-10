@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { NavigationMenuDemo, ThemeToggler } from "@/components/home";
@@ -7,10 +7,16 @@ import { Search } from "lucide-react";
 
 export const Navigation = () => {
   return (
-    <header className="w-full">
+    <header className="w-screen">
       <div className="w-[1440px] flex justify-between items-center px-20 py-[11.5px] m-auto">
         <Link href="">
-          <Image src="/Logo.png" alt="" width={92} height={20} />
+          <Image
+            src="/Logo.png"
+            alt=""
+            width={92}
+            height={20}
+            style={{ width: "auto", height: "auto" }}
+          />
         </Link>
         <div className="flex gap-6">
           <NavigationMenuDemo />
