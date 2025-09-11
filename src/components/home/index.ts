@@ -4,4 +4,5 @@ export * from "./ThemeToggler";
 export * from "./HeroCard";
 export * from "./HeroCarousel";
 export * from "./MovieCard";
-export * from "./MovieSection";
+// export * from "./MiniMovieCard";
+export * from "./MoviesContainer";

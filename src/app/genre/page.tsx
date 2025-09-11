@@ -1,15 +1,25 @@
 import React from "react";
 
 import {
-  Navigation,
+  MiniMovieCard,
   NavigationMenuDemo,
-  NowPlayingCard,
   MovieCard,
 } from "@/components/home";
 
 const Genre = () => {
   return (
     <div className="w-screen h-screen flex flex-col items-center">
+      <div>
+        <div>Search filter</div>
+        <div>
+          <div>
+            <div>Genres</div>
+            <div>See lists of movies by genre</div>
+            <div>{/* <MiniMovieCard title={title}></MiniMovieCard> */}</div>
+          </div>
+          <div>81 titles in “Animation”</div>
+        </div>
+      </div>
       <div className="pt-8 px-20 flex gap-8 flex-wrap">
         <MovieCard
           title="Dear Santa"

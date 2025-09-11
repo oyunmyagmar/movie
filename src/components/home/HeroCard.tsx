@@ -19,7 +19,6 @@ type HeroCardProps = {
   title: string;
   score: number;
   description: string;
-  btnName: string;
 };
 
 export const HeroCard = ({
@@ -28,7 +27,6 @@ export const HeroCard = ({
   title,
   score,
   description,
-  btnName,
 }: HeroCardProps) => {
   return (
     <Card className="w-1440px h-150 relative p-0 border-0">
@@ -58,7 +56,7 @@ export const HeroCard = ({
           <Link href="/genre">
             <Button variant="secondary">
               <LuPlay />
-              {btnName}
+              Watch Trailer
             </Button>
           </Link>
         </CardFooter>
