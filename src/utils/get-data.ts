@@ -24,6 +24,21 @@ export const getGenresList = async () => {
       },
     }
   );
-  const dat = await result.json();
-  return dat;
+  const data = await result.json();
+  return data;
+};
+
+export const getMoviesDetails = async () => {
+  const res = await fetch(
+    "https://api.themoviedb.org/3/movie/movie_id?language=en-US",
+    {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${process.env.TMDB_ACCESS_KEY}`,
+      },
+    }
+  );
+  const data = await res.json();
+  return data;
 };

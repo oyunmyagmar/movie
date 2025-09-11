@@ -63,10 +63,10 @@ function ListItem({
         <Link href={href}>
           <Badge
             variant="outline"
-            className="rounded-full font-semibold pl-2.5 pr-1"
+            className="font-semibold rounded-full pl-2.5 gap-2 pr-1 text-center"
           >
             {title}
-            <ChevronRight width={16} height={16} className="py-0.5" />
+            <ChevronRight width={16} height={16} />
           </Badge>
         </Link>
       </NavigationMenuLink>

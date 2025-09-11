@@ -13,9 +13,9 @@ export const MoviesContainer = ({ movies, label }: MoviesContainerProps) => {
   return (
     <div className="w-[1440px] mt-13 px-20 flex gap-8 flex-wrap">
       <div className="w-full flex justify-between">
-        <h4 className="text-2xl leading-8 font-semibold text-foreground">
+        <h3 className="text-2xl leading-8 font-semibold text-foreground">
           {label}
-        </h4>
+        </h3>
         <Button asChild variant="link">
           <Link href="/genre">
             See more <ArrowRight />

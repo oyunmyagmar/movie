@@ -1,44 +1,33 @@
 import React from "react";
+import { GenreMovies, GenresList } from "@/components/home";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
+import { genreResponseType, GenreType } from "@/types";
+import { getGenresList, getMoviesDetails } from "@/utils/get-data";
 
-import { MedMovieCard, MovieCard } from "@/components/home";
+const GenrePage = async () => {
+  const movieGenres: genreResponseType = await getGenresList();
+  const movieDetails = await getMoviesDetails();
+  console.log(movieDetails);
 
-const GenrePage = () => {
   return (
     <div className="w-screen h-screen flex flex-col items-center">
-      <div>
-        <div>Search filter</div>
-        <div>
-          <div>
-            <div>Genres</div>
-            <div>See lists of movies by genre</div>
-            <div>
-              <MedMovieCard />
-            </div>
-          </div>
-          <div>81 titles in “Animation”</div>
-        </div>
-      </div>
-      <div className="pt-8 px-20 flex gap-8 flex-wrap">
-        <MovieCard
-          title="Dear Santa"
-          score={6.9}
-          image="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT5LufXuKTxUHK3QRI-MUZXyFsHAv-FVZJcRGi-G2fzdYPkqxAsV1nh4SNVWr5F09P6v928"
-        ></MovieCard>
-        <MovieCard
-          title="How To Train Your Dragon Live Action"
-          score={6.9}
-          image="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTLhLTo24-Thdfk9GLYhNV4Z7XgW0tldQDBjxDdF7v75EekpDZ0CWwO5bX3yN0ecYatbHQ-"
-        ></MovieCard>
-        <MovieCard
-          title="Alien Romulus"
-          score={6.9}
-          image="https://upload.wikimedia.org/wikipedia/en/c/cb/Alien_Romulus_2024_%28poster%29.jpg"
-        ></MovieCard>
-        <MovieCard
-          title="From the Ashes"
-          score={6.9}
-          image="https://m.media-amazon.com/images/M/MV5BNzg2Mzc2OTEtZGNlZS00NTk5LThlMjYtZjM5MDZiOWZiM2RiXkEyXkFqcGc@._V1_FMjpg_UY2048_.jpg"
-        ></MovieCard>
+      <div className="w-[1440px] px-20 flex flex-col gap-8">
+        <h2 className="w-full text-3xl leading-9 font-semibold text-foreground mt-13">
+          Search filter
+        </h2>
+        <ResizablePanelGroup direction="horizontal">
+          <ResizablePanel>
+            <GenresList genres={movieGenres.genres} />
+          </ResizablePanel>
+          <ResizableHandle withHandle className="mx-5" />
+          <ResizablePanel>
+            <GenreMovies />
+          </ResizablePanel>
+        </ResizablePanelGroup>
       </div>
     </div>
   );
