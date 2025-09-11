@@ -1,11 +1,15 @@
-"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { NavigationMenuDemo, ThemeToggler } from "@/components/home";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import { getMoviesList } from "@/utils/get-data";
+import { movieResponseType } from "@/types";
 
-export const Navigation = () => {
+export const Navigation = async () => {
+  const nowPlayingMovies: movieResponseType = await getMoviesList(
+    "now_playing"
+  );
   return (
     <header className="w-screen">
       <div className="w-[1440px] flex justify-between items-center px-20 py-[11.5px] m-auto">
@@ -19,7 +23,7 @@ export const Navigation = () => {
           />
         </Link>
         <div className="flex gap-6">
-          <NavigationMenuDemo />
+          <NavigationMenuDemo movies={nowPlayingMovies.results} />
           <div className="flex items-center">
             <Search className="w-4 h-4 -mr-7" color="#71717A" />
             <Input

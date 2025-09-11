@@ -1,4 +1,3 @@
-"use client";
 import * as React from "react";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
@@ -12,52 +11,37 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
+import { Separator } from "@/components/ui/separator";
+import { MovieType } from "@/types";
 
-type MovieGenres = {
-  id: number;
-  name: string;
+type NavigationMenuDemo = {
+  movies: MovieType[];
 };
 
-export const NavigationMenuDemo = () => {
-  const [genres, setGenres] = React.useState<MovieGenres[]>([]);
-  console.log(genres);
-
-  React.useEffect(() => {
-    const url =
-      "https://api.themoviedb.org/3/genre/movie/list?api_key=75d880915800e2d2a9928e5fe720c261&language=en";
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NWQ4ODA5MTU4MDBlMmQyYTk5MjhlNWZlNzIwYzI2MSIsIm5iZiI6MTc1NzQ5MzY0Ni4wNTQwMDAxLCJzdWIiOiI2OGMxMzk4ZWVkNGMzYzU0NGMwNmFkYmQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.t_xWd75ZUn5fBdF6Khse5nZE2oVDHnnYyJ92JTb9cAM",
-      },
-    };
-
-    fetch(url, options)
-      .then((res) => res.json())
-      .then((json) => setGenres(json.results))
-      .catch((err) => console.error(err));
-  }, []);
-
+export const NavigationMenuDemo = ({ movies }: NavigationMenuDemo) => {
   return (
     <NavigationMenu viewport={true}>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger className="flex gap-2 items-center border border-[#E4E4E7]-foreground text-[#18181B]-foreground">
-            Genres
+            Genre
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <p>Genres</p>
-            <p>See lists of movies by genre</p>
+          <NavigationMenuContent className="p-5">
+            <h3 className="text-2xl leading-8 font-semibold text-foreground">
+              Genres
+            </h3>
+            <p className="text-base leading-6 text-foreground">
+              See lists of movies by genre
+            </p>
+            <Separator className="my-4 border-border" />
             <ul className="w-[577px] flex gap-4 flex-wrap">
-              {/* {movGenres?.map((genre) => (
+              {movies.map((movie) => (
                 <ListItem
-                  key={genre.id}
-                  title={genre.name}
+                  key={movie.id}
+                  title={movie.genre_ids}
                   href="/genre"
                 ></ListItem>
-              ))} */}
+              ))}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IoIosStar } from "react-icons/io";
+import { GoStarFill } from "react-icons/go";
 import { LuPlay } from "react-icons/lu";
 import { Button } from "@/components/ui/button";
 import {
@@ -38,9 +38,9 @@ export const HeroCard = ({
             {title}
           </CardTitle>
           <div className="flex gap-1 items-center">
-            <IoIosStar className="w-7 h-7" color="#FDE047" />
+            <GoStarFill className="w-7 h-7" color="#FDE047" />
             <p className="text-lg leading-7 font-semibold text-[#FAFAFA] py-2.5">
-              {score}
+              {score.toFixed(1)}
               <span className="text-base leading-6 font-normal text-muted-foreground">
                 /10
               </span>
