@@ -28,7 +28,7 @@ export const NavigationMenuDemo = ({ genres }: NavigationMenuDemoProps) => {
             Genre
           </NavigationMenuTrigger>
           <NavigationMenuContent className="p-5">
-            <h3 className="text-2xl leading-8 font-semibold text-foreground">
+            <h3 className="text-2xl leading-8 font-semibold text-foreground pb-1">
               Genres
             </h3>
             <p className="text-base leading-6 text-foreground">
@@ -61,9 +61,12 @@ function ListItem({
     <li {...props}>
       <NavigationMenuLink asChild className="p-0">
         <Link href={href}>
-          <Badge variant="outline" className="rounded-full font-semibold">
+          <Badge
+            variant="outline"
+            className="rounded-full font-semibold pl-2.5 pr-1"
+          >
             {title}
-            <ChevronRight width={16} height={16} />
+            <ChevronRight width={16} height={16} className="py-0.5" />
           </Badge>
         </Link>
       </NavigationMenuLink>

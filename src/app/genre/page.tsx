@@ -1,12 +1,8 @@
 import React from "react";
 
-import {
-  MiniMovieCard,
-  NavigationMenuDemo,
-  MovieCard,
-} from "@/components/home";
+import { MedMovieCard, MovieCard } from "@/components/home";
 
-const Genre = () => {
+const GenrePage = () => {
   return (
     <div className="w-screen h-screen flex flex-col items-center">
       <div>
@@ -15,7 +11,9 @@ const Genre = () => {
           <div>
             <div>Genres</div>
             <div>See lists of movies by genre</div>
-            <div>{/* <MiniMovieCard title={title}></MiniMovieCard> */}</div>
+            <div>
+              <MedMovieCard />
+            </div>
           </div>
           <div>81 titles in “Animation”</div>
         </div>
@@ -45,4 +43,4 @@ const Genre = () => {
     </div>
   );
 };
-export default Genre;
+export default GenrePage;
