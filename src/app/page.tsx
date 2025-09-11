@@ -11,7 +11,6 @@ export const Home = async () => {
     "now_playing"
   );
   console.log(nowPlayingMovies);
-
   return (
     <div className="w-screen h-screen flex flex-col items-center">
       <HeroCarousel movies={nowPlayingMovies.results} />

@@ -28,7 +28,7 @@ export const MoviesContainer = ({ movies, label }: MoviesContainerProps) => {
           title={movie.title}
           score={movie.vote_average}
           image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        ></MovieCard>
+        />
       ))}
     </div>
   );

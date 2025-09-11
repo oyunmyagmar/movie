@@ -12,18 +12,19 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import { Separator } from "@/components/ui/separator";
-import { MovieType } from "@/types";
+import { Badge } from "@/components/ui/badge";
+import { GenreType } from "@/types";
 
-type NavigationMenuDemo = {
-  movies: MovieType[];
+type NavigationMenuDemoProps = {
+  genres: GenreType[];
 };
 
-export const NavigationMenuDemo = ({ movies }: NavigationMenuDemo) => {
+export const NavigationMenuDemo = ({ genres }: NavigationMenuDemoProps) => {
   return (
     <NavigationMenu viewport={true}>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="flex gap-2 items-center border border-[#E4E4E7]-foreground text-[#18181B]-foreground">
+          <NavigationMenuTrigger className="flex gap-2 items-center border border-input text-secondary-foreground">
             Genre
           </NavigationMenuTrigger>
           <NavigationMenuContent className="p-5">
@@ -35,10 +36,10 @@ export const NavigationMenuDemo = ({ movies }: NavigationMenuDemo) => {
             </p>
             <Separator className="my-4 border-border" />
             <ul className="w-[577px] flex gap-4 flex-wrap">
-              {movies.map((movie) => (
+              {genres.map((genre) => (
                 <ListItem
-                  key={movie.id}
-                  title={movie.genre_ids}
+                  key={genre.id}
+                  title={genre.name}
                   href="/genre"
                 ></ListItem>
               ))}
@@ -58,12 +59,12 @@ function ListItem({
 }: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
   return (
     <li {...props}>
-      <NavigationMenuLink asChild>
+      <NavigationMenuLink asChild className="p-0">
         <Link href={href}>
-          <div className="flex gap-2 py-0.5 pl-2.5 pr-1 border border-[foreground] rounded-full items-center">
-            <div className="text-xs leading-4 font-semibold text-[#09090B]-[foreground]"></div>
-            <ChevronRight width={16} height={16} color="foreground" />
-          </div>
+          <Badge variant="outline" className="rounded-full font-semibold">
+            {title}
+            <ChevronRight width={16} height={16} />
+          </Badge>
         </Link>
       </NavigationMenuLink>
     </li>

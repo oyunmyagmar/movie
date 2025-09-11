@@ -3,27 +3,21 @@ import Image from "next/image";
 import { NavigationMenuDemo, ThemeToggler } from "@/components/home";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
-import { getMoviesList } from "@/utils/get-data";
-import { movieResponseType } from "@/types";
+import { genreResponseType, GenreType } from "@/types";
+import { getGenresList } from "@/utils/get-data";
 
 export const Navigation = async () => {
-  const nowPlayingMovies: movieResponseType = await getMoviesList(
-    "now_playing"
-  );
+  const movieGenres: genreResponseType = await getGenresList();
+  console.log(movieGenres);
+
   return (
     <header className="w-screen">
       <div className="w-[1440px] flex justify-between items-center px-20 py-[11.5px] m-auto">
         <Link href="">
-          <Image
-            src="/Logo.png"
-            alt=""
-            width={92}
-            height={20}
-            style={{ width: "auto", height: "auto" }}
-          />
+          <Image src="/Logo.png" alt="" width={92} height={20} />
         </Link>
         <div className="flex gap-6">
-          <NavigationMenuDemo movies={nowPlayingMovies.results} />
+          <NavigationMenuDemo genres={movieGenres.genres} />
           <div className="flex items-center">
             <Search className="w-4 h-4 -mr-7" color="#71717A" />
             <Input
