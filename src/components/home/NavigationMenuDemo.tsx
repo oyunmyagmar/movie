@@ -13,13 +13,17 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { GenreType } from "@/types";
+import { getGenresList } from "@/utils/get-data";
 
-type NavigationMenuDemoProps = {
-  genres: GenreType[];
-};
+// type NavigationMenuDemoProps = {
+//   genres: GenreType[];
+// };
+// export const NavigationMenuDemo = sync ({ genres }: NavigationMenuDemoProps) => {
 
-export const NavigationMenuDemo = ({ genres }: NavigationMenuDemoProps) => {
+export const NavigationMenuDemo = async () => {
+  const movieGenresResponse = await getGenresList();
+  console.log(movieGenresResponse, "movieGenres");
+
   return (
     <NavigationMenu viewport={true}>
       <NavigationMenuList>
@@ -36,11 +40,11 @@ export const NavigationMenuDemo = ({ genres }: NavigationMenuDemoProps) => {
             </p>
             <Separator className="my-4 border-border" />
             <ul className="w-[577px] flex gap-4 flex-wrap">
-              {genres.map((genre) => (
+              {movieGenresResponse.genres.map((genre) => (
                 <ListItem
                   key={genre.id}
                   title={genre.name}
-                  href="/genre"
+                  href={`/genre?id=${genre.id}`}
                 ></ListItem>
               ))}
             </ul>

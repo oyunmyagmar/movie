@@ -6,9 +6,7 @@ import { Search } from "lucide-react";
 import { genreResponseType, GenreType } from "@/types";
 import { getGenresList } from "@/utils/get-data";
 
-export const Navigation = async () => {
-  const movieGenres: genreResponseType = await getGenresList();
-  console.log(movieGenres);
+export const Navigation = () => {
   return (
     <header className="w-screen">
       <div className="w-[1440px] flex justify-between items-center px-20 py-[11.5px] m-auto">
@@ -16,7 +14,7 @@ export const Navigation = async () => {
           <Image src="/Logo.png" alt="" width={92} height={20} />
         </Link>
         <div className="flex gap-6">
-          <NavigationMenuDemo genres={movieGenres.genres} />
+          <NavigationMenuDemo />
           <div className="flex items-center">
             <Search className="w-4 h-4 -mr-7" color="#71717A" />
             <Input
@@ -31,3 +29,8 @@ export const Navigation = async () => {
     </header>
   );
 };
+
+//           <NavigationMenuDemo genres={movieGenres.genres} />
+// export const Navigation = async () => {
+//   const movieGenres: genreResponseType = await getGenresList();
+//  console.log(movieGenres);
