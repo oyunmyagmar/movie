@@ -42,3 +42,5 @@ export const getMoviesDetails = async () => {
   const data = await res.json();
   return data;
 };
+const movieDetails = await getMoviesDetails();
+console.log(movieDetails);

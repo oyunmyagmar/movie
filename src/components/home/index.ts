@@ -8,3 +8,4 @@ export * from "./MoviesContainer";
 export * from "./MedMovieCard";
 export * from "./GenresList";
 export * from "./GenreMovies";
+export * from "./HomePage";

@@ -8,7 +8,7 @@ import { getGenresList } from "@/utils/get-data";
 
 export const Navigation = async () => {
   const movieGenres: genreResponseType = await getGenresList();
-
+  console.log(movieGenres);
   return (
     <header className="w-screen">
       <div className="w-[1440px] flex justify-between items-center px-20 py-[11.5px] m-auto">

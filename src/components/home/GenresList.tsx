@@ -24,6 +24,7 @@ export const GenresList = ({ genres }: GenresListProps) => {
             key={el.id}
             variant="outline"
             className="font-semibold rounded-full pl-2.5 gap-2 pr-1 text-center"
+            //onClick={()}
           >
             {el.name}
             <FaChevronRight className="w-4 h-4" color="foreground" />
