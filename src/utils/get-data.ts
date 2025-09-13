@@ -42,3 +42,19 @@ export const getMoviesByGenreId = async (genreIds: string) => {
   const data = await res.json();
   return data;
 };
+
+export const getMoviesBySearch = async (searchValue: string) => {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&page=${1}`,
+    {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${process.env.TMDB_ACCESS_KEY}`,
+      },
+    }
+  );
+  const data = await res.json();
+  return data;
+};
+/search/movie?query=${searchValue}&language=en-US&page=${page}

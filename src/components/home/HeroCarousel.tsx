@@ -23,7 +23,6 @@ export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
   );
-
   React.useEffect(() => {
     if (!api) {
       return;
@@ -56,7 +55,6 @@ export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
       </CarouselContent>
       <CarouselPrevious className="left-11" />
       <CarouselNext className="right-11" />
-
       <div className="flex gap-2 absolute bottom-[37px] left-170">
         {Array.from({ length: count }).map((_, index) => (
           <div

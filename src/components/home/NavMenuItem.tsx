@@ -5,7 +5,6 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
@@ -34,13 +33,13 @@ export const NavMenuItem = async () => {
             </p>
             <Separator className="my-4 border-border" />
             <NavigationMenuItem className="w-[577px] flex gap-4 flex-wrap">
-              {movieGenresResponse.genres.map((el) => (
-                <Link key={el.id} href={`/genre?id=${el.id}`}>
+              {movieGenresResponse.genres.map((genre) => (
+                <Link key={genre.id} href={`/genre?id=${genre.id}`}>
                   <Badge
                     variant="outline"
                     className="font-semibold rounded-full pl-2.5 gap-2 pr-1 text-center text-foreground"
                   >
-                    {el.name}
+                    {genre.name}
                     <ChevronRight width={16} height={16} />
                   </Badge>
                 </Link>

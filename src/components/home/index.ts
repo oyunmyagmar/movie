@@ -6,6 +6,6 @@ export * from "./HeroCarousel";
 export * from "./MovieCard";
 export * from "./MoviesContainer";
 export * from "./MedMovieCard";
-export * from "./GenresList";
+export * from "./GenresListCard";
 export * from "./GenreMovies";
 export * from "./HomePage";

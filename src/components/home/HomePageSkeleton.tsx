@@ -1,13 +1,11 @@
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Loader } from "lucide-react";
 import { TbLoaderQuarter } from "react-icons/tb";
 
 export const HomePageSkeleton = () => {
   return (
     <div className="w-[1440px] m-auto">
       <Skeleton className="w-[1440px] h-[600px] mt-6 flex justify-center items-center">
-        {/* <Loader size={200} className="animate-spin" /> */}
         <TbLoaderQuarter size={200} className="animate-spin" />
       </Skeleton>
       <div className="w-[1440px] mt-13 px-20 flex gap-8 flex-wrap">

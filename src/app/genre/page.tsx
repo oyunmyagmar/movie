@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { MedMovieCard, GenresList } from "@/components/home";
+import { MedMovieCard, GenresListCard } from "@/components/home";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -19,21 +19,18 @@ import {
 } from "@/components/ui/pagination";
 
 type GenrePageProps = {
-  searchParams: Promise<{ id: string; name: string }>;
+  searchParams: Promise<{ id: string }>;
 };
 
 const GenrePage = async ({ searchParams }: GenrePageProps) => {
+  const movieGenresResponse: genreResponseType = await getGenresList();
+
   const params = await searchParams;
   const id = params.id;
-  const name = params.name;
-  console.log(params, "Params");
-
   const filteredMoviesResponse: movieResponseType = await getMoviesByGenreId(
     id
   );
   console.log(filteredMoviesResponse, "filteres movies");
-
-  const movieGenres: genreResponseType = await getGenresList();
 
   return (
     <div className="w-screen h-screen flex flex-col items-center">
@@ -43,13 +40,13 @@ const GenrePage = async ({ searchParams }: GenrePageProps) => {
         </h2>
         <ResizablePanelGroup direction="horizontal">
           <ResizablePanel>
-            <GenresList genres={movieGenres.genres} />
+            <GenresListCard genres={movieGenresResponse.genres} />
           </ResizablePanel>
           <ResizableHandle withHandle className="mx-5" />
           <ResizablePanel>
             <div className="pr-12 space-y-8">
               <h4 className="text-xl leading-7 font-semibold text-foreground">
-                81 titles in {id} {name}
+                81 titles in {id}
               </h4>
               <div className="flex flex-wrap gap-y-8 gap-x-12">
                 {filteredMoviesResponse.results.slice(0, 12).map((el) => (
