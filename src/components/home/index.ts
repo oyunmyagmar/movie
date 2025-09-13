@@ -1,5 +1,5 @@
 export * from "./Navigation";
-export * from "./NavigationMenuDemo";
+export * from "./NavMenuItem";
 export * from "./ThemeToggler";
 export * from "./HeroCard";
 export * from "./HeroCarousel";

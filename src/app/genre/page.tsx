@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { MedMovieCard, GenresList } from "@/components/home";
 import {
   ResizableHandle,
@@ -18,12 +19,15 @@ import {
 } from "@/components/ui/pagination";
 
 type GenrePageProps = {
-  searchParams: Promise<{ id: string }>;
+  searchParams: Promise<{ id: string; name: string }>;
 };
 
 const GenrePage = async ({ searchParams }: GenrePageProps) => {
   const params = await searchParams;
   const id = params.id;
+  const name = params.name;
+  console.log(params, "Params");
+
   const filteredMoviesResponse: movieResponseType = await getMoviesByGenreId(
     id
   );
@@ -43,72 +47,20 @@ const GenrePage = async ({ searchParams }: GenrePageProps) => {
           </ResizablePanel>
           <ResizableHandle withHandle className="mx-5" />
           <ResizablePanel>
-            <div className="pr-12 flex flex-col gap-8">
+            <div className="pr-12 space-y-8">
               <h4 className="text-xl leading-7 font-semibold text-foreground">
-                81 titles in {id}
+                81 titles in {id} {name}
               </h4>
-              <div>{filteredMoviesResponse}</div>
               <div className="flex flex-wrap gap-y-8 gap-x-12">
-                <MedMovieCard
-                  title="Solo Leveling: ReAwakening"
-                  score={6.9}
-                  image="https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                />
-                <MedMovieCard
-                  title="Solo Leveling: ReAwakening"
-                  score={6.9}
-                  image="https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                />
-                <MedMovieCard
-                  title="Solo Leveling: ReAwakening"
-                  score={6.9}
-                  image="https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                />
-                <MedMovieCard
-                  title="Solo Leveling: ReAwakening"
-                  score={6.9}
-                  image="https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                />
-                <MedMovieCard
-                  title="Solo Leveling: ReAwakening"
-                  score={6.9}
-                  image="https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                />
-                <MedMovieCard
-                  title="Solo Leveling: ReAwakening"
-                  score={6.9}
-                  image="https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                />
-                <MedMovieCard
-                  title="Solo Leveling: ReAwakening"
-                  score={6.9}
-                  image="https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                />
-                <MedMovieCard
-                  title="Solo Leveling: ReAwakening"
-                  score={6.9}
-                  image="https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                />
-                <MedMovieCard
-                  title="Solo Leveling: ReAwakening"
-                  score={6.9}
-                  image="https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                />
-                <MedMovieCard
-                  title="Solo Leveling: ReAwakening"
-                  score={6.9}
-                  image="https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                />
-                <MedMovieCard
-                  title="Solo Leveling: ReAwakening"
-                  score={6.9}
-                  image="https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                />
-                <MedMovieCard
-                  title="Solo Leveling: ReAwakening"
-                  score={6.9}
-                  image="https://m.media-amazon.com/images/M/MV5BYTIwYzk3YmQtZmMwNS00ZDAwLTk5Y2MtOTEwODFlZmExMzliXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-                />
+                {filteredMoviesResponse.results.slice(0, 12).map((el) => (
+                  <Link href={""}>
+                    <MedMovieCard
+                      title={el.title}
+                      score={el.vote_average}
+                      image={`https://image.tmdb.org/t/p/w500${el.poster_path}`}
+                    />
+                  </Link>
+                ))}
               </div>
               <Pagination>
                 <PaginationContent>

@@ -1,10 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { NavigationMenuDemo, ThemeToggler } from "@/components/home";
+import { NavMenuItem, ThemeToggler } from "@/components/home";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
-import { genreResponseType, GenreType } from "@/types";
-import { getGenresList } from "@/utils/get-data";
 
 export const Navigation = () => {
   return (
@@ -14,7 +12,7 @@ export const Navigation = () => {
           <Image src="/Logo.png" alt="" width={92} height={20} />
         </Link>
         <div className="flex gap-6">
-          <NavigationMenuDemo />
+          <NavMenuItem />
           <div className="flex items-center">
             <Search className="w-4 h-4 -mr-7" color="#71717A" />
             <Input
