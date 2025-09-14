@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { Film } from "lucide-react";
-import { NavMenuItem, ThemeToggler } from "@/components/home";
+import { NavInputSearch, NavMenuItem, ThemeToggler } from "@/components/home";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { getMoviesBySearch } from "@/utils/get-data";
 import { movieResponseType } from "@/types";
 
-type NavigationPagesProps = {
+type NavigationProps = {
   searchParams: Promise<{ searchValue: string }>;
 };
 
-export const Navigation = async ({ searchParams }: NavigationPagesProps) => {
+export const Navigation = async ({ searchParams }: NavigationProps) => {
   const params = await searchParams;
   const searchValue = params.searchValue;
   const searchedMovieResponse: movieResponseType = await getMoviesBySearch(
@@ -33,12 +33,12 @@ export const Navigation = async ({ searchParams }: NavigationPagesProps) => {
           <div className="flex items-center">
             <Search className="w-4 h-4 -mr-7" color="#71717A" />
             <Input
-              onChange={}
-              type="search"
+              type="text"
               placeholder="Search.."
               className="w-[379px] px-3 py-[7px] pl-[38px] border border-[#E4E4E7]-foreground rounded-lg text-[#71717A]-foreground text-sm leading-5 flex items-center box-border"
             />
           </div>
+          <NavInputSearch />
         </div>
         <ThemeToggler />
       </div>

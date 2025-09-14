@@ -57,4 +57,3 @@ export const getMoviesBySearch = async (searchValue: string) => {
   const data = await res.json();
   return data;
 };
-/search/movie?query=${searchValue}&language=en-US&page=${page}

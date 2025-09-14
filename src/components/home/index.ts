@@ -9,3 +9,4 @@ export * from "./MedMovieCard";
 export * from "./GenresListCard";
 export * from "./GenreMovies";
 export * from "./HomePage";
+export * from "./NavInputSearch";
