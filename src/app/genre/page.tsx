@@ -50,7 +50,7 @@ const GenrePage = async ({ searchParams }: GenrePageProps) => {
               </h4>
               <div className="flex flex-wrap gap-y-8 gap-x-12">
                 {filteredMoviesResponse.results.slice(0, 12).map((el) => (
-                  <Link href={""}>
+                  <Link key={el.id} href={""}>
                     <MedMovieCard
                       title={el.title}
                       score={el.vote_average}

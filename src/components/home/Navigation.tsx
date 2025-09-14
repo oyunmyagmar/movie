@@ -11,12 +11,12 @@ type NavigationProps = {
 };
 
 export const Navigation = async ({ searchParams }: NavigationProps) => {
-  const params = await searchParams;
-  const searchValue = params.searchValue;
-  const searchedMovieResponse: movieResponseType = await getMoviesBySearch(
-    searchValue
-  );
-  console.log(searchedMovieResponse, "searchedMovieResponse");
+  // const params = await searchParams;
+  // const searchValue = params.searchValue;
+  // const searchedMovieResponse: movieResponseType = await getMoviesBySearch(
+  //   searchValue
+  // );
+  // console.log(searchedMovieResponse, "searchedMovieResponse");
 
   return (
     <header className="w-screen">

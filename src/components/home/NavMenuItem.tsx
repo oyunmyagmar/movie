@@ -5,6 +5,7 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
+  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
@@ -32,7 +33,7 @@ export const NavMenuItem = async () => {
               See lists of movies by genre
             </p>
             <Separator className="my-4 border-border" />
-            <NavigationMenuItem className="w-[577px] flex gap-4 flex-wrap">
+            <div className="w-[577px] flex gap-4 flex-wrap">
               {movieGenresResponse.genres.map((genre) => (
                 <Link key={genre.id} href={`/genre?id=${genre.id}`}>
                   <Badge
@@ -44,7 +45,7 @@ export const NavMenuItem = async () => {
                   </Badge>
                 </Link>
               ))}
-            </NavigationMenuItem>
+            </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
