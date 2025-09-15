@@ -83,13 +83,11 @@ const DetailsPage = async ({ searchParams }: DetailsPageProps) => {
                 className="rounded-sm object-cover"
               ></Image>
             </div>
-
-            <Youtube
-              src={`https://www.youtube.com/watch?v=${movieTrailer.results[0].key}`}
-              width={760}
-              height={428}
-              className="rounded-sm"
-            ></Youtube>
+            <div className="w-[760px] h-[428px]">
+              <YouTube
+                videoId={`https://www.youtube.com/watch?v=${movieTrailer.results[0].key}`}
+              ></YouTube>
+            </div>
           </div>
         </CardContent>
         <div>
