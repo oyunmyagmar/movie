@@ -49,3 +49,14 @@ export type movieCreditsResponseType = {
   crew: MovieCreditsCrewType[];
   id: number;
 };
+
+export type MovieTrailerType = {
+  id: number;
+  key: string;
+  name: string;
+  type: string;
+};
+export type movieTrailerResponseType = {
+  id: number;
+  results: MovieTrailerType[];
+};
