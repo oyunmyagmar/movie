@@ -7,6 +7,6 @@ export * from "./MovieCard";
 export * from "./MoviesContainer";
 export * from "./MedMovieCard";
 export * from "./GenresListCard";
-export * from "./GenreMovies";
 export * from "./HomePage";
 export * from "./NavInputSearch";
+export * from "./MiniMovieCard";

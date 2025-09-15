@@ -26,6 +26,7 @@ export type genreResponseType = {
 };
 
 export type MovieDetailsType = {
+  adult: boolean;
   backdrop_path: string;
   belongs_to_collection: {};
   genres: GenreType[];
@@ -38,9 +39,11 @@ export type MovieDetailsType = {
   vote_average: number;
 };
 
-export type MovieCreditsCastType = {};
+export type MovieCreditsCastType = {
+  order: number;
+  name: string;
+};
 export type MovieCreditsCrewType = {
-  department: string;
   job: string;
   name: string;
 };

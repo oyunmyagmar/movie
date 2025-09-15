@@ -1,5 +1,5 @@
-import { MovieType } from "@/types";
 import React from "react";
+import { MovieType } from "@/types";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { MovieCard } from "@/components/home";
@@ -13,9 +13,9 @@ export const MoviesContainer = ({ movies, label }: MoviesContainerProps) => {
   return (
     <div className="w-[1440px] mt-13 px-20 flex gap-8 flex-wrap">
       <div className="w-full flex justify-between">
-        <h3 className="text-2xl leading-8 font-semibold text-foreground">
+        <p className="text-2xl leading-8 font-semibold text-foreground">
           {label}
-        </h3>
+        </p>
         <Button asChild variant="link">
           <Link href="/genre">
             See more <ArrowRight />
