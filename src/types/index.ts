@@ -31,7 +31,6 @@ export type MovieDetailsType = {
   genres: GenreType[];
   id: number;
   overview: string;
-  popularity: number;
   poster_path: string;
   release_date: string;
   runtime: number;
