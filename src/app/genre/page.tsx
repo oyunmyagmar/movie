@@ -19,18 +19,21 @@ import {
 } from "@/components/ui/pagination";
 
 type GenrePageProps = {
-  searchParams: Promise<{ id: string }>;
+  searchParams: Promise<{ id: string; page: string; name: string }>;
 };
 
 const GenrePage = async ({ searchParams }: GenrePageProps) => {
-  const movieGenresResponse: genreResponseType = await getGenresList();
-
   const params = await searchParams;
   const id = params.id;
+  const page = params.page || "1";
+  const name = params.name;
   const filteredMoviesResponse: movieResponseType = await getMoviesByGenreId(
-    id
+    id,
+    page
   );
-  console.log(filteredMoviesResponse, "filteres movies");
+  // console.log(filteredMoviesResponse, "filtered movies");
+
+  const movieGenresResponse: genreResponseType = await getGenresList();
 
   return (
     <div className="w-screen h-screen flex flex-col items-center">
@@ -46,15 +49,15 @@ const GenrePage = async ({ searchParams }: GenrePageProps) => {
           <ResizablePanel>
             <div className="pr-12 space-y-8">
               <h4 className="text-xl leading-7 font-semibold text-foreground">
-                81 titles in {id}
+                {filteredMoviesResponse.total_results} titles in {name}
               </h4>
               <div className="flex flex-wrap gap-y-8 gap-x-12">
-                {filteredMoviesResponse.results.slice(0, 12).map((el) => (
-                  <Link key={el.id} href={""}>
+                {filteredMoviesResponse.results.slice(0, 12).map((movie) => (
+                  <Link key={movie.id} href={`/details?id=${movie.id}`}>
                     <MedMovieCard
-                      title={el.title}
-                      score={el.vote_average}
-                      image={`https://image.tmdb.org/t/p/w500${el.poster_path}`}
+                      title={movie.title}
+                      score={movie.vote_average}
+                      image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                     />
                   </Link>
                 ))}
@@ -65,13 +68,15 @@ const GenrePage = async ({ searchParams }: GenrePageProps) => {
                     <PaginationPrevious href="#" />
                   </PaginationItem>
                   <PaginationItem>
-                    <PaginationLink href="#">1</PaginationLink>
+                    <PaginationLink href="">1</PaginationLink>
                   </PaginationItem>
                   <PaginationItem>
                     <PaginationEllipsis />
                   </PaginationItem>
                   <PaginationItem>
-                    <PaginationNext href="#" />
+                    <PaginationNext
+                    // href={`/genre?id=${genre.id}&name=${genre.name}&page=${genre.page}`}
+                    />
                   </PaginationItem>
                 </PaginationContent>
               </Pagination>

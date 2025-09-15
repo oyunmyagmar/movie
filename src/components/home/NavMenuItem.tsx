@@ -13,10 +13,11 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { getGenresList } from "@/utils/get-data";
+import { genreResponseType } from "@/types";
 
 export const NavMenuItem = async () => {
-  const movieGenresResponse = await getGenresList();
-  console.log(movieGenresResponse, "movieGenres");
+  const movieGenresResponse: genreResponseType = await getGenresList();
+  // console.log(movieGenresResponse, "movieGenres");
 
   return (
     <NavigationMenu viewport={true} className="object-none">
@@ -35,7 +36,10 @@ export const NavMenuItem = async () => {
             <Separator className="my-4 border-border" />
             <div className="w-[577px] flex gap-4 flex-wrap">
               {movieGenresResponse.genres.map((genre) => (
-                <Link key={genre.id} href={`/genre?id=${genre.id}`}>
+                <Link
+                  key={genre.id}
+                  href={`/genre?id=${genre.id}&name=${genre.name}`}
+                >
                   <Badge
                     variant="outline"
                     className="font-semibold rounded-full pl-2.5 gap-2 pr-1 text-center text-foreground"

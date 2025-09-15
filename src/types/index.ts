@@ -14,6 +14,7 @@ export type movieResponseType = {
   page: number;
   results: MovieType[];
   total_pages: number;
+  total_results: number;
 };
 
 export type GenreType = {
@@ -22,4 +23,30 @@ export type GenreType = {
 };
 export type genreResponseType = {
   genres: GenreType[];
+};
+
+export type MovieDetailsType = {
+  backdrop_path: string;
+  belongs_to_collection: {};
+  genres: GenreType[];
+  id: number;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  runtime: number;
+  title: string;
+  vote_average: number;
+};
+
+export type MovieCreditsCastType = {};
+export type MovieCreditsCrewType = {
+  department: string;
+  job: string;
+  name: string;
+};
+export type movieCreditsResponseType = {
+  cast: MovieCreditsCastType[];
+  crew: MovieCreditsCrewType[];
+  id: number;
 };

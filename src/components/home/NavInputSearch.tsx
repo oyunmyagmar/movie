@@ -6,8 +6,8 @@ import { Search } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
 export const NavInputSearch = () => {
-  //   const searchParams = useSearchParams();
-  //   const searchValue = searchParams.get("searchValue");
+  // const searchParams = useSearchParams();
+  // const searchValue = searchParams.get("searchValue");
   const [searchValue, setSearchValue] = React.useState("");
 
   return (
@@ -20,18 +20,20 @@ export const NavInputSearch = () => {
           setSearchValue(e.target.value);
           console.log(e.target.value);
         }}
-        // onKeyDown={(e) => {
-        //   if (e.key === "Enter") {
-        //     <Link href="/search"></Link>;
-        //   }
-        //   console.log("working");
-        // }}
+        id="movieSearchInput"
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            <Link href="/search">
+              <p>{searchValue}</p>
+            </Link>;
+          }
+        }}
         type="text"
         // onKeyDown={myFunction()}
         placeholder="Search.."
         className="w-[379px] px-3 py-[7px] pl-[38px] border border-[#E4E4E7]-foreground rounded-lg text-[#71717A]-foreground text-sm leading-5 flex items-center box-border"
       />
-      <button className="border border-black">select</button>
+      <button className="border border-black">{searchValue}</button>
     </div>
   );
 };

@@ -17,7 +17,6 @@ export const Navigation = async ({ searchParams }: NavigationProps) => {
   //   searchValue
   // );
   // console.log(searchedMovieResponse, "searchedMovieResponse");
-
   return (
     <header className="w-screen">
       <div className="w-[1440px] flex justify-between items-center px-20 py-[11.5px] m-auto">

@@ -11,7 +11,7 @@ export const HomePage = async () => {
   const nowPlayingMovies: movieResponseType = await getMoviesList(
     "now_playing"
   );
-  console.log(nowPlayingMovies, "nowPlayingMovies");
+  // console.log(topRatedMovies, "topRatedMovies");
   return (
     <div className="w-screen h-screen flex flex-col items-center">
       <HeroCarousel movies={nowPlayingMovies.results} />
