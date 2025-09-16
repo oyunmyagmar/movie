@@ -19,6 +19,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
@@ -27,6 +35,7 @@ import { GoStarFill } from "react-icons/go";
 import { Separator } from "@/components/ui/separator";
 import { MiniMovieCard } from "@/components/home";
 import { Button } from "@/components/ui/button";
+import { LuPlay } from "react-icons/lu";
 import { ArrowRight } from "lucide-react";
 
 type DetailsDynamicPageProps = {
@@ -51,7 +60,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
 
   return (
     <div className="w-screen flex flex-col items-center">
-      <div className="w-[1440px] pl-45 pr-[178px] pb-[112.6]">
+      <div className="w-[1440px] pl-45 pr-[178px] pb-[113]">
         <Card className="py-0 border-0 shadow-none mt-13">
           <CardHeader className="flex justify-between p-0">
             <div>
@@ -82,10 +91,9 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
                     </span>
                   </p>
                   <div className="text-xs leading-4 text-muted-foreground">
-                    {{movieDetails.vote_count} >= 1000}
-                    {`${movieDetails.vote_count} >= 1000 ? ${
-                      Math.floor(movieDetails.vote_count) / 1000
-                    }k : ${movieDetails.vote_count}`}
+                    {movieDetails.vote_count >= 1000
+                      ? `${Math.floor(movieDetails.vote_count / 1000)}k`
+                      : movieDetails.vote_count}
                   </div>
                 </div>
               </div>
@@ -93,22 +101,44 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
           </CardHeader>
           <CardContent className="p-0 flex flex-col gap-8">
             <div className="w-full flex justify-between">
-              <div className="w-[290px] h-107 relative">
+              <div className="w-[290px] h-107 rounded-sm overflow-hidden relative ">
                 <Image
                   src={`https://image.tmdb.org/t/p/original${movieDetails.poster_path}`}
                   alt={movieDetails.title}
                   unoptimized
                   fill
-                  className="rounded-sm object-cover"
                 />
               </div>
-              <div className="rounded-sm overflow-hidden">
-                <iframe
-                  src={`//www.youtube-nocookie.com/embed/${trailer?.key}`}
-                  allowFullScreen
-                  width={760}
-                  height={428}
-                ></iframe>
+              <div className="w-190 h-107 rounded-sm overflow-hidden relative">
+                <Image
+                  src={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}
+                  alt={movieDetails.title}
+                  unoptimized
+                  fill
+                />
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="flex gap-3 items-center absolute bottom-6 left-6">
+                      <Button
+                        variant="outline"
+                        className="w-10 h-10 rounded-full border-0 bg-white"
+                      >
+                        <LuPlay width={16} height={16} />
+                      </Button>
+                      <span className="text-base leading-6 text-white">
+                        Play Trailer
+                      </span>
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="w-[997px] h-[561px] absolute top-100 left-200">
+                    <iframe
+                      src={`//www.youtube-nocookie.com/embed/${trailer?.key}`}
+                      allowFullScreen
+                      width={997}
+                      height={561}
+                    ></iframe>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
             <CardDescription>
@@ -163,7 +193,10 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
                 {movieCredits.cast.map(
                   (movCast) =>
                     movCast.order < 5 && (
-                      <span className="leading-6 font-normal flex">
+                      <span
+                        key={movCast.name}
+                        className="leading-6 font-normal flex"
+                      >
                         {movCast.name} <Dot />
                       </span>
                     )

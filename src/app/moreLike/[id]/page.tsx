@@ -1,5 +1,14 @@
 import React from "react";
 import Link from "next/link";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import { movieResponseType } from "@/types";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -23,7 +32,7 @@ const MoreLikeDynamicPage = async ({ params }: MoreLikeDynamicPageProps) => {
 
   return (
     <div className="w-screen flex flex-col items-center">
-      <div className="mt-13 w-[1440px] px-20 flex gap-8 flex-wrap">
+      <div className="mt-13 w-[1440px] px-20 flex gap-8 flex-wrap mb-19">
         <h3 className="w-full text-3xl leading-9 font-semibold text-foreground">
           More like this
         </h3>
@@ -37,6 +46,22 @@ const MoreLikeDynamicPage = async ({ params }: MoreLikeDynamicPageProps) => {
             />
           </Link>
         ))}
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href="#" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
     </div>
   );

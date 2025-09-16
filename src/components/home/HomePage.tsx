@@ -13,7 +13,7 @@ export const HomePage = async () => {
   );
   // console.log(topRatedMovies, "topRatedMovies");
   return (
-    <div className="w-screen flex flex-col items-center">
+    <div className="w-screen flex flex-col items-center pb-[51px]">
       <HeroCarousel movies={nowPlayingMovies.results} />
       <MoviesContainer movies={upComingMovies.results} label="Upcoming" />
       <MoviesContainer movies={popularMovies.results} label="Popular" />
