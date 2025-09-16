@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+
 import { MedMovieCard, GenresListCard } from "@/components/home";
 import {
   ResizableHandle,
@@ -17,21 +17,22 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import Link from "next/link";
 
-type GenrePageProps = {
-  searchParams: Promise<{ id: string; page: string; name: string }>;
+type GenreDynamicPageProps = {
+  params: Promise<{ id: string; page: string; name: string }>;
 };
 
-const GenrePage = async ({ searchParams }: GenrePageProps) => {
-  const params = await searchParams;
-  const id = params.id;
-  const page = params.page || "1";
-  const name = params.name;
+const GenreDynamicPage = async ({ params }: GenreDynamicPageProps) => {
+  const dynamicParams = await params;
+  const id = dynamicParams.id;
+  const page = dynamicParams.page || "1";
+  const name = dynamicParams.name;
   const filteredMoviesResponse: movieResponseType = await getMoviesByGenreId(
     id,
     page
   );
-  // console.log(filteredMoviesResponse, "filtered movies");
+  console.log(filteredMoviesResponse, "filtered movies");
 
   const movieGenresResponse: genreResponseType = await getGenresList();
 
@@ -53,8 +54,9 @@ const GenrePage = async ({ searchParams }: GenrePageProps) => {
               </h4>
               <div className="flex flex-wrap gap-y-8 gap-x-12">
                 {filteredMoviesResponse.results.map((movie) => (
-                  <Link key={movie.id} href={`/details?id=${movie.id}`}>
+                  <Link key={movie.id} href={`/details/${movie.id}`}>
                     <MedMovieCard
+                      id={movie.id}
                       title={movie.title}
                       score={movie.vote_average}
                       image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -87,4 +89,4 @@ const GenrePage = async ({ searchParams }: GenrePageProps) => {
     </div>
   );
 };
-export default GenrePage;
+export default GenreDynamicPage;

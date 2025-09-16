@@ -38,7 +38,7 @@ export const NavMenuItem = async () => {
               {movieGenresResponse.genres.map((genre) => (
                 <Link
                   key={genre.id}
-                  href={`/genre?id=${genre.id}&name=${genre.name}`}
+                  href={`/genre/${genre.id}&name=${genre.name}`}
                 >
                   <Badge
                     variant="outline"

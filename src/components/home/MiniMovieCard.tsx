@@ -15,14 +15,26 @@ type MiniMovieCardProps = {
   title: string;
   score: number;
   image: string;
+  id: number;
 };
 
-export const MiniMovieCard = ({ title, score, image }: MiniMovieCardProps) => {
+export const MiniMovieCard = ({
+  title,
+  score,
+  image,
+  id,
+}: MiniMovieCardProps) => {
   return (
     <Card className="w-[190px] p-0 overflow-hidden bg-secondary flex flex-col gap-1">
       <CardContent className="p-0">
         <div className="w-full h-[281.3px] relative">
-          <Image src={image} alt="" fill unoptimized className="object-cover" />
+          <Image
+            src={image}
+            alt={title}
+            fill
+            unoptimized
+            className="object-cover"
+          />
         </div>
       </CardContent>
       <CardFooter className="flex flex-col items-start px-2 py-1">

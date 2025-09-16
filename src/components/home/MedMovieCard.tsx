@@ -14,14 +14,26 @@ type MedMovieCardProps = {
   title: string;
   score: number;
   image: string;
+  id: number;
 };
 
-export const MedMovieCard = ({ title, score, image }: MedMovieCardProps) => {
+export const MedMovieCard = ({
+  title,
+  score,
+  image,
+  id,
+}: MedMovieCardProps) => {
   return (
     <Card className="w-[165px] p-0 overflow-hidden bg-secondary flex gap-0">
       <CardContent className="p-0">
         <div className="w-full h-61 relative">
-          <Image src={image} alt="" fill unoptimized className="object-cover" />
+          <Image
+            src={image}
+            alt={title}
+            fill
+            unoptimized
+            className="object-cover"
+          />
         </div>
       </CardContent>
       <CardFooter className="flex flex-col items-start px-2 py-1">

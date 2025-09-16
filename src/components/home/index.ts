@@ -11,4 +11,3 @@ export * from "./HomePage";
 export * from "./NavInputSearch";
 export * from "./MiniMovieCard";
 export * from "./Footer";
-export * from "./MoreLike";

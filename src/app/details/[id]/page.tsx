@@ -4,6 +4,7 @@ import {
   movieTrailerResponseType,
   movieCreditsResponseType,
   movieResponseType,
+  MovieTrailerType,
 } from "@/types";
 import {
   getMovieDetails,
@@ -11,31 +12,30 @@ import {
   getMovieTrailer,
   getSimilarMovies,
 } from "@/utils/get-data";
-import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Image from "next/image";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 import { Dot } from "lucide-react";
 import { GoStarFill } from "react-icons/go";
-import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { MiniMovieCard } from "@/components/home";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 
-type DetailsPageProps = {
-  searchParams: Promise<{ id: string }>;
+type DetailsDynamicPageProps = {
+  params: Promise<{ id: string }>;
 };
 
-const DetailsPage = async ({ searchParams }: DetailsPageProps) => {
-  const params = await searchParams;
-  const id = params.id;
+const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
+  const dynamicParams = await params;
+  const id = dynamicParams.id;
   const movieDetails: MovieDetailsType = await getMovieDetails(id);
   const movieCredits: movieCreditsResponseType = await getMovieCredits(id);
   const movieTrailer: movieTrailerResponseType = await getMovieTrailer(id);
@@ -44,6 +44,10 @@ const DetailsPage = async ({ searchParams }: DetailsPageProps) => {
   console.log(movieCredits, "movieCredits");
   console.log(movieTrailer, "movieTrailer");
   console.log(similarMovies, "similarMovies");
+
+  const trailer: MovieTrailerType | undefined = movieTrailer.results.find(
+    (trailer) => trailer.type === "Trailer"
+  );
 
   return (
     <div className="w-screen h-screen flex flex-col items-center">
@@ -89,16 +93,19 @@ const DetailsPage = async ({ searchParams }: DetailsPageProps) => {
               <div className="w-[290px] h-107 relative">
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-                  alt=""
+                  alt={movieDetails.title}
                   unoptimized
                   fill
                   className="rounded-sm object-cover"
                 />
               </div>
-              <div className="w-[760px] h-[428px] bg-amber-400 rounded-sm">
-                {/* <YouTube
-                videoId={`https://www.youtube.com/watch?v=${movieTrailer.results[0].key}`}
-              ></YouTube> */}
+              <div className="rounded-sm overflow-hidden">
+                <iframe
+                  src={`//www.youtube-nocookie.com/embed/${trailer?.key}`}
+                  allowFullScreen
+                  width={760}
+                  height={428}
+                ></iframe>
               </div>
             </div>
             <CardDescription>
@@ -137,7 +144,10 @@ const DetailsPage = async ({ searchParams }: DetailsPageProps) => {
                     (movCrew.job === "Original Story" ||
                       movCrew.job === "Writer" ||
                       movCrew.job === "Story") && (
-                      <span className="leading-6 font-normal flex">
+                      <span
+                        key={movCrew.name}
+                        className="leading-6 font-normal flex"
+                      >
                         {movCrew.name}
                         <Dot />
                       </span>
@@ -166,7 +176,7 @@ const DetailsPage = async ({ searchParams }: DetailsPageProps) => {
               More like this
             </h3>
             <Button asChild variant="link">
-              <Link href="/MoreLike">
+              <Link href={`/moreLike/${id}`}>
                 See more
                 <ArrowRight />
               </Link>
@@ -174,8 +184,9 @@ const DetailsPage = async ({ searchParams }: DetailsPageProps) => {
           </div>
           <div className="flex gap-8">
             {similarMovies.results.slice(0, 5).map((simMov) => (
-              <Link key={simMov.id} href={`/details?id=${simMov.id}`}>
+              <Link key={simMov.id} href={`/details/${simMov.id}`}>
                 <MiniMovieCard
+                  id={simMov.id}
                   title={simMov.title}
                   score={simMov.vote_average}
                   image={`https://image.tmdb.org/t/p/w500${simMov.poster_path}`}
@@ -188,4 +199,5 @@ const DetailsPage = async ({ searchParams }: DetailsPageProps) => {
     </div>
   );
 };
-export default DetailsPage;
+
+export default DetailsDynamicPage;

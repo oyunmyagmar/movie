@@ -17,18 +17,20 @@ export const MoviesContainer = ({ movies, label }: MoviesContainerProps) => {
           {label}
         </p>
         <Button asChild variant="link">
-          <Link href="/genre">
+          <Link href={`/moreLike/${label}`}>
             See more <ArrowRight />
           </Link>
         </Button>
       </div>
       {movies.slice(0, 10).map((movie) => (
-        <MovieCard
-          key={movie.id}
-          title={movie.title}
-          score={movie.vote_average}
-          image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        />
+        <Link key={movie.id} href={`/details/${movie.id}`}>
+          <MovieCard
+            id={movie.id}
+            title={movie.title}
+            score={movie.vote_average}
+            image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          />
+        </Link>
       ))}
     </div>
   );

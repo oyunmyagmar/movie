@@ -3,14 +3,8 @@ import { Film } from "lucide-react";
 import { NavInputSearch, NavMenuItem, ThemeToggler } from "@/components/home";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
-import { getMoviesBySearch } from "@/utils/get-data";
-import { movieResponseType } from "@/types";
 
-type NavigationProps = {
-  searchParams: Promise<{ searchValue: string }>;
-};
-
-export const Navigation = async ({ searchParams }: NavigationProps) => {
+export const Navigation = async () => {
   // const params = await searchParams;
   // const searchValue = params.searchValue;
   // const searchedMovieResponse: movieResponseType = await getMoviesBySearch(

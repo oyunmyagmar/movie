@@ -3,11 +3,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
-import { useSearchParams } from "next/navigation";
 
 export const NavInputSearch = () => {
-  // const searchParams = useSearchParams();
-  // const searchValue = searchParams.get("searchValue");
   const [searchValue, setSearchValue] = React.useState("");
 
   return (
