@@ -37,6 +37,7 @@ export type MovieDetailsType = {
   runtime: number;
   title: string;
   vote_average: number;
+  vote_count: number;
 };
 
 export type MovieCreditsCastType = {

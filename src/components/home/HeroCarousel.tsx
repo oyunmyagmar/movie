@@ -44,7 +44,7 @@ export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
         {movies.slice(0, 5).map((movie) => (
           <CarouselItem key={movie.id}>
             <HeroCard
-              image={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+              image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
               label="Now Playing:"
               title={movie.title}
               score={movie.vote_average}

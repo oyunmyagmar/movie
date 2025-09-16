@@ -22,7 +22,7 @@ const MoreLikeDynamicPage = async ({ params }: MoreLikeDynamicPageProps) => {
   const similarMovies: movieResponseType = await getSimilarMovies(id);
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center">
+    <div className="w-screen flex flex-col items-center">
       <div className="mt-13 w-[1440px] px-20 flex gap-8 flex-wrap">
         <h3 className="w-full text-3xl leading-9 font-semibold text-foreground">
           More like this

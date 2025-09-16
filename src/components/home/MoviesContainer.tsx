@@ -1,6 +1,6 @@
 import React from "react";
-import { MovieType } from "@/types";
 import Link from "next/link";
+import { MovieType } from "@/types";
 import { ArrowRight } from "lucide-react";
 import { MovieCard } from "@/components/home";
 import { Button } from "@/components/ui/button";
@@ -28,7 +28,7 @@ export const MoviesContainer = ({ movies, label }: MoviesContainerProps) => {
             id={movie.id}
             title={movie.title}
             score={movie.vote_average}
-            image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
           />
         </Link>
       ))}

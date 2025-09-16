@@ -50,7 +50,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
   );
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center">
+    <div className="w-screen flex flex-col items-center">
       <div className="w-[1440px] pl-45 pr-[178px] pb-[112.6]">
         <Card className="py-0 border-0 shadow-none mt-13">
           <CardHeader className="flex justify-between p-0">
@@ -61,7 +61,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
               <p className="flex text-lg leading-7 text-foreground">
                 {movieDetails.release_date}
                 <Dot />
-                {`label oruulah`}
+                {movieDetails.adult ? "R" : "G"}
                 <Dot />
                 {`${Math.floor(movieDetails.runtime / 60)}h ${
                   movieDetails.runtime % 60
@@ -81,9 +81,12 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
                       /10
                     </span>
                   </p>
-                  <p className="text-xs leading-4 text-muted-foreground">
-                    37k gadnas
-                  </p>
+                  <div className="text-xs leading-4 text-muted-foreground">
+                    {{movieDetails.vote_count} >= 1000}
+                    {`${movieDetails.vote_count} >= 1000 ? ${
+                      Math.floor(movieDetails.vote_count) / 1000
+                    }k : ${movieDetails.vote_count}`}
+                  </div>
                 </div>
               </div>
             </div>
@@ -92,7 +95,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
             <div className="w-full flex justify-between">
               <div className="w-[290px] h-107 relative">
                 <Image
-                  src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/original${movieDetails.poster_path}`}
                   alt={movieDetails.title}
                   unoptimized
                   fill
@@ -189,7 +192,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
                   id={simMov.id}
                   title={simMov.title}
                   score={simMov.vote_average}
-                  image={`https://image.tmdb.org/t/p/w500${simMov.poster_path}`}
+                  image={`https://image.tmdb.org/t/p/original${simMov.poster_path}`}
                 />
               </Link>
             ))}

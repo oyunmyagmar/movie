@@ -37,7 +37,7 @@ const GenreDynamicPage = async ({ params }: GenreDynamicPageProps) => {
   const movieGenresResponse: genreResponseType = await getGenresList();
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center">
+    <div className="w-screen flex flex-col items-center">
       <div className="w-[1440px] px-20 flex flex-col gap-8">
         <h2 className="w-full text-3xl leading-9 font-semibold text-foreground mt-13">
           Search filter
