@@ -6,6 +6,10 @@ import { Search } from "lucide-react";
 
 export const NavInputSearch = () => {
   const [searchValue, setSearchValue] = React.useState("");
+  const handleInputChange = (e) => {
+    const { value } = e.target;
+    setSearchValue(value);
+  };
 
   return (
     <div className="flex items-center">
@@ -13,18 +17,14 @@ export const NavInputSearch = () => {
 
       <Input
         value={searchValue}
-        onChange={(e) => {
-          setSearchValue(e.target.value);
-          console.log(e.target.value);
-        }}
-        id="movieSearchInput"
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            <Link href="/search">
-              <p>{searchValue}</p>
-            </Link>;
-          }
-        }}
+        onChange={handleInputChange}
+        // onKeyDown={(e) => {
+        //   if (e.key === "Enter") {
+        //     <Link href="/search">
+        //       <p>{searchValue}</p>
+        //     </Link>;
+        //   }
+        // }}
         type="text"
         // onKeyDown={myFunction()}
         placeholder="Search.."

@@ -8,8 +8,13 @@ import { Button } from "@/components/ui/button";
 type MoviesContainerProps = {
   movies: MovieType[];
   label: string;
+  link: string;
 };
-export const MoviesContainer = ({ movies, label }: MoviesContainerProps) => {
+export const MoviesContainer = ({
+  movies,
+  label,
+  link,
+}: MoviesContainerProps) => {
   return (
     <div className="w-[1440px] mt-13 px-20 flex gap-8 flex-wrap">
       <div className="w-full flex justify-between">
@@ -17,7 +22,7 @@ export const MoviesContainer = ({ movies, label }: MoviesContainerProps) => {
           {label}
         </p>
         <Button asChild variant="link">
-          <Link href={`/moreLike/${label}`}>
+          <Link href={`/seeMore/${link}`}>
             See more <ArrowRight />
           </Link>
         </Button>
@@ -35,3 +40,4 @@ export const MoviesContainer = ({ movies, label }: MoviesContainerProps) => {
     </div>
   );
 };
+//   <Link href={`/moreLike/${label}`}>

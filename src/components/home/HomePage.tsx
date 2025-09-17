@@ -11,13 +11,25 @@ export const HomePage = async () => {
   const nowPlayingMovies: movieResponseType = await getMoviesList(
     "now_playing"
   );
-  // console.log(topRatedMovies, "topRatedMovies");
+  console.log(topRatedMovies, "topRatedMovies");
   return (
     <div className="w-screen flex flex-col items-center pb-[51px]">
       <HeroCarousel movies={nowPlayingMovies.results} />
-      <MoviesContainer movies={upComingMovies.results} label="Upcoming" />
-      <MoviesContainer movies={popularMovies.results} label="Popular" />
-      <MoviesContainer movies={topRatedMovies.results} label="Top Rated" />
+      <MoviesContainer
+        movies={upComingMovies.results}
+        label="Upcoming"
+        link="upcoming"
+      />
+      <MoviesContainer
+        movies={popularMovies.results}
+        label="Popular"
+        link="popular"
+      />
+      <MoviesContainer
+        movies={topRatedMovies.results}
+        label="Top Rated"
+        link="top_rated"
+      />
     </div>
   );
 };

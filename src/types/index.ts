@@ -47,6 +47,8 @@ export type MovieCreditsCastType = {
 export type MovieCreditsCrewType = {
   job: string;
   name: string;
+  id: number;
+  credit_id: string;
 };
 export type movieCreditsResponseType = {
   cast: MovieCreditsCastType[];

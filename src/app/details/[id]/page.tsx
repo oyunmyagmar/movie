@@ -130,7 +130,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
                       </span>
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="w-[997px] h-[561px] absolute top-[10%]">
+                  <DialogContent className="sm:max-w-5xl w-[997px] h-[561px] p-0 border-none">
                     <iframe
                       src={`//www.youtube-nocookie.com/embed/${trailer?.key}`}
                       allowFullScreen
@@ -178,7 +178,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
                       movCrew.job === "Writer" ||
                       movCrew.job === "Story") && (
                       <span
-                        key={movCrew.name}
+                        key={movCrew.credit_id}
                         className="leading-6 font-normal flex"
                       >
                         {movCrew.name}
@@ -194,7 +194,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
                   (movCast) =>
                     movCast.order < 5 && (
                       <span
-                        key={movCast.name}
+                        key={movCast.order}
                         className="leading-6 font-normal flex"
                       >
                         {movCast.name} <Dot />
