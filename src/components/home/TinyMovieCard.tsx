@@ -3,10 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -19,46 +17,53 @@ type TinyMovieCardProps = {
   score: number;
   image: string;
   year: string;
+  href: string;
 };
 export const TinyMovieCard = ({
   title,
   score,
   image,
   year,
+  href,
 }: TinyMovieCardProps) => {
   return (
-    <Card className="w-[573px] h-29 p-2 shadow-none flex flex-row gap-4">
+    <Card className="w-[553px] p-2 border-none shadow-none flex flex-row gap-4">
       <CardContent className="p-0">
-        <div className="w-[67px] h-25 bg-amber-400 rounded-md">
-          <Image src={image} alt="" />
+        <div className="w-[67px] h-25 bg-amber-400 rounded-md overflow-hidden relative">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            unoptimized
+            className="object-cover"
+          />
         </div>
       </CardContent>
-      <CardHeader className="bg-amber-800">
+      <CardHeader className="w-[454px] p-0 gap-0">
         <CardTitle className="text-xl leading-7 font-semibold text-foreground">
-          title
+          {title}
         </CardTitle>
-        <CardDescription className="flex justify-between">
-          <div>
-            <div className="flex gap-1">
-              <GoStarFill width={16} height={16} color="#FDE047" />
-              <p className="text-sm leading-5 font-medium text-foreground">
-                score
-                <span className="text-xs leading-4 font-normal text-muted-foreground">
-                  /10
-                </span>
-              </p>
-            </div>
+        <CardDescription>
+          <div className="flex gap-1 items-center mb-[3px]">
+            <GoStarFill size={16} color="#FDE047" />
             <p className="text-sm leading-5 font-medium text-foreground">
-              2024
+              {score.toFixed(1)}
+              <span className="text-xs leading-4 font-normal text-muted-foreground">
+                /10
+              </span>
             </p>
           </div>
-
-          <Button variant="link">
-            <Link href="">
-              See more
-              <ArrowRight />
-            </Link>
-          </Button>
+          <div className="w-full flex justify-between mt-3">
+            <p className="text-sm leading-5 font-medium text-foreground">
+              {year.split("-")[0]}
+            </p>
+            <Button asChild variant="link">
+              <Link href={href}>
+                See more
+                <ArrowRight />
+              </Link>
+            </Button>
+          </div>
         </CardDescription>
       </CardHeader>
     </Card>

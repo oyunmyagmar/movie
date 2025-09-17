@@ -1,5 +1,5 @@
 import React from "react";
-
+import Link from "next/link";
 import { MedMovieCard, GenresListCard } from "@/components/home";
 import {
   ResizableHandle,
@@ -17,7 +17,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import Link from "next/link";
 
 type GenreDynamicPageProps = {
   params: Promise<{ id: string; page: string; name: string }>;
