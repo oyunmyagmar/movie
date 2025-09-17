@@ -23,14 +23,6 @@ export const Navigation = async () => {
         </Link>
         <div className="flex gap-6">
           <NavMenuItem />
-          <div className="flex items-center">
-            <Search className="w-4 h-4 -mr-7" color="#71717A" />
-            <Input
-              type="text"
-              placeholder="Search.."
-              className="w-[379px] px-3 py-[7px] pl-[38px] border border-[#E4E4E7]-foreground rounded-lg text-[#71717A]-foreground text-sm leading-5 flex items-center box-border"
-            />
-          </div>
           <NavInputSearch />
         </div>
         <ThemeToggler />
