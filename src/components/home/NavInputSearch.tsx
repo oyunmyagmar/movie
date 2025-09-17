@@ -51,7 +51,7 @@ export const NavInputSearch = () => {
         className="w-[577px] p-3 rounded-lg"
       >
         {foundMovies?.results.slice(0, 5).map((movSearched) => (
-          <div>
+          <div key={movSearched.id}>
             <TinyMovieCard
               image={`https://image.tmdb.org/t/p/original${movSearched.poster_path}`}
               title={movSearched.title}
