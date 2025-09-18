@@ -10,12 +10,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { genreResponseType } from "@/types";
+import { getGenresList } from "@/utils/get-data";
 
 type GenresListCardProps = {
-  genres: GenreType[];
+  searchValue: string;
 };
 
-export const GenresListCard = ({ genres }: GenresListCardProps) => {
+export const SearchListCard = async ({ searchValue }: GenresListCardProps) => {
+  const movieGenresResponse: genreResponseType = await getGenresList();
+
   return (
     <Card className="p-0 border-none shadow-none flex gap-5">
       <CardHeader className="p-0 space-y-1">
@@ -27,8 +31,11 @@ export const GenresListCard = ({ genres }: GenresListCardProps) => {
         </CardDescription>
       </CardHeader>
       <CardContent className="p-0 flex flex-wrap gap-4">
-        {genres.map((genre) => (
-          <Link key={genre.id} href={`/genre/${genre.id}$name=${genre.name}`}>
+        {movieGenresResponse.genres.map((genre) => (
+          <Link
+            key={genre.id}
+            href={`/search?value=${searchValue}/${genre.id}$name=${genre.name}`}
+          >
             <Badge
               variant="outline"
               className="font-semibold rounded-full pl-2.5 gap-2 pr-1 text-center"

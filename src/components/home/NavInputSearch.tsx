@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/popover";
 import { TinyMovieCard } from "./TinyMovieCard";
 import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
 
 export const NavInputSearch = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -30,7 +31,7 @@ export const NavInputSearch = () => {
   };
 
   return (
-    <Popover open={isOpen}>
+    <Popover open={isOpen} onOpenChange={setSearchValue}>
       <PopoverTrigger>
         <div className="flex items-center">
           <Search size={11.7} className="-mr-7" color="#71717A" />
@@ -44,6 +45,7 @@ export const NavInputSearch = () => {
         </div>
       </PopoverTrigger>
       <PopoverContent
+        onOpenAutoFocus={(e) => e.preventDefault()}
         side="bottom"
         sideOffset={4.5}
         align="center"
@@ -57,14 +59,16 @@ export const NavInputSearch = () => {
               title={movSearched.title}
               score={movSearched.vote_average}
               year={movSearched.release_date}
-              href="/details"
+              href={`/details/${movSearched.id}`}
             />
             <Separator className="my-2" />
           </div>
         ))}
-        <div className="py-2 px-8 text-sm leading-5 font-medium text-foreground">
-          See all results for "{searchValue}"
-        </div>
+        <Button asChild variant="link" onClick={() => setIsOpen(false)}>
+          <Link href={`/search?value=${searchValue}`}>
+            See all results for "{searchValue}"
+          </Link>
+        </Button>
       </PopoverContent>
     </Popover>
   );

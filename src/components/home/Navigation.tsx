@@ -1,16 +1,8 @@
 import Link from "next/link";
 import { Film } from "lucide-react";
 import { NavInputSearch, NavMenuItem, ThemeToggler } from "@/components/home";
-import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
 
 export const Navigation = async () => {
-  // const params = await searchParams;
-  // const searchValue = params.searchValue;
-  // const searchedMovieResponse: movieResponseType = await getMoviesBySearch(
-  //   searchValue
-  // );
-  // console.log(searchedMovieResponse, "searchedMovieResponse");
   return (
     <header className="w-screen">
       <div className="w-[1440px] flex justify-between items-center px-20 py-[11.5px] m-auto">

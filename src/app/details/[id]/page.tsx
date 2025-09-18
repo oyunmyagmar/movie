@@ -131,6 +131,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
                     </div>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-5xl w-[997px] h-[561px] p-0 border-none">
+                    <DialogTitle className="hidden" />
                     <iframe
                       src={`//www.youtube-nocookie.com/embed/${trailer?.key}`}
                       allowFullScreen

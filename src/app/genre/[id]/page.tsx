@@ -49,7 +49,7 @@ const GenreDynamicPage = async ({ params }: GenreDynamicPageProps) => {
           <ResizablePanel>
             <div className="pr-12 space-y-8">
               <h4 className="text-xl leading-7 font-semibold text-foreground">
-                {filteredMoviesResponse.total_results} titles in {name}
+                {filteredMoviesResponse.total_results} titles in "{name}"
               </h4>
               <div className="flex flex-wrap gap-y-8 gap-x-12">
                 {filteredMoviesResponse.results.map((movie) => (

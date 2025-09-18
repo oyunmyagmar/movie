@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { MedMovieCard, GenresListCard } from "@/components/home";
+import { MedMovieCard, SearchListCard } from "@/components/home";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -16,33 +16,54 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { genreResponseType, movieResponseType } from "@/types";
-import { getGenresList, getMoviesByGenreId } from "@/utils/get-data";
+import {
+  getGenresList,
+  getMoviesByGenreId,
+  getMoviesBySearch,
+} from "@/utils/get-data";
 
-const SearchPage = async () => {
-  const movieGenresResponse: genreResponseType = await getGenresList();
+type SearchPageProps = {
+  searchParams: Promise<{ value: string; genreId: string }>;
+};
+const SearchPage = async ({ searchParams }: SearchPageProps) => {
+  const params = await searchParams;
+  const value = params.value;
+  const genreId = params.genreId;
+  const searchedMovies: movieResponseType = await getMoviesBySearch(value);
+  console.log(searchedMovies, "searchedMovies");
+
+  const filteredMovies = genreId
+    ? searchedMovies.results.filter((movie) =>
+        movie.genre_ids.includes(Number(genreId))
+      )
+    : searchedMovies.results;
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center">
-      <div className="w-[1440px] px-20 flex flex-col gap-8">
+    <div className="w-screen flex flex-col items-center">
+      <div className="w-[1440px] px-20 flex flex-col gap-8 pb-[344px]">
         <h2 className="w-full text-3xl leading-9 font-semibold text-foreground mt-13">
           Search results
         </h2>
         <ResizablePanelGroup direction="horizontal">
           <ResizablePanel>
-            <div className="space-y-8">
+            <div className="flex flex-col gap-8">
               <h4 className="text-xl leading-7 font-semibold text-foreground">
-                5 results for “Wicked”
+                {searchedMovies.total_results} results for “{value}”
               </h4>
               <div className="flex flex-wrap gap-y-8 gap-x-12">
-                {/* {filteredMoviesResponse.results.slice(0, 12).map((el) => (
-                  <Link href={""}>
+                {filteredMovies.slice(0, 12).map((movSearched) => (
+                  <Link
+                    key={movSearched.id}
+                    href={`/details/${movSearched.id}`}
+                  >
                     <MedMovieCard
-                      title={el.title}
-                      score={el.vote_average}
-                      image={`https://image.tmdb.org/t/p/w500${el.poster_path}`}
+                      id={movSearched.id}
+                      title={movSearched.title}
+                      score={movSearched.vote_average}
+                      image={`https://image.tmdb.org/t/p/w500${movSearched.poster_path}`}
                     />
                   </Link>
-                ))} */}
+                ))}
               </div>
               <Pagination>
                 <PaginationContent>
@@ -64,7 +85,7 @@ const SearchPage = async () => {
           </ResizablePanel>
           <ResizableHandle withHandle className="mx-11" />
           <ResizablePanel>
-            <GenresListCard genres={movieGenresResponse.genres} />
+            <SearchListCard searchValue={value} />
           </ResizablePanel>
         </ResizablePanelGroup>
       </div>
