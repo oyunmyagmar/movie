@@ -13,3 +13,6 @@ export * from "./MiniMovieCard";
 export * from "./Footer";
 export * from "./TinyMovieCard";
 export * from "./SearchListCard";
+export * from "./TrailerDialog";
+export * from "./MoreLikeThisMoviesContainer";
+export * from "./HeroTrailerDialog";

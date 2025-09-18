@@ -10,13 +10,17 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { MovieType } from "@/types";
+import { MovieType, MovieTrailerType } from "@/types";
 
 type HeroCarouselProps = {
   movies: MovieType[];
+  // trailer: MovieTrailerType | undefined;
 };
 
-export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
+export const HeroCarousel = ({
+  movies,
+}: //, trailer
+HeroCarouselProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
@@ -49,7 +53,7 @@ export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
               title={movie.title}
               score={movie.vote_average}
               description={movie.overview}
-              href=""
+              // trailer={trailer}
             />
           </CarouselItem>
         ))}

@@ -5,13 +5,13 @@ import { LuPlay } from "react-icons/lu";
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { HeroTrailerDialog } from "@/components/home";
+import { MovieTrailerType } from "@/types";
 
 type HeroCardProps = {
   image: string;
@@ -19,7 +19,7 @@ type HeroCardProps = {
   title: string;
   score: number;
   description: string;
-  href: string;
+  //  trailer: MovieTrailerType | undefined;
 };
 
 export const HeroCard = ({
@@ -28,8 +28,8 @@ export const HeroCard = ({
   title,
   score,
   description,
-  href,
-}: HeroCardProps) => {
+}: // trailer,
+HeroCardProps) => {
   return (
     <Card className="w-1440px h-150 relative p-0 border-0">
       <Image src={image} alt="" fill unoptimized priority />
@@ -53,16 +53,18 @@ export const HeroCard = ({
           <CardDescription className="w-[302px] text-xs leaging-4 text-[#FAFAFA]">
             {description}
           </CardDescription>
+          <div className="mt-20">
+            <HeroTrailerDialog trailer={undefined} />
+          </div>
         </CardContent>
-        <CardFooter>
-          <Link href={href}>
-            <Button variant="secondary">
-              <LuPlay />
-              Watch Trailer
-            </Button>
-          </Link>
-        </CardFooter>
       </div>
     </Card>
   );
 };
+{
+  /* <Button asChild variant="secondary">
+            <Link href={href}>
+              Watch Trailer <LuPlay />
+            </Link>
+          </Button> */
+}

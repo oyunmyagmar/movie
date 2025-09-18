@@ -2,11 +2,9 @@ import Image from "next/image";
 import { GoStarFill } from "react-icons/go";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
-  CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 

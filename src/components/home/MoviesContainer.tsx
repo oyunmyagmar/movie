@@ -40,4 +40,3 @@ export const MoviesContainer = ({
     </div>
   );
 };
-//   <Link href={`/moreLike/${label}`}>

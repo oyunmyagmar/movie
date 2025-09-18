@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
   MovieDetailsType,
   movieTrailerResponseType,
@@ -21,20 +20,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Dot } from "lucide-react";
 import { GoStarFill } from "react-icons/go";
 import { Separator } from "@/components/ui/separator";
-import { MiniMovieCard } from "@/components/home";
-import { Button } from "@/components/ui/button";
-import { LuPlay } from "react-icons/lu";
-import { ArrowRight } from "lucide-react";
+import { MoreLikeThisMoviesContainer, TrailerDialog } from "@/components/home";
 
 type DetailsDynamicPageProps = {
   params: Promise<{ id: string }>;
@@ -66,10 +56,8 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
                 {movieDetails.title}
               </CardTitle>
               <p className="flex text-lg leading-7 text-foreground">
-                {movieDetails.release_date}
-                <Dot />
-                {movieDetails.adult ? "R" : "G"}
-                <Dot />
+                {movieDetails.release_date} <Dot />
+                {movieDetails.adult ? "R" : "G"} <Dot />
                 {`${Math.floor(movieDetails.runtime / 60)}h ${
                   movieDetails.runtime % 60
                 }m`}
@@ -114,30 +102,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
                   unoptimized
                   fill
                 />
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <div className="flex gap-3 items-center absolute bottom-6 left-6">
-                      <Button
-                        variant="outline"
-                        className="w-10 h-10 rounded-full border-0 bg-white"
-                      >
-                        <LuPlay width={16} height={16} />
-                      </Button>
-                      <span className="text-base leading-6 text-white">
-                        Play Trailer
-                      </span>
-                    </div>
-                  </DialogTrigger>
-                  <DialogContent className="sm:max-w-5xl w-[997px] h-[561px] p-0 border-none">
-                    <DialogTitle className="hidden" />
-                    <iframe
-                      src={`//www.youtube-nocookie.com/embed/${trailer?.key}`}
-                      allowFullScreen
-                      width={997}
-                      height={561}
-                    ></iframe>
-                  </DialogContent>
-                </Dialog>
+                <TrailerDialog trailer={trailer} />
               </div>
             </div>
             <CardDescription>
@@ -162,8 +127,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
                         key={movCrew.name}
                         className="leading-6 font-normal flex"
                       >
-                        {movCrew.name}
-                        <Dot />
+                        {movCrew.name} <Dot />
                       </span>
                     )
                 )}
@@ -180,8 +144,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
                         key={movCrew.credit_id}
                         className="leading-6 font-normal flex"
                       >
-                        {movCrew.name}
-                        <Dot />
+                        {movCrew.name} <Dot />
                       </span>
                     )
                 )}
@@ -205,31 +168,10 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
             </CardDescription>
           </CardContent>
         </Card>
-        <div className="mt-8 flex gap-8 flex-wrap overflow-hidden">
-          <div className="w-full flex justify-between">
-            <h3 className="text-2xl leading-8 font-semibold text-foreground">
-              More like this
-            </h3>
-            <Button asChild variant="link">
-              <Link href={`/moreLike/${id}`}>
-                See more
-                <ArrowRight />
-              </Link>
-            </Button>
-          </div>
-          <div className="flex gap-8">
-            {similarMovies.results.slice(0, 5).map((simMov) => (
-              <Link key={simMov.id} href={`/details/${simMov.id}`}>
-                <MiniMovieCard
-                  id={simMov.id}
-                  title={simMov.title}
-                  score={simMov.vote_average}
-                  image={`https://image.tmdb.org/t/p/original${simMov.poster_path}`}
-                />
-              </Link>
-            ))}
-          </div>
-        </div>
+        <MoreLikeThisMoviesContainer
+          similarMovies={similarMovies.results}
+          id={id}
+        />
       </div>
     </div>
   );
