@@ -31,7 +31,7 @@ export const NavInputSearch = () => {
   };
 
   return (
-    <Popover open={isOpen} onOpenChange={setSearchValue}>
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger>
         <div className="flex items-center">
           <Search size={11.7} className="-mr-7" color="#71717A" />
@@ -46,6 +46,7 @@ export const NavInputSearch = () => {
       </PopoverTrigger>
       <PopoverContent
         onOpenAutoFocus={(e) => e.preventDefault()}
+        onCloseAutoFocus={(e) => e.preventDefault()}
         side="bottom"
         sideOffset={4.5}
         align="center"
