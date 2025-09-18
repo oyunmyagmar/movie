@@ -21,6 +21,15 @@ import {
   getMoviesByGenreId,
   getMoviesBySearch,
 } from "@/utils/get-data";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { FaChevronRight } from "react-icons/fa6";
 
 type SearchPageProps = {
   searchParams: Promise<{ value: string; genreId: string }>;
@@ -37,6 +46,9 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
         movie.genre_ids.includes(Number(genreId))
       )
     : searchedMovies.results;
+  console.log(filteredMovies, "filteredMovies");
+
+  const movieGenresResponse: genreResponseType = await getGenresList();
 
   return (
     <div className="w-screen flex flex-col items-center">
@@ -85,6 +97,36 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
           </ResizablePanel>
           <ResizableHandle withHandle className="mx-11" />
           <ResizablePanel>
+            <Card className="p-0 border-none shadow-none flex gap-5">
+              <CardHeader className="p-0 space-y-1">
+                <CardTitle className="text-2xl leading-8 font-semibold text-foreground">
+                  Genres IN ONE PAGE
+                </CardTitle>
+                <CardDescription className="text-base leading-6 text-foreground">
+                  See lists of movies by genre
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-0 flex flex-wrap gap-4">
+                {movieGenresResponse.genres.map((genre) => (
+                  <Link
+                    key={genre.id}
+                    href={`/search?value=${value}/${genre.id}&name=${genre.name}`}
+                  >
+                    <Badge
+                      variant="outline"
+                      className="font-semibold rounded-full pl-2.5 gap-2 pr-1 text-center"
+                    >
+                      {genre.name}
+                      <FaChevronRight
+                        width={16}
+                        height={16}
+                        color="foreground"
+                      />
+                    </Badge>
+                  </Link>
+                ))}
+              </CardContent>
+            </Card>
             <SearchListCard searchValue={value} />
           </ResizablePanel>
         </ResizablePanelGroup>

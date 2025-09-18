@@ -16,7 +16,7 @@ import { genreResponseType } from "@/types";
 
 export const NavMenuItem = async () => {
   const movieGenresResponse: genreResponseType = await getGenresList();
-  // console.log(movieGenresResponse, "movieGenres");
+  console.log(movieGenresResponse, "movieGenres");
 
   return (
     <NavigationMenu viewport={true} className="object-none">

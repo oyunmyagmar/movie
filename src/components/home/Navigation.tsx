@@ -10,7 +10,7 @@ export const Navigation = async () => {
           href="http://localhost:3000/"
           className="flex gap-2 text-indigo-700 text-base leading-5 italic font-bold items-center"
         >
-          <Film width={20} height={20} color="#4338CA" />
+          <Film size={20} color="#4338CA" />
           Movie Z
         </Link>
         <div className="flex gap-6">

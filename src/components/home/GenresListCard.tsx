@@ -28,7 +28,7 @@ export const GenresListCard = ({ genres }: GenresListCardProps) => {
       </CardHeader>
       <CardContent className="p-0 flex flex-wrap gap-4">
         {genres.map((genre) => (
-          <Link key={genre.id} href={`/genre/${genre.id}$name=${genre.name}`}>
+          <Link key={genre.id} href={`/genre/${genre.id}&name=${genre.name}`}>
             <Badge
               variant="outline"
               className="font-semibold rounded-full pl-2.5 gap-2 pr-1 text-center"
