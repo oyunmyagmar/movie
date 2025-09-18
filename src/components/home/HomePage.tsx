@@ -1,8 +1,8 @@
 import * as React from "react";
-import { MoviesContainer } from "@/components/home";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
-import { movieResponseType } from "@/types";
+import { MoviesContainer } from "@/components/home";
 import { getMoviesList } from "@/utils/get-data";
+import { movieResponseType } from "@/types";
 
 export const HomePage = async () => {
   const upComingMovies: movieResponseType = await getMoviesList("upcoming");
@@ -13,7 +13,7 @@ export const HomePage = async () => {
   );
   // console.log(topRatedMovies, "topRatedMovies");
   return (
-    <div className="w-screen flex flex-col items-center pb-[51px]">
+    <div className="w-screen flex flex-col items-center mb-[51px]">
       <HeroCarousel movies={nowPlayingMovies.results} />
       <MoviesContainer
         movies={upComingMovies.results}

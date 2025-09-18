@@ -49,6 +49,7 @@ export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
               title={movie.title}
               score={movie.vote_average}
               description={movie.overview}
+              href=""
             />
           </CarouselItem>
         ))}
