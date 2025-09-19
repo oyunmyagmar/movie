@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HeroCard } from "@/components/home";
 import { CarouselItem } from "@/components/ui/carousel";
 import { MovieType, movieTrailerResponseType } from "@/types";
@@ -18,7 +18,10 @@ export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
     setTrailerKey(trailer?.key || "");
   };
 
-  getTrailerFunction();
+  useEffect(() => {
+    getTrailerFunction();
+  }, []);
+  console.log("rendering", movie.title);
   return (
     <CarouselItem key={movie.id}>
       <HeroCard
@@ -28,6 +31,7 @@ export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
         score={movie.vote_average}
         description={movie.overview}
         trailerKey={trailerKey}
+        href={`/details/${movie.id}`}
       />
     </CarouselItem>
   );

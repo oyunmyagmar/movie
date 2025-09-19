@@ -1,14 +1,15 @@
 import React from "react";
 import { getMoviesList } from "@/utils/get-data";
-import { movieResponseType, MovieType } from "@/types";
+import { movieResponseType } from "@/types";
 import { MovieCard } from "@/components/home";
 
 type SeeMoreDynamicPageProps = {
-  params: Promise<{ label: string; link: string }>;
+  params: Promise<{ link: string; label: string }>;
 };
 const SeeMoreDynamicPage = async ({ params }: SeeMoreDynamicPageProps) => {
   const dynamicParams = await params;
-  const label = dynamicParams.label.toLowerCase();
+  const label = dynamicParams.label;
+  console.log(label, "label");
   const link = dynamicParams.link;
 
   const movies: movieResponseType = await getMoviesList(label);
@@ -21,6 +22,9 @@ const SeeMoreDynamicPage = async ({ params }: SeeMoreDynamicPageProps) => {
         <div className="flex flex-wrap gap-8">
           <div className="w-full text-3xl leading-9 font-semibold text-foreground">
             {label}
+            {/* {label === "upcoming"}? <span>"Upcoming"</span> :
+            {label === "popular"} ? <span>"Popular"</span> :
+            {label === "top_rated"} ? <span>"Top Rated"</span> : */}
           </div>
           {moviesLabeled.map((el) => (
             <MovieCard

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { GoStarFill } from "react-icons/go";
 import {
   Card,
@@ -16,6 +17,7 @@ type HeroCardProps = {
   score: number;
   description: string;
   trailerKey: string | undefined;
+  href: string;
 };
 
 export const HeroCard = ({
@@ -25,10 +27,13 @@ export const HeroCard = ({
   score,
   description,
   trailerKey,
+  href,
 }: HeroCardProps) => {
   return (
     <Card className="w-1440px h-150 relative p-0 border-0">
-      <Image src={image} alt="" fill unoptimized priority />
+      <Link href={href}>
+        <Image src={image} alt="" fill unoptimized priority />
+      </Link>
       <div className="absolute top-[178px] left-29 flex flex-col gap-4">
         <CardHeader className="gap-0">
           <p className="text-base leading-6 text-white">{label}</p>

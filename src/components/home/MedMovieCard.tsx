@@ -27,13 +27,7 @@ export const MedMovieCard = ({
     <Card className="w-[165px] p-0 overflow-hidden bg-secondary flex gap-0">
       <CardContent className="p-0">
         <div className="w-full h-61 relative">
-          <Image
-            src={image}
-            alt={title}
-            fill
-            unoptimized
-            className="object-cover"
-          />
+          <Image src={image} alt={title} fill unoptimized />
         </div>
       </CardContent>
       <CardFooter className="flex flex-col items-start px-2 py-1">

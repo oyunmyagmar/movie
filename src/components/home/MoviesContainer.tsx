@@ -10,6 +10,7 @@ type MoviesContainerProps = {
   label: string;
   link: string;
 };
+
 export const MoviesContainer = ({
   movies,
   label,
