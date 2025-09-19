@@ -10,17 +10,14 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { MovieType, MovieTrailerType } from "@/types";
+import { MovieTrailerType, MovieType, movieTrailerResponseType } from "@/types";
+import { getMovieTrailer } from "@/utils/get-data";
 
 type HeroCarouselProps = {
   movies: MovieType[];
-  // trailer: MovieTrailerType | undefined;
 };
 
-export const HeroCarousel = ({
-  movies,
-}: //, trailer
-HeroCarouselProps) => {
+export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
@@ -36,6 +33,18 @@ HeroCarouselProps) => {
     api.on("select", () => setCurrent(api.selectedScrollSnap() + 1));
   }, [api]);
 
+  const MyTrailer = async () => {
+    const [movTrailer, setMovTrailer] = React.useState<MovieTrailerType>();
+    const movieTrailer: movieTrailerResponseType = await getMovieTrailer(id);
+    const trailer: MovieTrailerType | undefined = movieTrailer.results.find(
+      (trailer) => trailer.type === "Trailer"
+    );
+  };
+  // setMovTrailer(MyTrailer);
+
+  // React.useEffect(() => {
+  //   setMovTrailer(trailer);
+  // }, []);
   return (
     <Carousel
       className="w-[1440px] h-[600px] mt-6 relative"
@@ -53,7 +62,7 @@ HeroCarouselProps) => {
               title={movie.title}
               score={movie.vote_average}
               description={movie.overview}
-              // trailer={trailer}
+              //trailer={trailer}
             />
           </CarouselItem>
         ))}

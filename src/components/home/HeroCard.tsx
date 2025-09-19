@@ -19,7 +19,7 @@ type HeroCardProps = {
   title: string;
   score: number;
   description: string;
-  //  trailer: MovieTrailerType | undefined;
+  trailer: MovieTrailerType | undefined;
 };
 
 export const HeroCard = ({
@@ -28,8 +28,8 @@ export const HeroCard = ({
   title,
   score,
   description,
-}: // trailer,
-HeroCardProps) => {
+  trailer,
+}: HeroCardProps) => {
   return (
     <Card className="w-1440px h-150 relative p-0 border-0">
       <Image src={image} alt="" fill unoptimized priority />
@@ -54,7 +54,7 @@ HeroCardProps) => {
             {description}
           </CardDescription>
           <div className="mt-20">
-            <HeroTrailerDialog trailer={undefined} />
+            <HeroTrailerDialog trailer={trailer} />
           </div>
         </CardContent>
       </div>

@@ -34,6 +34,7 @@ export const TrailerDialog = ({ trailer }: TrailerDialogProps) => {
             allowFullScreen
             width={997}
             height={561}
+            allow=""
           ></iframe>
         </DialogContent>
       </Dialog>

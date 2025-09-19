@@ -34,7 +34,7 @@ export const SearchListCard = async ({ searchValue }: GenresListCardProps) => {
         {movieGenresResponse.genres.map((genre) => (
           <Link
             key={genre.id}
-            href={`/search?value=${searchValue}/${genre.id}`}
+            href={`/search?value=${searchValue}&genreId=${genre.id}`}
           >
             <Badge
               variant="outline"
