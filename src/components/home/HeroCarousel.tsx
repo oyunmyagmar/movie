@@ -1,17 +1,15 @@
 "use client";
 import * as React from "react";
-import { HeroCard } from "@/components/home";
 import {
   Carousel,
   CarouselContent,
-  CarouselItem,
   CarouselNext,
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { MovieTrailerType, MovieType, movieTrailerResponseType } from "@/types";
-import { getMovieTrailer } from "@/utils/get-data";
+import { MovieType } from "@/types";
+import { HeroCarouselItem } from "@/components/home";
 
 type HeroCarouselProps = {
   movies: MovieType[];
@@ -33,18 +31,6 @@ export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
     api.on("select", () => setCurrent(api.selectedScrollSnap() + 1));
   }, [api]);
 
-  const MyTrailer = async () => {
-    const [movTrailer, setMovTrailer] = React.useState<MovieTrailerType>();
-    const movieTrailer: movieTrailerResponseType = await getMovieTrailer(id);
-    const trailer: MovieTrailerType | undefined = movieTrailer.results.find(
-      (trailer) => trailer.type === "Trailer"
-    );
-  };
-  // setMovTrailer(MyTrailer);
-
-  // React.useEffect(() => {
-  //   setMovTrailer(trailer);
-  // }, []);
   return (
     <Carousel
       className="w-[1440px] h-[600px] mt-6 relative"
@@ -55,16 +41,7 @@ export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
     >
       <CarouselContent>
         {movies.slice(0, 5).map((movie) => (
-          <CarouselItem key={movie.id}>
-            <HeroCard
-              image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-              label="Now Playing:"
-              title={movie.title}
-              score={movie.vote_average}
-              description={movie.overview}
-              //trailer={trailer}
-            />
-          </CarouselItem>
+          <HeroCarouselItem key={movie.id} movie={movie} />
         ))}
       </CarouselContent>
       <CarouselPrevious className="left-11" />

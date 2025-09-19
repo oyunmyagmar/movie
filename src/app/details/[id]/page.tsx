@@ -5,7 +5,6 @@ import {
   movieTrailerResponseType,
   movieCreditsResponseType,
   movieResponseType,
-  MovieTrailerType,
 } from "@/types";
 import {
   getMovieDetails,
@@ -42,7 +41,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
   console.log(movieTrailer, "movieTrailer");
   console.log(similarMovies, "similarMovies");
 
-  const trailer: MovieTrailerType | undefined = movieTrailer.results.find(
+  const trailer = movieTrailer.results.find(
     (trailer) => trailer.type === "Trailer"
   );
 
@@ -102,7 +101,7 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
                   unoptimized
                   fill
                 />
-                <TrailerDialog trailer={trailer} />
+                <TrailerDialog trailerKey={trailer?.key} />
               </div>
             </div>
             <CardDescription>

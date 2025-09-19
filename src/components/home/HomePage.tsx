@@ -1,12 +1,8 @@
 import * as React from "react";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { MoviesContainer } from "@/components/home";
-import { getMoviesList, getMovieTrailer } from "@/utils/get-data";
-import {
-  movieResponseType,
-  movieTrailerResponseType,
-  MovieTrailerType,
-} from "@/types";
+import { getMoviesList } from "@/utils/get-data";
+import { movieResponseType } from "@/types";
 
 export const HomePage = async () => {
   const upComingMovies: movieResponseType = await getMoviesList("upcoming");

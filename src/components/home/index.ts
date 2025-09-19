@@ -16,3 +16,4 @@ export * from "./SearchListCard";
 export * from "./TrailerDialog";
 export * from "./MoreLikeThisMoviesContainer";
 export * from "./HeroTrailerDialog";
+export * from "./HeroCarouselItem";

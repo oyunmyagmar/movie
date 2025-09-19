@@ -7,12 +7,12 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { LuPlay } from "react-icons/lu";
-import { MovieTrailerType } from "@/types";
 
-type TrailerDialogProps = {
-  trailer: MovieTrailerType | undefined;
-};
-export const HeroTrailerDialog = ({ trailer }: TrailerDialogProps) => {
+export const HeroTrailerDialog = ({
+  trailerKey,
+}: {
+  trailerKey: string | undefined;
+}) => {
   return (
     <div>
       <Dialog>
@@ -26,7 +26,7 @@ export const HeroTrailerDialog = ({ trailer }: TrailerDialogProps) => {
         <DialogContent className="sm:max-w-5xl w-[997px] h-[561px] p-0 border-none">
           <DialogTitle className="hidden" />
           <iframe
-            src={`//www.youtube-nocookie.com/embed/${trailer?.key}`}
+            src={`//www.youtube-nocookie.com/embed/${trailerKey}`}
             allowFullScreen
             width={997}
             height={561}

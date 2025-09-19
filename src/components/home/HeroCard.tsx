@@ -1,8 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
 import { GoStarFill } from "react-icons/go";
-import { LuPlay } from "react-icons/lu";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -11,7 +8,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { HeroTrailerDialog } from "@/components/home";
-import { MovieTrailerType } from "@/types";
 
 type HeroCardProps = {
   image: string;
@@ -19,7 +15,7 @@ type HeroCardProps = {
   title: string;
   score: number;
   description: string;
-  trailer: MovieTrailerType | undefined;
+  trailerKey: string | undefined;
 };
 
 export const HeroCard = ({
@@ -28,7 +24,7 @@ export const HeroCard = ({
   title,
   score,
   description,
-  trailer,
+  trailerKey,
 }: HeroCardProps) => {
   return (
     <Card className="w-1440px h-150 relative p-0 border-0">
@@ -54,17 +50,10 @@ export const HeroCard = ({
             {description}
           </CardDescription>
           <div className="mt-20">
-            <HeroTrailerDialog trailer={trailer} />
+            <HeroTrailerDialog trailerKey={trailerKey} />
           </div>
         </CardContent>
       </div>
     </Card>
   );
 };
-{
-  /* <Button asChild variant="secondary">
-            <Link href={href}>
-              Watch Trailer <LuPlay />
-            </Link>
-          </Button> */
-}
