@@ -32,7 +32,7 @@ export const MedMovieCard = ({ title, score, image }: MedMovieCardProps) => {
             </span>
           </p>
         </CardDescription>
-        <CardTitle className="h-14 text-base leading-7 text-foreground font-normal text-ellipsis">
+        <CardTitle className="h-14 text-base leading-7 text-foreground font-normal overflow-ellipsis">
           {title}
         </CardTitle>
       </CardFooter>

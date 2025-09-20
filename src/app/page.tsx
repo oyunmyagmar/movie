@@ -1,6 +1,5 @@
 import { Suspense } from "react";
-import { HomePage } from "@/components/home";
-import { HomePageSkeleton } from "@/components/home/HomePageSkeleton";
+import { HomePage, HomePageSkeleton } from "@/components/home";
 
 const Home = () => {
   return (
