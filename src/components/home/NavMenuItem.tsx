@@ -1,50 +1,50 @@
 import * as React from "react";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { ChevronRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { getGenresList } from "@/utils/get-data";
 import { genreResponseType } from "@/types";
 
 export const NavMenuItem = async () => {
-  const movieGenresResponse: genreResponseType = await getGenresList();
-  console.log(movieGenresResponse, "movieGenres");
+  const movieGenresList: genreResponseType = await getGenresList();
+  console.log(movieGenresList, "movieGenresList");
 
   return (
-    <NavigationMenu viewport={true} className="object-none">
+    <NavigationMenu viewport={true}>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="flex gap-2 items-center border border-input text-secondary-foreground">
+          <NavigationMenuTrigger className="gap-2 border border-input text-secondary-foreground shadow-xs">
             Genre
           </NavigationMenuTrigger>
           <NavigationMenuContent className="p-5">
-            <h3 className="text-2xl leading-8 font-semibold text-foreground pb-1">
+            <h3 className="text-2xl leading-8 font-semibold text-foreground mb-1">
               Genres
             </h3>
             <p className="text-base leading-6 text-foreground">
               See lists of movies by genre
             </p>
-            <Separator className="my-4 border-border" />
+            <Separator className="my-4" />
             <div className="w-[577px] flex gap-4 flex-wrap">
-              {movieGenresResponse.genres.map((genre) => (
+              {movieGenresList.genres.map((genre) => (
                 <Link
                   key={genre.id}
-                  href={`/genre/${genre.id}&name=${genre.name}`}
+                  href={`/genre?id=${genre.id}&name=${genre.name}`}
                 >
                   <Badge
                     variant="outline"
-                    className="font-semibold rounded-full pl-2.5 gap-2 pr-1 text-center text-foreground"
+                    className="leading-4 font-semibold rounded-full pl-2.5 pr-1 gap-2"
                   >
                     {genre.name}
-                    <ChevronRight width={16} height={16} />
+                    <ChevronRight size={16} />
                   </Badge>
                 </Link>
               ))}

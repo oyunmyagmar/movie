@@ -17,9 +17,9 @@ type GenresListCardProps = {
 
 export const GenresListCard = ({ genres }: GenresListCardProps) => {
   return (
-    <Card className="p-0 border-none shadow-none flex gap-5">
-      <CardHeader className="p-0 space-y-1">
-        <CardTitle className="text-2xl leading-8 font-semibold text-foreground">
+    <Card className="p-0 border-none shadow-none gap-5 bg-background">
+      <CardHeader className="p-0 gap-1">
+        <CardTitle className="text-2xl leading-8 text-foreground">
           Genres
         </CardTitle>
         <CardDescription className="text-base leading-6 text-foreground">
@@ -28,13 +28,16 @@ export const GenresListCard = ({ genres }: GenresListCardProps) => {
       </CardHeader>
       <CardContent className="p-0 flex flex-wrap gap-4">
         {genres.map((genre) => (
-          <Link key={genre.id} href={`/genre/${genre.id}&name=${genre.name}`}>
+          <Link
+            key={genre.id}
+            href={`/genre?id=${genre.id}&name=${genre.name}`}
+          >
             <Badge
               variant="outline"
-              className="font-semibold rounded-full pl-2.5 gap-2 pr-1 text-center"
+              className="leading-4 font-semibold rounded-full pl-2.5 pr-1 gap-2"
             >
               {genre.name}
-              <FaChevronRight width={16} height={16} color="foreground" />
+              <FaChevronRight size={16} color="foreground" />
             </Badge>
           </Link>
         ))}
