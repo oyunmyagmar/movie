@@ -43,7 +43,7 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
   const url = `/genre/?id=${id}&name=${name}`;
   return (
     <div className="w-screen flex flex-col items-center">
-      <div className="w-[1440px] px-20 flex flex-col gap-8 mt-13 mb-8">
+      <div className="w-[1440px] pl-20 pr-32 flex flex-col gap-8 mt-13 mb-8">
         <h2 className="w-full text-3xl leading-9 font-semibold text-foreground">
           Search filter
         </h2>
@@ -70,7 +70,7 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
                 </Link>
               ))}
 
-              <Pagination>
+              <Pagination className="justify-end">
                 <PaginationContent>
                   <PaginationItem>
                     <PaginationPrevious

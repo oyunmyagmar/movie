@@ -33,7 +33,7 @@ export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
 
   return (
     <Carousel
-      className="w-[1440px] h-[600px] mt-6 relative"
+      className="w-[1440px] h-[600px] relative"
       setApi={setApi}
       plugins={[plugin.current]}
       onMouseEnter={plugin.current.stop}

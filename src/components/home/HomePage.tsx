@@ -13,7 +13,7 @@ export const HomePage = async () => {
   );
 
   return (
-    <div className="w-screen flex flex-col items-center mb-[51px]">
+    <div className="w-screen flex flex-col items-center mt-6 mb-[51px]">
       <HeroCarousel movies={nowPlayingMovies.results} />
       <MoviesContainer
         movies={upComingMovies.results}

@@ -55,7 +55,6 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
                     href={`/details/${movSearched.id}`}
                   >
                     <MedMovieCard
-                      id={movSearched.id}
                       title={movSearched.title}
                       score={movSearched.vote_average}
                       image={`https://image.tmdb.org/t/p/w500${movSearched.poster_path}`}
