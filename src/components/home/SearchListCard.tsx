@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { GenreType } from "@/types";
 import { FaChevronRight } from "react-icons/fa6";
 import {
   Card,
@@ -13,35 +12,39 @@ import {
 import { genreResponseType } from "@/types";
 import { getGenresList } from "@/utils/get-data";
 
-type GenresListCardProps = {
+type SearchListCardProps = {
   searchValue: string;
+  page: string | "1";
 };
 
-export const SearchListCard = async ({ searchValue }: GenresListCardProps) => {
-  const movieGenresResponse: genreResponseType = await getGenresList();
+export const SearchListCard = async ({
+  searchValue,
+  page,
+}: SearchListCardProps) => {
+  const movieGenresList: genreResponseType = await getGenresList();
 
   return (
-    <Card className="p-0 border-none shadow-none flex gap-5">
-      <CardHeader className="p-0 space-y-1">
+    <Card className="p-0 border-none shadow-none flex gap-5 bg-background">
+      <CardHeader className="p-0 gap-1">
         <CardTitle className="text-2xl leading-8 font-semibold text-foreground">
-          Genres
+          Search by genre
         </CardTitle>
         <CardDescription className="text-base leading-6 text-foreground">
           See lists of movies by genre
         </CardDescription>
       </CardHeader>
       <CardContent className="p-0 flex flex-wrap gap-4">
-        {movieGenresResponse.genres.map((genre) => (
+        {movieGenresList.genres.map((genre) => (
           <Link
             key={genre.id}
-            href={`/search?value=${searchValue}&genreId=${genre.id}`}
+            href={`/search?value=${searchValue}&genreId=${genre.id}&page=${page}`}
           >
             <Badge
               variant="outline"
               className="font-semibold rounded-full pl-2.5 gap-2 pr-1 text-center"
             >
               {genre.name}
-              <FaChevronRight width={16} height={16} color="foreground" />
+              <FaChevronRight size={16} color="foreground" />
             </Badge>
           </Link>
         ))}

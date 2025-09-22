@@ -20,3 +20,5 @@ export * from "./HeroTrailerDialog";
 export * from "./HeroCarouselItem";
 export * from "./GenrePageComp";
 export * from "./GenrePageSkeleton";
+export * from "./SearchPageComp";
+export * from "./SearchPageSkeleton";

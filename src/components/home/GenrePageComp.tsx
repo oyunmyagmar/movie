@@ -41,6 +41,7 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
   console.log(filteredMoviesByGenreId, "filteredMoviesByGenreId");
 
   const url = `/genre/?id=${id}&name=${name}`;
+
   return (
     <div className="w-screen flex flex-col items-center">
       <div className="w-[1440px] pl-20 pr-32 flex flex-col gap-8 mt-13 mb-8">
@@ -57,7 +58,7 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
               <h4 className="w-full text-xl leading-7 font-semibold text-foreground">
                 {filteredMoviesByGenreId.total_results} titles in "{name}"
               </h4>
-              {filteredMoviesByGenreId.results.map((movie) => (
+              {filteredMoviesByGenreId.results.slice(0, 18).map((movie) => (
                 <Link
                   key={movie.id}
                   href={`/details/${movie.id}&name=${movie.title}`}

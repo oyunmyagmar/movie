@@ -1,0 +1,109 @@
+import React from "react";
+import Link from "next/link";
+import { MedMovieCard, SearchListCard } from "@/components/home";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
+import { movieResponseType } from "@/types";
+import { getMoviesBySearch } from "@/utils/get-data";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+type SearchPageCompProps = {
+  searchParams: Promise<{ value: string; genreId: string; page: string }>;
+};
+export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
+  const params = await searchParams;
+  const value = params.value;
+  const genreId = params.genreId;
+  const page = params.page || "1";
+  console.log(genreId, "genreId");
+
+  const searchedMovies: movieResponseType = await getMoviesBySearch(
+    value,
+    page
+  );
+  console.log(searchedMovies, "searchedMovies");
+
+  const filteredMovies = genreId
+    ? searchedMovies.results.filter((movie) =>
+        movie.genre_ids.includes(Number(genreId))
+      )
+    : searchedMovies.results;
+  console.log(filteredMovies, "filteredMovies");
+
+  const url = `/search?value=${value}`;
+
+  return (
+    <div className="w-screen flex flex-col items-center">
+      <div className="w-[1440px] px-20 flex flex-col gap-8 mt-13 mb-[344px]">
+        <h2 className="w-full text-3xl leading-9 font-semibold text-foreground">
+          Search results
+        </h2>
+        <ResizablePanelGroup direction="horizontal">
+          <ResizablePanel>
+            <div className="flex flex-col gap-8">
+              <h4 className="text-xl leading-7 font-semibold text-foreground">
+                {searchedMovies.total_results} results for “{value}”
+              </h4>
+              <div className="flex flex-wrap gap-y-8 gap-x-12">
+                {filteredMovies.slice(0, 18).map((movSearched) => (
+                  <Link
+                    key={movSearched.id}
+                    href={`/details/${movSearched.id}&name=${movSearched.title}`}
+                  >
+                    <MedMovieCard
+                      title={movSearched.title}
+                      score={movSearched.vote_average}
+                      image={`https://image.tmdb.org/t/p/w500${movSearched.poster_path}`}
+                    />
+                  </Link>
+                ))}
+              </div>
+              <Pagination className="justify-end">
+                <PaginationContent>
+                  <PaginationItem>
+                    <PaginationPrevious
+                      href={`${url}&page=${Number(page) - 1}`}
+                    />
+                  </PaginationItem>
+                  <>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <PaginationItem key={i}>
+                        <PaginationLink
+                          isActive={Number(page) === i + 1}
+                          href={`${url}&page=${Number(page)}`}
+                        >
+                          {i + 1}
+                        </PaginationLink>
+                      </PaginationItem>
+                    ))}
+                  </>
+                  {/* <PaginationItem>
+                    <PaginationEllipsis />
+                  </PaginationItem> */}
+                  <PaginationItem>
+                    <PaginationNext href={`${url}&page=${Number(page) + 1}`} />
+                  </PaginationItem>
+                </PaginationContent>
+              </Pagination>
+            </div>
+          </ResizablePanel>
+          <ResizableHandle withHandle className="mx-11" />
+          <ResizablePanel>
+            <SearchListCard page={page} searchValue={value} />
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </div>
+    </div>
+  );
+};

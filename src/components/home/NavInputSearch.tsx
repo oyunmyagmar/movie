@@ -26,7 +26,7 @@ export const NavInputSearch = () => {
     const { value } = e.target;
     value.length > 0 ? setIsOpen(true) : setIsOpen(false);
     setSearchValue(value);
-    const searchedMovies = await getMoviesBySearch(value);
+    const searchedMovies = await getMoviesBySearch(value, "1");
     setFoundMovies(searchedMovies);
   };
 
