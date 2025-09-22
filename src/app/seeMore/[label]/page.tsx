@@ -27,6 +27,9 @@ const SeeMoreDynamicPage = async ({ params }: SeeMoreDynamicPageProps) => {
 
   const movies: movieResponseType = await getMoviesList(label, page);
   const moviesLabeled = movies.results;
+  console.log(moviesLabeled, "labeled");
+
+  const url = `/seeMore/${label}`;
 
   return (
     <div className="w-screen flex flex-col items-center">
@@ -47,7 +50,7 @@ const SeeMoreDynamicPage = async ({ params }: SeeMoreDynamicPageProps) => {
               image={`https://image.tmdb.org/t/p/original${movLabeled.poster_path}`}
             />
           ))}
-          {/* <Pagination className="justify-end">
+          <Pagination className="justify-end">
             <PaginationContent>
               <PaginationItem>
                 <PaginationPrevious href={`${url}&page=${Number(page) - 1}`} />
@@ -57,7 +60,7 @@ const SeeMoreDynamicPage = async ({ params }: SeeMoreDynamicPageProps) => {
                   <PaginationItem key={i}>
                     <PaginationLink
                       isActive={Number(page) === i + 1}
-                      href={`${url}&page=${Number(page)}`}
+                      href={`${url}&page=${Number(page) + 1}`}
                     >
                       {i + 1}
                     </PaginationLink>
@@ -65,13 +68,10 @@ const SeeMoreDynamicPage = async ({ params }: SeeMoreDynamicPageProps) => {
                 ))}
               </>
               <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
                 <PaginationNext href={`${url}&page=${Number(page) + 1}`} />
               </PaginationItem>
             </PaginationContent>
-          </Pagination> */}
+          </Pagination>
         </div>
       </div>
     </div>

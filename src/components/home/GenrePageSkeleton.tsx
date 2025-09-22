@@ -24,7 +24,7 @@ export const GenrePageSkeleton = () => {
         <ResizablePanel>
           <Skeleton className="w-74 h-7 mb-8 rounded-full" />
           <div className="flex flex-wrap gap-y-8 gap-x-12">
-            {Array.from({ length: 20 }).map((_, index) => (
+            {Array.from({ length: 18 }).map((_, index) => (
               <Skeleton
                 key={index}
                 className="w-[165px] h-[331px] rounded-md"

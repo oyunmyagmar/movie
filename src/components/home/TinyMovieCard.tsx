@@ -34,7 +34,7 @@ export const TinyMovieCard = ({
         </div>
       </CardContent>
       <CardHeader className="w-[454px] p-0 gap-0">
-        <CardTitle className="text-xl leading-7 font-semibold text-foreground">
+        <CardTitle className="text-xl leading-7 text-foreground line-clamp-1">
           {title}
         </CardTitle>
         <CardDescription>

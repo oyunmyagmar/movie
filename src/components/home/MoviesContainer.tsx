@@ -23,7 +23,7 @@ export const MoviesContainer = ({
           {label}
         </p>
         <Button asChild variant="link">
-          <Link href={`/seeMore/${link}`}>
+          <Link href={`/seeMore/${label}`}>
             See more <ArrowRight />
           </Link>
         </Button>

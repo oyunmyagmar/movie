@@ -22,3 +22,5 @@ export * from "./GenrePageComp";
 export * from "./GenrePageSkeleton";
 export * from "./SearchPageComp";
 export * from "./SearchPageSkeleton";
+export * from "./DetailsHeader";
+export * from "./DetailsDescription";
