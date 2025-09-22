@@ -4,7 +4,7 @@ import { movieResponseType } from "@/types";
 import { MovieCard } from "@/components/home";
 
 type SeeMoreDynamicPageProps = {
-  params: Promise<{ link: string; label: string }>;
+  params: Promise<{ link: string; label: string; page: string | "1" }>;
 };
 const SeeMoreDynamicPage = async ({ params }: SeeMoreDynamicPageProps) => {
   const dynamicParams = await params;

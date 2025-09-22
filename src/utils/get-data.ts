@@ -1,6 +1,6 @@
-export const getMoviesList = async (type: string) => {
+export const getMoviesList = async (type: string, page: string) => {
   const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${type}?language=en-US&page=1`,
+    `https://api.themoviedb.org/3/movie/${type}?language=en-US&page=${page}`,
     {
       method: "GET",
       headers: {
