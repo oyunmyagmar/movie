@@ -32,7 +32,7 @@ export const HeroCard = ({
   return (
     <Card className="w-1440px h-150 relative p-0 border-0">
       <Link href={href}>
-        <Image src={image} alt="" fill unoptimized priority />
+        <Image src={image} alt={title} width={1440} height={600} unoptimized />
       </Link>
       <div className="absolute top-[178px] left-29 flex flex-col gap-4">
         <CardHeader className="gap-0">

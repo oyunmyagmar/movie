@@ -2,20 +2,32 @@ import React from "react";
 import { getMoviesList } from "@/utils/get-data";
 import { movieResponseType } from "@/types";
 import { MovieCard } from "@/components/home";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 type SeeMoreDynamicPageProps = {
-  params: Promise<{ link: string; label: string; page: string | "1" }>;
+  params: Promise<{
+    label: string;
+    link: string;
+    page: string;
+  }>;
 };
 const SeeMoreDynamicPage = async ({ params }: SeeMoreDynamicPageProps) => {
   const dynamicParams = await params;
   const label = dynamicParams.label;
-  console.log(label, "label");
   const link = dynamicParams.link;
+  const page = dynamicParams.page || "1";
 
-  const movies: movieResponseType = await getMoviesList(label);
+  const movies: movieResponseType = await getMoviesList(label, page);
   const moviesLabeled = movies.results;
 
-  console.log(movies, "movies");
   return (
     <div className="w-screen flex flex-col items-center">
       <div className="w-[1440px] px-20 mt-13 mb-19">
@@ -26,15 +38,40 @@ const SeeMoreDynamicPage = async ({ params }: SeeMoreDynamicPageProps) => {
             {label === "popular"} ? <span>"Popular"</span> :
             {label === "top_rated"} ? <span>"Top Rated"</span> : */}
           </div>
-          {moviesLabeled.map((el) => (
+          {moviesLabeled.map((movLabeled) => (
             <MovieCard
-              key={el.id}
-              id={el.id}
-              title={el.title}
-              score={el.vote_average}
-              image={`https://image.tmdb.org/t/p/original${el.poster_path}`}
+              key={movLabeled.id}
+              id={movLabeled.id}
+              title={movLabeled.title}
+              score={movLabeled.vote_average}
+              image={`https://image.tmdb.org/t/p/original${movLabeled.poster_path}`}
             />
           ))}
+          {/* <Pagination className="justify-end">
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious href={`${url}&page=${Number(page) - 1}`} />
+              </PaginationItem>
+              <>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <PaginationItem key={i}>
+                    <PaginationLink
+                      isActive={Number(page) === i + 1}
+                      href={`${url}&page=${Number(page)}`}
+                    >
+                      {i + 1}
+                    </PaginationLink>
+                  </PaginationItem>
+                ))}
+              </>
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationNext href={`${url}&page=${Number(page) + 1}`} />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination> */}
         </div>
       </div>
     </div>

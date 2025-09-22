@@ -5,11 +5,18 @@ import { getMoviesList } from "@/utils/get-data";
 import { movieResponseType } from "@/types";
 
 export const HomePage = async () => {
-  const upComingMovies: movieResponseType = await getMoviesList("upcoming");
-  const popularMovies: movieResponseType = await getMoviesList("popular");
-  const topRatedMovies: movieResponseType = await getMoviesList("top_rated");
+  const upComingMovies: movieResponseType = await getMoviesList(
+    "upcoming",
+    "1"
+  );
+  const popularMovies: movieResponseType = await getMoviesList("popular", "1");
+  const topRatedMovies: movieResponseType = await getMoviesList(
+    "top_rated",
+    "1"
+  );
   const nowPlayingMovies: movieResponseType = await getMoviesList(
-    "now_playing"
+    "now_playing",
+    "1"
   );
 
   return (
