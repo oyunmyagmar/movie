@@ -21,7 +21,7 @@ export const TrailerDialog = ({
             variant="outline"
             className="w-10 h-10 rounded-full border-0 bg-white"
           >
-            <LuPlay width={16} height={16} />
+            <LuPlay size={16} />
           </Button>
           <span className="text-base leading-6 text-white">Play Trailer</span>
         </div>

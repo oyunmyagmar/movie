@@ -1,6 +1,5 @@
 import * as React from "react";
 import Link from "next/link";
-
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -16,7 +15,6 @@ import { genreResponseType } from "@/types";
 
 export const NavMenuItem = async () => {
   const movieGenresList: genreResponseType = await getGenresList();
-  console.log(movieGenresList, "movieGenresList");
 
   return (
     <NavigationMenu viewport={true}>

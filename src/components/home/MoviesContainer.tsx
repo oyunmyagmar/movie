@@ -31,7 +31,7 @@ export const MoviesContainer = ({
       {movies.slice(0, 10).map((movie) => (
         <Link key={movie.id} href={`/details/${movie.id}`}>
           <MovieCard
-            id={movie.id}
+            // id={movie.id} say
             title={movie.title}
             score={movie.vote_average}
             image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}

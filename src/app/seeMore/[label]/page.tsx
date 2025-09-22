@@ -44,7 +44,7 @@ const SeeMoreDynamicPage = async ({ params }: SeeMoreDynamicPageProps) => {
           {moviesLabeled.map((movLabeled) => (
             <MovieCard
               key={movLabeled.id}
-              id={movLabeled.id}
+              // id={movLabeled.id} say
               title={movLabeled.title}
               score={movLabeled.vote_average}
               image={`https://image.tmdb.org/t/p/original${movLabeled.poster_path}`}

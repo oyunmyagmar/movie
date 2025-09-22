@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { IoSearchOutline } from "react-icons/io5";
 import { movieResponseType } from "@/types";
 import { getMoviesBySearch } from "@/utils/get-data";
 import {
@@ -19,7 +19,7 @@ export const NavInputSearch = () => {
   const [foundMovies, setFoundMovies] = useState<movieResponseType | null>(
     null
   );
-  console.log(foundMovies, "foundMovies");
+  // console.log(foundMovies, "foundMovies");
   const [isOpen, setIsOpen] = useState(false);
 
   const handleInputChange = async (e: any) => {
@@ -34,7 +34,7 @@ export const NavInputSearch = () => {
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger>
         <div className="flex items-center">
-          <Search size={11.7} className="-mr-7" color="#71717A" />
+          <IoSearchOutline size={16} className="-mr-7" color="#71717A" />
           <Input
             value={searchValue}
             onChange={handleInputChange}

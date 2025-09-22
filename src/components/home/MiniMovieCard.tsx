@@ -3,11 +3,9 @@ import Image from "next/image";
 import { GoStarFill } from "react-icons/go";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
-  CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
@@ -22,8 +20,8 @@ export const MiniMovieCard = ({
   title,
   score,
   image,
-  id,
-}: MiniMovieCardProps) => {
+}: // id,
+MiniMovieCardProps) => {
   return (
     <Card className="w-[190px] p-0 overflow-hidden bg-secondary gap-1">
       <CardContent className="p-0">

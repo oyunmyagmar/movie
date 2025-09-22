@@ -31,12 +31,12 @@ export const DetailsDescription = ({
           (movCrew) =>
             movCrew.job === "Director" && (
               <span key={movCrew.name} className="leading-6 font-normal">
-                {movCrew.name}·
+                {movCrew.name} ·
               </span>
             )
         )}
       </div>
-      <Separator className="mt-2 mb-1" />
+      <Separator className="h-[1px] mt-2 mb-1" />
       <div className="mt-5 text-base leading-7 font-bold text-foreground flex items-center">
         <p className="w-[117px]">Writers</p>
         {movieCredits.crew.map(
@@ -45,24 +45,24 @@ export const DetailsDescription = ({
               movCrew.job === "Writer" ||
               movCrew.job === "Story") && (
               <span key={movCrew.credit_id} className="leading-6 font-normal">
-                {movCrew.name}·
+                {movCrew.name} ·
               </span>
             )
         )}
       </div>
-      <Separator className="mt-2 mb-1" />
+      <Separator className="h-[1px] mt-2 mb-1" />
       <div className="mt-5 text-base leading-7 font-bold text-foreground flex items-center">
         <p className="w-[117px]">Stars</p>
         {movieCredits.cast.map(
           (movCast) =>
             movCast.order < 4 && (
               <span key={movCast.order} className="leading-6 font-normal">
-                {movCast.name}·
+                {movCast.name} ·
               </span>
             )
         )}
       </div>
-      <Separator className="mt-2 mb-1" />
+      <Separator className="h-[1px] mt-2 mb-1" />
     </div>
   );
 };
