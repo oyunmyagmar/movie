@@ -31,14 +31,16 @@ const SeeMoreDynamicPage = async ({
   const moviesLabeled = movies.results;
   console.log(moviesLabeled, "labeled");
 
-  const url = `/morePage/${link}`;
+  const url = `/seeMore/${link}`;
 
   return (
     <div className="w-screen flex flex-col items-center">
       <div className="w-[1440px] px-20 mt-13 mb-19">
         <div className="flex flex-wrap gap-8">
           <div className="w-full text-3xl leading-9 font-semibold text-foreground">
-            {link}
+            {(link.charAt(0).toLocaleUpperCase() + link.slice(1))
+              .split("_")
+              .join(" ")}
             {/* {label === "upcoming"}? <span>"Upcoming"</span> :
             {label === "popular"} ? <span>"Popular"</span> :
             {label === "top_rated"} ? <span>"Top Rated"</span> : */}

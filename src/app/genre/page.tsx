@@ -1,4 +1,4 @@
-import { GenrePageComp, GenrePageSkeleton } from "@/components/home";
+import { GenrePageComp, GenrePageSkeleton } from "@/components/genre";
 import { Suspense } from "react";
 
 type GenrePageProps = {

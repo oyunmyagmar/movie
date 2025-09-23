@@ -33,7 +33,10 @@ export const NavMenuItem = async () => {
             <Separator className="my-4" />
             <div className="w-[577px] flex gap-4 flex-wrap">
               {movieGenresList.genres.map((genre) => (
-                <Link key={genre.id} href={`/genre?id=${genre.id}`}>
+                <Link
+                  key={genre.id}
+                  href={`/genre?id=${genre.id}&name=${genre.name}`}
+                >
                   <Badge
                     variant="outline"
                     className="leading-4 font-semibold rounded-full pl-2.5 pr-1 gap-2"

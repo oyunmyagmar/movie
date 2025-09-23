@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { MedMovieCard, SearchListCard } from "@/components/home";
+import { SearchListCard } from "@/components/search";
+import { MedMovieCard } from "@/components/general";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -22,11 +23,7 @@ type SearchPageCompProps = {
   searchParams: Promise<{ value: string; genreId: string; page: string }>;
 };
 export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
-  // const params = await searchParams;
   const { value, genreId, page = "1" } = await searchParams;
-  // const value = params.value;
-  // const genreId = params.genreId;
-  // const page = params.page || "1";
   console.log(genreId, "genreId");
 
   const searchedMovies: movieResponseType = await getMoviesBySearch(
@@ -105,3 +102,8 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
     </div>
   );
 };
+
+// const params = await searchParams;
+// const value = params.value;
+// const genreId = params.genreId;
+// const page = params.page || "1";

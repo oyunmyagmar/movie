@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { MedMovieCard, GenresListCard } from "@/components/home";
+import { MedMovieCard } from "@/components/general";
+import { GenresListCard } from "@/components/genre";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -33,6 +34,7 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
   const id = params.id;
   const page = params.page || "1";
   const name = params.name;
+  console.log(name, "name");
   const filteredMoviesByGenreId: movieResponseType = await getMoviesByGenreId(
     id,
     page

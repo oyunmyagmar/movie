@@ -5,22 +5,18 @@ export * from "./HeroCard";
 export * from "./HeroCarousel";
 export * from "./MovieCard";
 export * from "./MoviesContainer";
-export * from "./MedMovieCard";
-export * from "./GenresListCard";
+
 export * from "./HomePage";
 export * from "./HomePageSkeleton";
 export * from "./NavInputSearch";
 export * from "./MiniMovieCard";
 export * from "./Footer";
 export * from "./TinyMovieCard";
-export * from "./SearchListCard";
+export * from "../search/SearchListCard";
 export * from "./TrailerDialog";
 export * from "./MoreLikeThisMoviesContainer";
 export * from "./HeroTrailerDialog";
 export * from "./HeroCarouselItem";
-export * from "./GenrePageComp";
-export * from "./GenrePageSkeleton";
-export * from "./SearchPageComp";
-export * from "./SearchPageSkeleton";
+
 export * from "./DetailsHeader";
 export * from "./DetailsDescription";
