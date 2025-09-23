@@ -1,5 +1,6 @@
-import { SearchPageComp, SearchPageSkeleton } from "@/components/search";
+import React from "react";
 import { Suspense } from "react";
+import { SearchPageComp, SearchPageSkeleton } from "@/components/search";
 
 type SearchPageProps = {
   searchParams: Promise<{

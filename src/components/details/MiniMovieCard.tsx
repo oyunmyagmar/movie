@@ -16,12 +16,7 @@ type MiniMovieCardProps = {
   id: number;
 };
 
-export const MiniMovieCard = ({
-  title,
-  score,
-  image,
-}: // id,
-MiniMovieCardProps) => {
+export const MiniMovieCard = ({ title, score, image }: MiniMovieCardProps) => {
   return (
     <Card className="w-[190px] p-0 overflow-hidden bg-secondary gap-1">
       <CardContent className="p-0">

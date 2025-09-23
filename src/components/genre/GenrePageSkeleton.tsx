@@ -31,7 +31,7 @@ export const GenrePageSkeleton = () => {
               />
             ))}
           </div>
-          <Skeleton className="w-94 h-8 mt-8 justify-self-end" />
+          <Skeleton className="w-94 h-9 mt-8 justify-self-end" />
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>

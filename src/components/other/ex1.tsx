@@ -371,3 +371,11 @@ export const MovieSection = ({ label }: MovieSectionProps) => {
 //     .then((json) => setMoviesNowPlaying(json.results))
 //     .catch((err) => console.error(err));
 // }, []);
+
+//export default MoreLikeDynamicPage;
+// searchParams: Promise<{ isSim: string }>;
+// const searchP = await searchParams;
+// const isSim = searchP.isSim;
+// const similarMovies: movieResponseType = (await isSim)
+//   ? getSimilarMovies(id)
+//   : getMoviesList(type);

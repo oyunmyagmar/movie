@@ -1,5 +1,6 @@
-import { GenrePageComp, GenrePageSkeleton } from "@/components/genre";
+import React from "react";
 import { Suspense } from "react";
+import { GenrePageComp, GenrePageSkeleton } from "@/components/genre";
 
 type GenrePageProps = {
   searchParams: Promise<{

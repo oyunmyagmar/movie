@@ -21,7 +21,7 @@ export const SearchPageSkeleton = () => {
               />
             ))}
           </div>
-          <Skeleton className="w-94 h-8 mt-8 justify-self-end" />
+          <Skeleton className="w-94 h-9 mt-8 justify-self-end" />
         </ResizablePanel>
         <ResizableHandle withHandle className="mx-11" />
         <ResizablePanel>

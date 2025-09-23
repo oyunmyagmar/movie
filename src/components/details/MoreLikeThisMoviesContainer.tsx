@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { MiniMovieCard } from "@/components/home";
+import { MiniMovieCard } from "@/components/details";
 import { MovieType } from "@/types";
 
 type MoreLikeThisMoviesContainerProps = {
