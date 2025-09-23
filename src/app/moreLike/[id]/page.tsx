@@ -35,7 +35,7 @@ const MoreLikeDynamicPage = async ({
         {similarMovies.results.map((simMov) => (
           <Link key={simMov.id} href={`/details/${simMov.id}`}>
             <MovieCard
-              id={simMov.id}
+              // id={simMov.id}
               title={simMov.title}
               score={simMov.vote_average}
               image={`https://image.tmdb.org/t/p/w500${simMov.poster_path}`}

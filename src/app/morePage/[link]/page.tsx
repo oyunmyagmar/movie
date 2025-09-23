@@ -14,29 +14,31 @@ import {
 
 type SeeMoreDynamicPageProps = {
   params: Promise<{
-    label: string;
     link: string;
+  }>;
+  searchParams: Promise<{
     page: string;
   }>;
 };
-const SeeMoreDynamicPage = async ({ params }: SeeMoreDynamicPageProps) => {
-  const dynamicParams = await params;
-  const label = dynamicParams.label;
-  const link = dynamicParams.link;
-  const page = dynamicParams.page || "1";
+const SeeMoreDynamicPage = async ({
+  params,
+  searchParams,
+}: SeeMoreDynamicPageProps) => {
+  const { link } = await params;
+  const { page = "1" } = await searchParams;
 
-  const movies: movieResponseType = await getMoviesList(label, "1");
+  const movies: movieResponseType = await getMoviesList(link, "1");
   const moviesLabeled = movies.results;
   console.log(moviesLabeled, "labeled");
 
-  const url = `/seeMore/${label}`;
+  const url = `/morePage/${link}`;
 
   return (
     <div className="w-screen flex flex-col items-center">
       <div className="w-[1440px] px-20 mt-13 mb-19">
         <div className="flex flex-wrap gap-8">
           <div className="w-full text-3xl leading-9 font-semibold text-foreground">
-            {label}
+            {link}
             {/* {label === "upcoming"}? <span>"Upcoming"</span> :
             {label === "popular"} ? <span>"Popular"</span> :
             {label === "top_rated"} ? <span>"Top Rated"</span> : */}
