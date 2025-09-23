@@ -19,7 +19,7 @@ export const HeroTrailerDialog = ({
         <DialogTrigger asChild>
           <div className="flex gap-3 items-center absolute bottom-6 left-6">
             <Button variant="secondary">
-              <LuPlay width={16} height={16} /> Watch Trailer
+              <LuPlay size={16} /> Watch Trailer
             </Button>
           </div>
         </DialogTrigger>

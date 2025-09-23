@@ -25,7 +25,7 @@ const SeeMoreDynamicPage = async ({ params }: SeeMoreDynamicPageProps) => {
   const link = dynamicParams.link;
   const page = dynamicParams.page || "1";
 
-  const movies: movieResponseType = await getMoviesList(label, page);
+  const movies: movieResponseType = await getMoviesList(label, "1");
   const moviesLabeled = movies.results;
   console.log(moviesLabeled, "labeled");
 

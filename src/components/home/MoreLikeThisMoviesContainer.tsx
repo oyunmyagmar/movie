@@ -8,15 +8,13 @@ import { MovieType } from "@/types";
 type MoreLikeThisMoviesContainerProps = {
   id: string;
   similarMovies: MovieType[];
-  // page: string | "1";
 };
 export const MoreLikeThisMoviesContainer = ({
   id,
   similarMovies,
-}: // page,
-MoreLikeThisMoviesContainerProps) => {
+}: MoreLikeThisMoviesContainerProps) => {
   return (
-    <div className="flex gap-8 flex-wrap overflow-hidden">
+    <div className="flex flex-col gap-8">
       <div className="w-full flex justify-between">
         <h3 className="text-2xl leading-8 font-semibold text-foreground">
           More like this

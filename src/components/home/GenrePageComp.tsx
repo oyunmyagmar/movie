@@ -33,14 +33,13 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
   const id = params.id;
   const page = params.page || "1";
   const name = params.name;
-
   const filteredMoviesByGenreId: movieResponseType = await getMoviesByGenreId(
     id,
     page
   );
-  console.log(filteredMoviesByGenreId, "filteredMoviesByGenreId");
+  console.log({ filteredMoviesByGenreId });
 
-  const url = `/genre/?id=${id}&name=${name}`;
+  const url = `/genre/?id=${id}`;
 
   return (
     <div className="w-screen flex flex-col items-center">
@@ -59,10 +58,7 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
                 {filteredMoviesByGenreId.total_results} titles in "{name}"
               </h4>
               {filteredMoviesByGenreId.results.slice(0, 18).map((movie) => (
-                <Link
-                  key={movie.id}
-                  href={`/details/${movie.id}&name=${movie.title}`}
-                >
+                <Link key={movie.id} href={`/details/${movie.id}`}>
                   <MedMovieCard
                     title={movie.title}
                     score={movie.vote_average}
@@ -70,7 +66,6 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
                   />
                 </Link>
               ))}
-
               <Pagination className="justify-end">
                 <PaginationContent>
                   <PaginationItem>
@@ -92,7 +87,21 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
                       </PaginationItem>
                     ))}
                   </>
-                  {/* <PaginationItem>
+                  <PaginationItem>
+                    <PaginationNext href={`${url}&page=${Number(page) + 1}`} />
+                  </PaginationItem>
+                </PaginationContent>
+              </Pagination>
+            </div>
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </div>
+    </div>
+  );
+};
+// <PaginationNext href={`/genre/${id}&page=${page}`} />
+{
+  /* <PaginationItem>
                     <PaginationLink href="">{Number(page) - 1}</PaginationLink>
                   </PaginationItem>
                   <PaginationItem>
@@ -108,17 +117,5 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
                   </PaginationItem>
                   <PaginationItem>
                     <PaginationLink href="">{Number(page) + 5}</PaginationLink>
-                  </PaginationItem> */}
-                  <PaginationItem>
-                    <PaginationNext href={`${url}&page=${Number(page) + 1}`} />
-                  </PaginationItem>
-                </PaginationContent>
-              </Pagination>
-            </div>
-          </ResizablePanel>
-        </ResizablePanelGroup>
-      </div>
-    </div>
-  );
-};
-// <PaginationNext href={`/genre/${id}&page=${page}`} />
+                  </PaginationItem> */
+}

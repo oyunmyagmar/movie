@@ -22,24 +22,25 @@ type SearchPageCompProps = {
   searchParams: Promise<{ value: string; genreId: string; page: string }>;
 };
 export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
-  const params = await searchParams;
-  const value = params.value;
-  const genreId = params.genreId;
-  const page = params.page || "1";
+  // const params = await searchParams;
+  const { value, genreId, page = "1" } = await searchParams;
+  // const value = params.value;
+  // const genreId = params.genreId;
+  // const page = params.page || "1";
   console.log(genreId, "genreId");
 
   const searchedMovies: movieResponseType = await getMoviesBySearch(
     value,
     page
   );
-  console.log(searchedMovies, "searchedMovies");
+  // console.log(searchedMovies, "searchedMovies");
 
   const filteredMovies = genreId
     ? searchedMovies.results.filter((movie) =>
         movie.genre_ids.includes(Number(genreId))
       )
     : searchedMovies.results;
-  console.log(filteredMovies, "filteredMovies");
+  // console.log(filteredMovies, "filteredMovies");
 
   const url = `/search?value=${value}`;
 
@@ -59,7 +60,7 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
                 {filteredMovies.slice(0, 18).map((movSearched) => (
                   <Link
                     key={movSearched.id}
-                    href={`/details/${movSearched.id}&name=${movSearched.title}`}
+                    href={`/details/${movSearched.id}`}
                   >
                     <MedMovieCard
                       title={movSearched.title}
@@ -88,9 +89,6 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
                       </PaginationItem>
                     ))}
                   </>
-                  {/* <PaginationItem>
-                    <PaginationEllipsis />
-                  </PaginationItem> */}
                   <PaginationItem>
                     <PaginationNext href={`${url}&page=${Number(page) + 1}`} />
                   </PaginationItem>

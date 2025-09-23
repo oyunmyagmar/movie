@@ -20,21 +20,23 @@ import {
 } from "@/components/home";
 
 type DetailsDynamicPageProps = {
-  params: Promise<{ id: string; page: string }>;
+  params: Promise<{ id: string }>;
 };
 
 const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
   const dynamicParams = await params;
   const id = dynamicParams.id;
-  const page = dynamicParams.page;
   const movieDetails: MovieDetailsType = await getMovieDetails(id);
   const movieCredits: movieCreditsResponseType = await getMovieCredits(id);
   const movieTrailer: movieTrailerResponseType = await getMovieTrailer(id);
-  const similarMovies: movieResponseType = await getSimilarMovies(id, page);
+
+  console.log({ id });
+  const similarMovies: movieResponseType = await getSimilarMovies(id, "1");
+
   // console.log(movieDetails, "movieDetails");
   // console.log(movieCredits, "movieCredits");
   // console.log(movieTrailer, "movieTrailer");
-  // console.log(similarMovies, "similarMovies");
+  console.log({ similarMovies });
 
   const trailer = movieTrailer.results.find(
     (trailer) => trailer.type === "Trailer"
@@ -70,7 +72,6 @@ const DetailsDynamicPage = async ({ params }: DetailsDynamicPageProps) => {
         <MoreLikeThisMoviesContainer
           similarMovies={similarMovies.results}
           id={id}
-          // page={page}
         />
       </div>
     </div>

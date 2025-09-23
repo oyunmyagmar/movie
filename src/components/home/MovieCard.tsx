@@ -12,15 +12,10 @@ type MovieCardProps = {
   title: string;
   score: number;
   image: string;
-  //id: number; say
+  id: number;
 };
 
-export const MovieCard = ({
-  title,
-  score,
-  image,
-}: //, id say
-MovieCardProps) => {
+export const MovieCard = ({ title, score, image, id }: MovieCardProps) => {
   return (
     <Card className="w-[230px] p-0 overflow-hidden bg-secondary gap-1 rounded-lg">
       <CardContent className="p-0">

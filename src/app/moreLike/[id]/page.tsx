@@ -10,29 +10,25 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { movieResponseType } from "@/types";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import { MovieCard } from "@/components/home";
 import { getSimilarMovies } from "@/utils/get-data";
 
-// searchParams: Promise<{ isSim: string }>;
-// const searchP = await searchParams;
-// const isSim = searchP.isSim;
-// const similarMovies: movieResponseType = (await isSim)
-//   ? getSimilarMovies(id)
-//   : getMoviesList(type);
-
 type MoreLikeDynamicPageProps = {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ page: string }>;
 };
-const MoreLikeDynamicPage = async ({ params }: MoreLikeDynamicPageProps) => {
-  const dynamicParams = await params;
-  const id = dynamicParams.id;
-  const similarMovies: movieResponseType = await getSimilarMovies(id);
+const MoreLikeDynamicPage = async ({
+  params,
+  searchParams,
+}: MoreLikeDynamicPageProps) => {
+  const { id } = await params;
+  const { page = "1" } = await searchParams;
+  const similarMovies: movieResponseType = await getSimilarMovies(id, page);
 
+  const url = `/moreLike/${id}`;
   return (
     <div className="w-screen flex flex-col items-center">
-      <div className="mt-13 w-[1440px] px-20 flex gap-8 flex-wrap mb-19">
+      <div className="w-[1440px] px-20 flex gap-8 flex-wrap mt-13 mb-19">
         <h3 className="w-full text-3xl leading-9 font-semibold text-foreground">
           More like this
         </h3>
@@ -46,19 +42,27 @@ const MoreLikeDynamicPage = async ({ params }: MoreLikeDynamicPageProps) => {
             />
           </Link>
         ))}
-        <Pagination>
+        <Pagination className="justify-end">
           <PaginationContent>
             <PaginationItem>
-              <PaginationPrevious href="#" />
+              <PaginationPrevious href={`${url}&page=${Number(page) - 1}`} />
             </PaginationItem>
+            <>
+              {Array.from({
+                length: 5,
+              }).map((_, i) => (
+                <PaginationItem key={i}>
+                  <PaginationLink
+                    isActive={i + 1 === Number(page)}
+                    href={`${url}&page=${Number(page) + 1}`}
+                  >
+                    {i + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+            </>
             <PaginationItem>
-              <PaginationLink href="#">1</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationEllipsis />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext href="#" />
+              <PaginationNext href={`${url}&page=${Number(page) + 1}`} />
             </PaginationItem>
           </PaginationContent>
         </Pagination>
@@ -67,3 +71,9 @@ const MoreLikeDynamicPage = async ({ params }: MoreLikeDynamicPageProps) => {
   );
 };
 export default MoreLikeDynamicPage;
+// searchParams: Promise<{ isSim: string }>;
+// const searchP = await searchParams;
+// const isSim = searchP.isSim;
+// const similarMovies: movieResponseType = (await isSim)
+//   ? getSimilarMovies(id)
+//   : getMoviesList(type);

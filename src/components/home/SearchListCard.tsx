@@ -37,7 +37,7 @@ export const SearchListCard = async ({
         {movieGenresList.genres.map((genre) => (
           <Link
             key={genre.id}
-            href={`/search?value=${searchValue}&genreId=${genre.id}&page=${page}`}
+            href={`/search?value=${searchValue}&genreId=${genre.id}`}
           >
             <Badge
               variant="outline"

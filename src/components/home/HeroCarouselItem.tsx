@@ -21,7 +21,6 @@ export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
   useEffect(() => {
     getTrailerFunction();
   }, []);
-  console.log("rendering", movie.title);
   return (
     <CarouselItem key={movie.id}>
       <HeroCard
