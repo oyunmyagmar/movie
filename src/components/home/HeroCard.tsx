@@ -1,6 +1,6 @@
+import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { GoStarFill } from "react-icons/go";
 import {
   Card,
   CardContent,
@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { HeroTrailerDialog } from "@/components/home";
+import { GoStarFill } from "react-icons/go";
 
 type HeroCardProps = {
   image: string;

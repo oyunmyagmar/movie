@@ -1,10 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { HeroCard } from "@/components/home";
-import { CarouselItem } from "@/components/ui/carousel";
+import { CarouselItem, Button } from "@/components/ui";
 import { MovieType, movieTrailerResponseType } from "@/types";
 import { getMovieTrailer } from "@/utils/get-data";
-import { Button } from "@/components/ui/button";
 import { LuPlay } from "react-icons/lu";
 import { GoStarFill } from "react-icons/go";
 

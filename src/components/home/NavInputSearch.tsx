@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
 import { IoSearchOutline } from "react-icons/io5";
 import { movieResponseType } from "@/types";
 import { getMoviesBySearch } from "@/utils/get-data";
@@ -9,10 +8,11 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { TinyMovieCard } from "./TinyMovieCard";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
+  Input,
+  Separator,
+  Button,
+} from "@/components/ui";
+import { TinyMovieCard } from "@/components/general";
 
 export const NavInputSearch = () => {
   const [searchValue, setSearchValue] = useState("");

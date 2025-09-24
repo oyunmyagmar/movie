@@ -6,7 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
   type CarouselApi,
-} from "@/components/ui/carousel";
+} from "@/components/ui";
 import Autoplay from "embla-carousel-autoplay";
 import { MovieType } from "@/types";
 import { HeroCarouselItem } from "@/components/home";

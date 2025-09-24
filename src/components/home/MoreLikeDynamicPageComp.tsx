@@ -1,16 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import { MovieCard, PaginationComp } from "@/components/general";
 import { movieResponseType } from "@/types";
-import { MovieCard } from "@/components/home";
 import { getSimilarMovies } from "@/utils/get-data";
 
 type MoreLikeDynamicPageCompProps = {
@@ -23,9 +14,11 @@ export const MoreLikeDynamicPageComp = async ({
 }: MoreLikeDynamicPageCompProps) => {
   const { id } = await params;
   const { page = "1" } = await searchParams;
+
   const similarMovies: movieResponseType = await getSimilarMovies(id, page);
 
-  const url = `/moreLike/${id}`;
+  const url = `/moreLike/${id}?`;
+
   return (
     <div className="w-screen flex flex-col items-center">
       <div className="w-[1440px] px-20 flex gap-8 flex-wrap mt-13 mb-19">
@@ -41,30 +34,7 @@ export const MoreLikeDynamicPageComp = async ({
             />
           </Link>
         ))}
-        <Pagination className="justify-end">
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious href={`${url}&page=${Number(page) - 1}`} />
-            </PaginationItem>
-            <>
-              {Array.from({
-                length: 5,
-              }).map((_, i) => (
-                <PaginationItem key={i}>
-                  <PaginationLink
-                    isActive={i + 1 === Number(page)}
-                    href={`${url}&page=${Number(page) + 1}`}
-                  >
-                    {i + 1}
-                  </PaginationLink>
-                </PaginationItem>
-              ))}
-            </>
-            <PaginationItem>
-              <PaginationNext href={`${url}&page=${Number(page) + 1}`} />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
+        <PaginationComp url={url} page={page} />
       </div>
     </div>
   );

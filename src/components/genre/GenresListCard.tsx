@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { GenreType } from "@/types";
 import { FaChevronRight } from "react-icons/fa6";
 import {
@@ -9,7 +8,8 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+  Badge,
+} from "@/components/ui";
 
 type GenresListCardProps = {
   genres: GenreType[];

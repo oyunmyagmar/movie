@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MovieCard } from "@/components/home";
+import { MovieCard } from "@/components/general";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -379,3 +379,23 @@ export const MovieSection = ({ label }: MovieSectionProps) => {
 // const similarMovies: movieResponseType = (await isSim)
 //   ? getSimilarMovies(id)
 //   : getMoviesList(type);
+// <PaginationNext href={`/genre/${id}&page=${page}`} />
+{
+  /* <PaginationItem>
+                    <PaginationLink href="">{Number(page) - 1}</PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationLink href="" isActive>
+                      {page}
+                    </PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationLink href="">{Number(page) + 1}</PaginationLink>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationEllipsis />
+                  </PaginationItem>
+                  <PaginationItem>
+                    <PaginationLink href="">{Number(page) + 5}</PaginationLink>
+                  </PaginationItem> */
+}

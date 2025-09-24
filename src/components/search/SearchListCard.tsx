@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { FaChevronRight } from "react-icons/fa6";
 import {
   Card,
@@ -8,7 +7,8 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+  Badge,
+} from "@/components/ui";
 import { genreResponseType } from "@/types";
 import { getGenresList } from "@/utils/get-data";
 

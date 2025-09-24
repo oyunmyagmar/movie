@@ -6,7 +6,7 @@ import {
   CardDescription,
   CardFooter,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui";
 
 type MedMovieCardProps = {
   title: string;

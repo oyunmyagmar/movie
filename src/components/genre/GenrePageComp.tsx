@@ -1,23 +1,14 @@
 import React from "react";
 import Link from "next/link";
-import { MedMovieCard } from "@/components/general";
+import { MedMovieCard, PaginationComp } from "@/components/general";
 import { GenresListCard } from "@/components/genre";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/components/ui/resizable";
+} from "@/components/ui";
 import { genreResponseType, movieResponseType } from "@/types";
 import { getGenresList, getMoviesByGenreId } from "@/utils/get-data";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
 
 type GenrePageCompProps = {
   searchParams: Promise<{
@@ -34,14 +25,14 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
   const id = params.id;
   const page = params.page || "1";
   const name = params.name;
-  console.log(name, "name");
+  // console.log(name, "name");
   const filteredMoviesByGenreId: movieResponseType = await getMoviesByGenreId(
     id,
     page
   );
-  console.log({ filteredMoviesByGenreId });
+  // console.log({ filteredMoviesByGenreId });
 
-  const url = `/genre/?id=${id}`;
+  const url = `/genre/?id=${id}&name=${name}&`;
 
   return (
     <div className="w-screen flex flex-col items-center">
@@ -68,32 +59,7 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
                   />
                 </Link>
               ))}
-              <Pagination className="justify-end">
-                <PaginationContent>
-                  <PaginationItem>
-                    <PaginationPrevious
-                      href={`${url}&page=${Number(page) - 1}`}
-                    />
-                  </PaginationItem>
-                  <>
-                    {Array.from({
-                      length: 5,
-                    }).map((_, i) => (
-                      <PaginationItem key={i}>
-                        <PaginationLink
-                          isActive={i + 1 === Number(page)}
-                          href={`${url}&page=${Number(page) + 1}`}
-                        >
-                          {i + 1}
-                        </PaginationLink>
-                      </PaginationItem>
-                    ))}
-                  </>
-                  <PaginationItem>
-                    <PaginationNext href={`${url}&page=${Number(page) + 1}`} />
-                  </PaginationItem>
-                </PaginationContent>
-              </Pagination>
+              <PaginationComp url={url} page={page} />
             </div>
           </ResizablePanel>
         </ResizablePanelGroup>
@@ -101,23 +67,3 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
     </div>
   );
 };
-// <PaginationNext href={`/genre/${id}&page=${page}`} />
-{
-  /* <PaginationItem>
-                    <PaginationLink href="">{Number(page) - 1}</PaginationLink>
-                  </PaginationItem>
-                  <PaginationItem>
-                    <PaginationLink href="" isActive>
-                      {page}
-                    </PaginationLink>
-                  </PaginationItem>
-                  <PaginationItem>
-                    <PaginationLink href="">{Number(page) + 1}</PaginationLink>
-                  </PaginationItem>
-                  <PaginationItem>
-                    <PaginationEllipsis />
-                  </PaginationItem>
-                  <PaginationItem>
-                    <PaginationLink href="">{Number(page) + 5}</PaginationLink>
-                  </PaginationItem> */
-}

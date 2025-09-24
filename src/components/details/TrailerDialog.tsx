@@ -4,8 +4,8 @@ import {
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+  Button,
+} from "@/components/ui";
 import { LuPlay } from "react-icons/lu";
 
 export const TrailerDialog = ({
@@ -33,7 +33,7 @@ export const TrailerDialog = ({
           allowFullScreen
           width={997}
           height={561}
-        ></iframe>
+        />
       </DialogContent>
     </Dialog>
   );

@@ -1,6 +1,5 @@
 import React from "react";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Separator } from "@/components/ui/separator";
+import { Skeleton, Separator } from "@/components/ui";
 
 export const DetailsDynamicPageSkeleton = () => {
   return (

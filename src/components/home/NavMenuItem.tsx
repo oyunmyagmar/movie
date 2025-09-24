@@ -6,10 +6,10 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+  Separator,
+  Badge,
+} from "@/components/ui";
 import { ChevronRight } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
 import { getGenresList } from "@/utils/get-data";
 import { genreResponseType } from "@/types";
 

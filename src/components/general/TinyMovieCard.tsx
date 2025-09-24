@@ -7,8 +7,8 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+  Button,
+} from "@/components/ui";
 import { GoStarFill } from "react-icons/go";
 import { ArrowRight } from "lucide-react";
 
@@ -30,7 +30,7 @@ export const TinyMovieCard = ({
     <Card className="w-[553px] p-2 border-none shadow-none flex flex-row gap-4">
       <CardContent className="p-0">
         <div className="w-[67px] h-25 rounded-md overflow-hidden relative">
-          <Image src={image} alt={title} className="object-fill" unoptimized />
+          <Image src={image} alt={title} fill unoptimized />
         </div>
       </CardContent>
       <CardHeader className="w-[454px] p-0 gap-0">
@@ -63,3 +63,4 @@ export const TinyMovieCard = ({
     </Card>
   );
 };
+//className="object-fill"

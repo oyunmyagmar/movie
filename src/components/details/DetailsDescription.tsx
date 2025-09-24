@@ -1,7 +1,7 @@
 import React from "react";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+import { Badge, Separator } from "@/components/ui";
 import { MovieDetailsType, movieCreditsResponseType } from "@/types";
+import { Dot } from "lucide-react";
 
 type DetailsDescriptionProps = {
   movieDetails: MovieDetailsType;
@@ -30,9 +30,9 @@ export const DetailsDescription = ({
         {movieCredits.crew.map(
           (movCrew) =>
             movCrew.job === "Director" && (
-              <span key={movCrew.name} className="leading-6 font-normal">
-                {movCrew.name} ·
-              </span>
+              <p key={movCrew.name} className="leading-6 font-normal flex">
+                <Dot /> {movCrew.name}
+              </p>
             )
         )}
       </div>
@@ -44,9 +44,9 @@ export const DetailsDescription = ({
             (movCrew.job === "Original Story" ||
               movCrew.job === "Writer" ||
               movCrew.job === "Story") && (
-              <span key={movCrew.credit_id} className="leading-6 font-normal">
-                {movCrew.name} ·
-              </span>
+              <p key={movCrew.credit_id} className="leading-6 font-normal flex">
+                <Dot /> {movCrew.name}
+              </p>
             )
         )}
       </div>
@@ -56,9 +56,9 @@ export const DetailsDescription = ({
         {movieCredits.cast.map(
           (movCast) =>
             movCast.order < 4 && (
-              <span key={movCast.order} className="leading-6 font-normal">
-                {movCast.name} ·
-              </span>
+              <p key={movCast.order} className="leading-6 font-normal flex">
+                <Dot /> {movCast.name}
+              </p>
             )
         )}
       </div>

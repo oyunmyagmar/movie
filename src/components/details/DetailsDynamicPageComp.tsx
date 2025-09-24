@@ -31,14 +31,12 @@ export const DetailsDynamicPageComp = async ({
   const movieDetails: MovieDetailsType = await getMovieDetails(id);
   const movieCredits: movieCreditsResponseType = await getMovieCredits(id);
   const movieTrailer: movieTrailerResponseType = await getMovieTrailer(id);
-
-  console.log({ id });
+  // console.log({ id });
   const similarMovies: movieResponseType = await getSimilarMovies(id, "1");
-
   // console.log(movieDetails, "movieDetails");
   // console.log(movieCredits, "movieCredits");
   // console.log(movieTrailer, "movieTrailer");
-  console.log({ similarMovies });
+  // console.log({ similarMovies });
 
   const trailer = movieTrailer.results.find(
     (trailer) => trailer.type === "Trailer"

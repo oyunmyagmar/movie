@@ -1,9 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import { MovieType } from "@/types";
+import { MovieCard } from "@/components/general";
+import { Button } from "@/components/ui";
 import { ArrowRight } from "lucide-react";
-import { MovieCard } from "@/components/home";
-import { Button } from "@/components/ui/button";
 
 type MoviesContainerProps = {
   movies: MovieType[];

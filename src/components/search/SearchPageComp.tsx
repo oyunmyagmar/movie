@@ -1,23 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import { SearchListCard } from "@/components/search";
-import { MedMovieCard } from "@/components/general";
+import { MedMovieCard, PaginationComp } from "@/components/general";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/components/ui/resizable";
+} from "@/components/ui";
 import { movieResponseType } from "@/types";
 import { getMoviesBySearch } from "@/utils/get-data";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
 
 type SearchPageCompProps = {
   searchParams: Promise<{ value: string; genreId: string; page: string }>;
@@ -30,7 +21,7 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
     value,
     page
   );
-  // console.log(searchedMovies, "searchedMovies");
+  console.log(searchedMovies, "searchedMovies");
 
   const filteredMovies = genreId
     ? searchedMovies.results.filter((movie) =>
@@ -39,7 +30,7 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
     : searchedMovies.results;
   // console.log(filteredMovies, "filteredMovies");
 
-  const url = `/search?value=${value}`;
+  const url = `/search?value=${value}&`;
 
   return (
     <div className="w-screen flex flex-col items-center">
@@ -67,30 +58,7 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
                   </Link>
                 ))}
               </div>
-              <Pagination className="justify-end">
-                <PaginationContent>
-                  <PaginationItem>
-                    <PaginationPrevious
-                      href={`${url}&page=${Number(page) - 1}`}
-                    />
-                  </PaginationItem>
-                  <>
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <PaginationItem key={i}>
-                        <PaginationLink
-                          isActive={Number(page) === i + 1}
-                          href={`${url}&page=${Number(page)}`}
-                        >
-                          {i + 1}
-                        </PaginationLink>
-                      </PaginationItem>
-                    ))}
-                  </>
-                  <PaginationItem>
-                    <PaginationNext href={`${url}&page=${Number(page) + 1}`} />
-                  </PaginationItem>
-                </PaginationContent>
-              </Pagination>
+              <PaginationComp url={url} page={page} />
             </div>
           </ResizablePanel>
           <ResizableHandle withHandle className="mx-11" />

@@ -1,10 +1,10 @@
 import * as React from "react";
-import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { MoviesContainer } from "@/components/home";
+import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { getMoviesList } from "@/utils/get-data";
 import { movieResponseType } from "@/types";
 
-export const HomePage = async () => {
+export const HomePageComp = async () => {
   const upComingMovies: movieResponseType = await getMoviesList(
     "upcoming",
     "1"
@@ -18,7 +18,7 @@ export const HomePage = async () => {
     "now_playing",
     "1"
   );
-  console.log(nowPlayingMovies);
+  // console.log(nowPlayingMovies, "nowPlayingMovies");
   return (
     <div className="w-screen flex flex-col items-center sm:mt-6 mt:0 mb-[51px]">
       <HeroCarousel movies={nowPlayingMovies.results} />

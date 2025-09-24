@@ -1,5 +1,5 @@
 import React from "react";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/components/ui";
 
 export const SeeMoreDynamicPageSkeleton = () => {
   return (
@@ -10,7 +10,7 @@ export const SeeMoreDynamicPageSkeleton = () => {
           <Skeleton key={i} className="w-[230px] h-[439px] rounded-lg" />
         ))}
       </div>
-      <Skeleton className="w-94 h-9 mt-8 flex justify-self-end" />
+      <Skeleton className="w-84 h-9 mt-8 flex justify-self-end" />
     </div>
   );
 };

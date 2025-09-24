@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui";
 import { ArrowRight } from "lucide-react";
-import { MiniMovieCard } from "@/components/details";
+import { MiniMovieCard } from "@/components/general";
 import { MovieType } from "@/types";
 
 type MoreLikeThisMoviesContainerProps = {
@@ -29,7 +29,6 @@ export const MoreLikeThisMoviesContainer = ({
         {similarMovies.slice(0, 5).map((simMov) => (
           <Link key={simMov.id} href={`/details/${simMov.id}`}>
             <MiniMovieCard
-              id={simMov.id}
               title={simMov.title}
               score={simMov.vote_average}
               image={`https://image.tmdb.org/t/p/original${simMov.poster_path}`}

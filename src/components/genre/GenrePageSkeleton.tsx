@@ -1,10 +1,10 @@
 import React from "react";
-import { Skeleton } from "@/components/ui/skeleton";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/components/ui/resizable";
+  Skeleton,
+} from "@/components/ui";
 
 export const GenrePageSkeleton = () => {
   return (
@@ -31,7 +31,7 @@ export const GenrePageSkeleton = () => {
               />
             ))}
           </div>
-          <Skeleton className="w-94 h-9 mt-8 justify-self-end" />
+          <Skeleton className="w-84 h-9 mt-8 justify-self-end" />
         </ResizablePanel>
       </ResizablePanelGroup>
     </div>
