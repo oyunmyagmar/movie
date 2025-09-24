@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { getMoviesList } from "@/utils/get-data";
 import { movieResponseType } from "@/types";
 import { MovieCard } from "@/components/home";
@@ -46,13 +47,13 @@ export const SeeMoreDynamicPageComp = async ({
             {label === "top_rated"} ? <span>"Top Rated"</span> : */}
           </div>
           {moviesLabeled.map((movLabeled) => (
-            <MovieCard
-              key={movLabeled.id}
-              // id={movLabeled.id} say
-              title={movLabeled.title}
-              score={movLabeled.vote_average}
-              image={`https://image.tmdb.org/t/p/original${movLabeled.poster_path}`}
-            />
+            <Link key={movLabeled.id} href={`/details/${movLabeled.id}`}>
+              <MovieCard
+                title={movLabeled.title}
+                score={movLabeled.vote_average}
+                image={`https://image.tmdb.org/t/p/original${movLabeled.poster_path}`}
+              />
+            </Link>
           ))}
           <Pagination className="justify-end">
             <PaginationContent>

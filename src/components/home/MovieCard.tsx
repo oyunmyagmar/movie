@@ -18,10 +18,8 @@ type MovieCardProps = {
 export const MovieCard = ({ title, score, image }: MovieCardProps) => {
   return (
     <Card className="w-[230px] p-0 overflow-hidden bg-secondary gap-1 rounded-lg">
-      <CardContent className="p-0">
-        <div className="w-full h-85 relative">
-          <Image src={image} alt={title} fill unoptimized />
-        </div>
+      <CardContent className="p-0 w-full h-85 relative">
+        <Image src={image} alt={title} fill unoptimized />
       </CardContent>
       <CardFooter className="flex-col items-start p-2">
         <CardDescription className="flex gap-1 items-center mb-[3px]">

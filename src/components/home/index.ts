@@ -16,3 +16,4 @@ export * from "./MoreLikeDynamicPageComp";
 export * from "./MoreLikeDynamicPageSkeleton";
 export * from "./SeeMoreDynamicPageComp";
 export * from "./SeeMoreDynamicPageSkeleton";
+export * from "./NavResponseSearch";

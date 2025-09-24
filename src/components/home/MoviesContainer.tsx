@@ -17,7 +17,7 @@ export const MoviesContainer = ({
   link,
 }: MoviesContainerProps) => {
   return (
-    <div className="w-[1440px] mt-13 px-20 flex gap-8 flex-wrap">
+    <div className="sm:w-[1440px] w-full sm:mt-13 mt-8 sm:px-20 px-5 flex flex-col sm:gap-8 gap-5">
       <div className="w-full flex justify-between">
         <p className="text-2xl leading-8 font-semibold text-foreground">
           {label}
@@ -28,16 +28,17 @@ export const MoviesContainer = ({
           </Link>
         </Button>
       </div>
-      {movies.slice(0, 10).map((movie) => (
-        <Link key={movie.id} href={`/details/${movie.id}`}>
-          <MovieCard
-            // id={movie.id}
-            title={movie.title}
-            score={movie.vote_average}
-            image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-          />
-        </Link>
-      ))}
+      <div className="flex flex-wrap gap-8">
+        {movies.slice(0, 10).map((movie) => (
+          <Link key={movie.id} href={`/details/${movie.id}`}>
+            <MovieCard
+              title={movie.title}
+              score={movie.vote_average}
+              image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+            />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

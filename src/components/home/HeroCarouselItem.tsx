@@ -4,6 +4,9 @@ import { HeroCard } from "@/components/home";
 import { CarouselItem } from "@/components/ui/carousel";
 import { MovieType, movieTrailerResponseType } from "@/types";
 import { getMovieTrailer } from "@/utils/get-data";
+import { Button } from "@/components/ui/button";
+import { LuPlay } from "react-icons/lu";
+import { GoStarFill } from "react-icons/go";
 
 export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
   const [trailerKey, setTrailerKey] = useState("");
@@ -32,6 +35,33 @@ export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
         trailerKey={trailerKey}
         href={`/details/${movie.id}`}
       />
+      <div className="p-5 sm:hidden block">
+        <div className="flex justify-between">
+          <div>
+            <div className="text-sm leading-5 text-foreground">
+              Now Playing:
+            </div>
+            <div className="text-2xl leading-8 font-semibold text-foreground">
+              {movie.title}
+            </div>
+          </div>
+          <div className="flex gap-1 mt-2.5 mb-3.5">
+            <GoStarFill size={28} color="#FDE047" />
+            <p className="text-lg leading-7 font-semibold text-foreground">
+              {movie.vote_average}
+              <span className="text-base leading-6 font-normal text-muted-foreground">
+                /10
+              </span>
+            </p>
+          </div>
+        </div>
+        <div className="text-sm leading-5 text-foreground mt-4">
+          {movie.overview}
+        </div>
+        <Button className="mt-4">
+          <LuPlay size={16} /> Watch Trailer
+        </Button>
+      </div>
     </CarouselItem>
   );
 };

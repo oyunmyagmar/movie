@@ -15,7 +15,7 @@ export const Footer = () => {
   ];
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center">
+    <div className="w-screen flex flex-col items-center">
       <div className="w-[1440px] h-70 py-10 px-20 bg-indigo-700 flex justify-between text-[#FAFAFA] text-sm leading-5">
         <>
           <div className="flex gap-2 mb-3">

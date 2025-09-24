@@ -30,18 +30,18 @@ export const HeroCard = ({
   href,
 }: HeroCardProps) => {
   return (
-    <Card className="w-1440px h-150 relative p-0 border-0">
+    <Card className="sm:w-[1440px] w-full h-150 relative p-0 border-0">
       <Link href={href}>
-        <Image src={image} alt={title} width={1440} height={600} unoptimized />
+        <Image src={image} alt={title} fill unoptimized />
       </Link>
-      <div className="absolute top-[178px] left-29 flex flex-col gap-4">
+      <div className="absolute top-[178px] left-29 flex-col gap-4 sm:block hidden">
         <CardHeader className="gap-0">
           <p className="text-base leading-6 text-white">{label}</p>
           <CardTitle className="text-4xl leading-10 font-bold text-white">
             {title}
           </CardTitle>
           <div className="flex gap-1 items-center">
-            <GoStarFill className="w-7 h-7" color="#FDE047" />
+            <GoStarFill size={28} color="#FDE047" />
             <p className="text-lg leading-7 font-semibold text-[#FAFAFA] py-2.5">
               {score.toFixed(1)}
               <span className="text-base leading-6 font-normal text-muted-foreground">

@@ -30,7 +30,7 @@ export const TinyMovieCard = ({
     <Card className="w-[553px] p-2 border-none shadow-none flex flex-row gap-4">
       <CardContent className="p-0">
         <div className="w-[67px] h-25 rounded-md overflow-hidden relative">
-          <Image src={image} alt={title} fill unoptimized />
+          <Image src={image} alt={title} className="object-fill" unoptimized />
         </div>
       </CardContent>
       <CardHeader className="w-[454px] p-0 gap-0">
