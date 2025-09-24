@@ -22,7 +22,7 @@ export const Navigation = async () => {
           <NavMenuItem />
           <NavInputSearch />
         </div>
-        {/* <NavResponseSearch /> */}
+        <NavResponseSearch />
         <ThemeToggler />
       </div>
     </header>
