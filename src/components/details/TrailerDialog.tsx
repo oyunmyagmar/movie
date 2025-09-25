@@ -26,13 +26,12 @@ export const TrailerDialog = ({
           <span className="text-base leading-6 text-white">Play Trailer</span>
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-5xl w-[997px] h-[561px] p-0 border-none">
+      <DialogContent className="sm:min-w-[997px] min-w-full sm:min-h-[561px] min-h-full p-0 border-none bg-black rounded-none flex justify-center items-center gap-0">
         <DialogTitle className="hidden" />
         <iframe
           src={`//www.youtube-nocookie.com/embed/${trailerKey}`}
           allowFullScreen
-          width={997}
-          height={561}
+          className="sm:w-[997px] min-w-full sm:h-[561px] min-h-[211.17px]"
         />
       </DialogContent>
     </Dialog>

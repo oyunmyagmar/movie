@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui";
 import { ArrowRight } from "lucide-react";
-import { MiniMovieCard } from "@/components/general";
+import { MiniMovieCard, MovieCard } from "@/components/general";
 import { MovieType } from "@/types";
 
 type MoreLikeThisMoviesContainerProps = {
@@ -28,11 +28,20 @@ export const MoreLikeThisMoviesContainer = ({
       <div className="flex sm:gap-8 gap-5 sm:overflow-x-auto overflow-x-scroll">
         {similarMovies.slice(0, 5).map((simMov) => (
           <Link key={simMov.id} href={`/details/${simMov.id}`}>
-            <MiniMovieCard
-              title={simMov.title}
-              score={simMov.vote_average}
-              image={`https://image.tmdb.org/t/p/original${simMov.poster_path}`}
-            />
+            <div className="sm:block hidden">
+              <MiniMovieCard
+                title={simMov.title}
+                score={simMov.vote_average}
+                image={`https://image.tmdb.org/t/p/original${simMov.poster_path}`}
+              />
+            </div>
+            <div className="sm:hidden block">
+              <MovieCard
+                title={simMov.title}
+                score={simMov.vote_average}
+                image={`https://image.tmdb.org/t/p/original${simMov.poster_path}`}
+              />
+            </div>
           </Link>
         ))}
       </div>

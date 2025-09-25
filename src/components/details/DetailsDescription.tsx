@@ -37,7 +37,7 @@ export const DetailsDescription = ({
         </div>
       </div>
       <div className="mt-5 text-base leading-7 font-bold text-foreground flex gap-[53px] items-center">
-        <p className="min-w-14">Director</p>
+        <p className="min-w-16">Director</p>
         <div className="flex flex-wrap">
           {movieCredits.crew.map(
             (movCrew) =>
@@ -51,7 +51,7 @@ export const DetailsDescription = ({
       </div>
       <Separator className="h-[1px] mt-2 mb-1" />
       <div className="mt-5 text-base leading-7 font-bold text-foreground flex gap-[53px] items-center">
-        <p className="min-w-14">Writers</p>
+        <p className="min-w-16">Writers</p>
         <div className="flex flex-wrap">
           {movieCredits.crew.map(
             (movCrew) =>
@@ -70,7 +70,7 @@ export const DetailsDescription = ({
       </div>
       <Separator className="h-[1px] mt-2 mb-1" />
       <div className="mt-5 text-base leading-7 font-bold text-foreground flex gap-[53px] items-center ">
-        <p className="min-w-14">Stars</p>
+        <p className="min-w-16">Stars</p>
         <div className="flex flex-wrap">
           {movieCredits.cast.map(
             (movCast) =>

@@ -45,7 +45,7 @@ export const DetailsDynamicPageComp = async ({
 
   return (
     <div className="w-screen flex flex-col items-center">
-      <div className="sm:w-[1440px] w-full sm:pl-45 pl-0 sm:pr-[178px] pr-0 sm:mt-13 mt-8 sm:mb-[112.62px] mb-8">
+      <div className="sm:w-[1440px] w-full sm:pl-45 pl-0 sm:pr-[178px] pr-0 sm:mt-13 sm:mb-[112.62px] my-8">
         <DetailsHeader movieDetails={movieDetails} />
         <div className="w-full sm:flex justify-between block">
           <div className="sm:block hidden">

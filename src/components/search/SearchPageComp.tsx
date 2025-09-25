@@ -34,44 +34,41 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
 
   return (
     <div className="w-screen flex flex-col items-center">
-      <div className="w-[1440px] px-20 flex flex-col gap-8 mt-13 mb-[344px]">
-        <h2 className="w-full text-3xl leading-9 font-semibold text-foreground">
+      <div className="sm:min-w-[1440px] w-full sm:px-20 px-5 flex flex-col gap-8 sm:mt-13 sm:mb-[344px] my-8">
+        <h2 className="w-full sm:text-3xl text-2xl sm:leading-9 leading-8 font-semibold text-foreground">
           Search results
         </h2>
-        <ResizablePanelGroup direction="horizontal">
-          <ResizablePanel>
-            <div className="flex flex-col gap-8">
-              <h4 className="text-xl leading-7 font-semibold text-foreground">
-                {searchedMovies.total_results} results for “{value}”
-              </h4>
-              <div className="flex flex-wrap gap-y-8 gap-x-12">
-                {filteredMovies.slice(0, 18).map((movSearched) => (
-                  <Link
-                    key={movSearched.id}
-                    href={`/details/${movSearched.id}`}
-                  >
-                    <MedMovieCard
-                      title={movSearched.title}
-                      score={movSearched.vote_average}
-                      image={`https://image.tmdb.org/t/p/w500${movSearched.poster_path}`}
-                    />
-                  </Link>
-                ))}
+        <div className="sm:block hidden">
+          <ResizablePanelGroup direction="horizontal">
+            <ResizablePanel collapsible>
+              <div className="flex flex-col gap-8">
+                <h4 className="text-xl leading-7 font-semibold text-foreground">
+                  {searchedMovies.total_results} results for “{value}”
+                </h4>
+                <div className="flex flex-wrap gap-y-8 gap-x-12">
+                  {filteredMovies.slice(0, 18).map((movSearched) => (
+                    <Link
+                      key={movSearched.id}
+                      href={`/details/${movSearched.id}`}
+                    >
+                      <MedMovieCard
+                        title={movSearched.title}
+                        score={movSearched.vote_average}
+                        image={`https://image.tmdb.org/t/p/w500${movSearched.poster_path}`}
+                      />
+                    </Link>
+                  ))}
+                </div>
+                <PaginationComp url={url} page={page} />
               </div>
-              <PaginationComp url={url} page={page} />
-            </div>
-          </ResizablePanel>
-          <ResizableHandle withHandle className="mx-11" />
-          <ResizablePanel>
-            <SearchListCard page={page} searchValue={value} />
-          </ResizablePanel>
-        </ResizablePanelGroup>
+            </ResizablePanel>
+            <ResizableHandle withHandle className="mx-11" />
+            <ResizablePanel>
+              <SearchListCard page={page} searchValue={value} />
+            </ResizablePanel>
+          </ResizablePanelGroup>
+        </div>
       </div>
     </div>
   );
 };
-
-// const params = await searchParams;
-// const value = params.value;
-// const genreId = params.genreId;
-// const page = params.page || "1";

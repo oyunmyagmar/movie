@@ -399,3 +399,7 @@ export const MovieSection = ({ label }: MovieSectionProps) => {
                     <PaginationLink href="">{Number(page) + 5}</PaginationLink>
                   </PaginationItem> */
 }
+// const params = await searchParams;
+// const value = params.value;
+// const genreId = params.genreId;
+// const page = params.page || "1";
