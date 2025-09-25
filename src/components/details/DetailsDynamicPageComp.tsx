@@ -17,6 +17,7 @@ import {
   DetailsDescription,
   MoreLikeThisMoviesContainer,
   TrailerDialog,
+  DetailsImgComp,
 } from "@/components/details";
 
 type DetailsDynamicPageCompProps = {
@@ -44,18 +45,13 @@ export const DetailsDynamicPageComp = async ({
 
   return (
     <div className="w-screen flex flex-col items-center">
-      <div className="w-[1440px] pl-45 pr-[178px] mt-13 mb-[112.62px]">
+      <div className="sm:w-[1440px] w-full sm:pl-45 pl-0 sm:pr-[178px] pr-0 sm:mt-13 mt-8 sm:mb-[112.62px] mb-8">
         <DetailsHeader movieDetails={movieDetails} />
-        <div className="w-full flex justify-between">
-          <div className="w-[290px] h-107 rounded-sm overflow-hidden relative ">
-            <Image
-              src={`https://image.tmdb.org/t/p/original${movieDetails.poster_path}`}
-              alt={movieDetails.title}
-              unoptimized
-              fill
-            />
+        <div className="w-full sm:flex justify-between block">
+          <div className="sm:block hidden">
+            <DetailsImgComp movieDetails={movieDetails} />
           </div>
-          <div className="w-190 h-107 rounded-sm overflow-hidden relative">
+          <div className="sm:w-190 w-full sm:h-107 h-[211px] sm:rounded-sm rounded-none overflow-hidden relative">
             <Image
               src={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}
               alt={movieDetails.title}

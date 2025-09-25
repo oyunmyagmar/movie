@@ -14,7 +14,7 @@ export const MoreLikeThisMoviesContainer = ({
   similarMovies,
 }: MoreLikeThisMoviesContainerProps) => {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 sm:px-0 px-5">
       <div className="w-full flex justify-between">
         <h3 className="text-2xl leading-8 font-semibold text-foreground">
           More like this
@@ -25,7 +25,7 @@ export const MoreLikeThisMoviesContainer = ({
           </Link>
         </Button>
       </div>
-      <div className="flex gap-8">
+      <div className="flex sm:gap-8 gap-5 sm:overflow-x-auto overflow-x-scroll">
         {similarMovies.slice(0, 5).map((simMov) => (
           <Link key={simMov.id} href={`/details/${simMov.id}`}>
             <MiniMovieCard

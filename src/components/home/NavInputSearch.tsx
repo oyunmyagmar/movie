@@ -22,7 +22,7 @@ export const NavInputSearch = () => {
   // console.log(foundMovies, "foundMovies");
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleInputChange = async (e: any) => {
+  const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     value.length > 0 ? setIsOpen(true) : setIsOpen(false);
     setSearchValue(value);
