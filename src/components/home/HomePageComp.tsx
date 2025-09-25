@@ -18,7 +18,6 @@ export const HomePageComp = async () => {
     "now_playing",
     "1"
   );
-  // console.log(nowPlayingMovies, "nowPlayingMovies");
   return (
     <div className="w-screen flex flex-col items-center sm:mt-6 mt:0 sm:mb-[51px] mb-8">
       <HeroCarousel movies={nowPlayingMovies.results} />

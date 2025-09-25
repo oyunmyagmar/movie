@@ -18,10 +18,7 @@ export const SeeMoreDynamicPageComp = async ({
 }: SeeMoreDynamicPageCompProps) => {
   const { link } = await params;
   const { page = "1" } = await searchParams;
-
   const movies: movieResponseType = await getMoviesList(link, page);
-  // console.log(movies, "movies labeled");
-
   const url = `/seeMore/${link}?`;
 
   return (

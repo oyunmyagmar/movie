@@ -14,9 +14,7 @@ export const MoreLikeDynamicPageComp = async ({
 }: MoreLikeDynamicPageCompProps) => {
   const { id } = await params;
   const { page = "1" } = await searchParams;
-
   const similarMovies: movieResponseType = await getSimilarMovies(id, page);
-
   const url = `/moreLike/${id}?`;
 
   return (
@@ -36,7 +34,6 @@ export const MoreLikeDynamicPageComp = async ({
             </Link>
           ))}
         </div>
-
         <PaginationComp url={url} page={page} />
       </div>
     </div>

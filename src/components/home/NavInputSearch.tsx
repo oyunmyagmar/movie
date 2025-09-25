@@ -19,7 +19,6 @@ export const NavInputSearch = () => {
   const [foundMovies, setFoundMovies] = useState<movieResponseType | null>(
     null
   );
-  // console.log(foundMovies, "foundMovies");
   const [isOpen, setIsOpen] = useState(false);
 
   const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,7 +47,6 @@ export const NavInputSearch = () => {
         onOpenAutoFocus={(e) => e.preventDefault()}
         onCloseAutoFocus={(e) => e.preventDefault()}
         side="bottom"
-        // sideOffset={4.5}
         align="center"
         alignOffset={-100}
         className="sm:w-[577px] w-[335px] sm:mt-[4.5px] mt-[11.5px] p-3 rounded-lg"
@@ -74,11 +72,3 @@ export const NavInputSearch = () => {
     </Popover>
   );
 };
-//<Popover open={isOpen} onOpenChange={() => setIsOpen(false)}>
-// onKeyDown={(e) => {
-//   if (e.key === "Enter") {
-//     <Link href="/search">
-//       <p>{searchValue}</p>
-//     </Link>;
-//   }
-// }}        // onKeyDown={myFunction()}

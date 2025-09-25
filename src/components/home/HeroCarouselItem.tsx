@@ -9,7 +9,6 @@ import { GoStarFill } from "react-icons/go";
 
 export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
   const [trailerKey, setTrailerKey] = useState("");
-
   const getTrailerFunction = async () => {
     const movieTrailer: movieTrailerResponseType = await getMovieTrailer(
       movie.id.toString()
@@ -64,5 +63,3 @@ export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
     </CarouselItem>
   );
 };
-// const trailer: MovieTrailerType | undefined = movieTrailer.results.find((trailer) => trailer.type === "Trailer");
-// const [movTrailer, setMovTrailer] = React.useState<MovieTrailerType>();

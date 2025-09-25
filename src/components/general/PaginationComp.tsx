@@ -30,9 +30,6 @@ export const PaginationComp = ({ page, url }: PaginationCompProps) => {
         </PaginationItem>
         {page !== "1" && (
           <>
-            {/* <PaginationItem>
-              <PaginationPrevious href={`${url}page=${Number(page) - 1}`} />
-            </PaginationItem> */}
             <PaginationItem>
               <PaginationLink href={`${url}page=${Number(page) - 1}`}>
                 {Number(page) - 1}

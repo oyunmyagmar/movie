@@ -403,3 +403,14 @@ export const MovieSection = ({ label }: MovieSectionProps) => {
 // const value = params.value;
 // const genreId = params.genreId;
 // const page = params.page || "1";
+
+// const trailer: MovieTrailerType | undefined = movieTrailer.results.find((trailer) => trailer.type === "Trailer");
+// const [movTrailer, setMovTrailer] = React.useState<MovieTrailerType>();
+//<Popover open={isOpen} onOpenChange={() => setIsOpen(false)}>
+// onKeyDown={(e) => {
+//   if (e.key === "Enter") {
+//     <Link href="/search">
+//       <p>{searchValue}</p>
+//     </Link>;
+//   }
+// }}        // onKeyDown={myFunction()}

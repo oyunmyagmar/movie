@@ -26,7 +26,7 @@ export const SearchListCard = async ({
   return (
     <Card className="p-0 border-none shadow-none flex gap-5 bg-background">
       <CardHeader className="p-0 gap-1">
-        <CardTitle className="text-2xl leading-8 font-semibold text-foreground">
+        <CardTitle className="sm:text-2xl text-xl sm:leading-8 leading-7 font-semibold text-foreground">
           Search by genre
         </CardTitle>
         <CardDescription className="text-base leading-6 text-foreground">
