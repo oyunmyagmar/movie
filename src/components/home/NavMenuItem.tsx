@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import Link from "next/link";
 import {
@@ -10,18 +11,18 @@ import {
   Badge,
 } from "@/components/ui";
 import { ChevronRight } from "lucide-react";
-import { getGenresList } from "@/utils/get-data";
 import { genreResponseType } from "@/types";
 
-export const NavMenuItem = async () => {
-  const movieGenresList: genreResponseType = await getGenresList();
-
+type NavMenuItemProps = {
+  movieGenresList: genreResponseType;
+};
+export const NavMenuItem = ({ movieGenresList }: NavMenuItemProps) => {
   return (
     <NavigationMenu viewport={true}>
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger className="gap-2 border border-input text-secondary-foreground shadow-xs">
-            Genre
+            <span className="sm:block hidden">Genre</span>
           </NavigationMenuTrigger>
           <NavigationMenuContent className="p-5">
             <h3 className="text-2xl leading-8 font-semibold text-foreground mb-1">
@@ -31,7 +32,7 @@ export const NavMenuItem = async () => {
               See lists of movies by genre
             </p>
             <Separator className="my-4" />
-            <div className="w-[577px] flex gap-4 flex-wrap">
+            <div className="sm:w-[577px] w-[335px] flex gap-4 flex-wrap">
               {movieGenresList.genres.map((genre) => (
                 <Link
                   key={genre.id}

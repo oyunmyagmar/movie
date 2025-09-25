@@ -16,21 +16,21 @@ type MovieCardProps = {
 
 export const MovieCard = ({ title, score, image }: MovieCardProps) => {
   return (
-    <Card className="w-[230px] p-0 overflow-hidden bg-secondary gap-1 rounded-lg">
-      <CardContent className="p-0 w-full h-85 relative">
+    <Card className="sm:w-[230px] w-[157.5px] p-0 overflow-hidden bg-secondary sm:gap-1 gap-0 rounded-lg">
+      <CardContent className="p-0 w-full sm:h-85 h-[233.1px] relative">
         <Image src={image} alt={title} fill unoptimized />
       </CardContent>
-      <CardFooter className="flex-col items-start p-2">
-        <CardDescription className="flex gap-1 items-center mb-[3px]">
+      <CardFooter className="flex-col items-start p-2 sm:gap-0 gap-1">
+        <CardDescription className="flex gap-1 items-center sm:mb-[3px] mb-0">
           <GoStarFill size={16} color="#FDE047" />
-          <p className="text-foreground text-sm leading-5 font-medium">
+          <p className="text-foreground sm:text-sm text-xs sm:leading-5 leading-4 font-medium">
             {score.toFixed(1)}
             <span className="text-muted-foreground text-xs leading-4 font-normal">
               /10
             </span>
           </p>
         </CardDescription>
-        <CardTitle className="text-lg leading-7 text-foreground font-normal min-h-14 line-clamp-2">
+        <CardTitle className="sm:text-lg text-sm sm:leading-7 leading-5 text-foreground font-normal sm:min-h-14 min-h-10 line-clamp-2">
           {title}
         </CardTitle>
       </CardFooter>

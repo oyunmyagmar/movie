@@ -17,7 +17,7 @@ export const MoviesContainer = ({
   link,
 }: MoviesContainerProps) => {
   return (
-    <div className="sm:w-[1440px] w-full sm:mt-13 mt-8 sm:px-20 px-5 flex flex-col sm:gap-8 gap-5">
+    <div className="sm:w-[1440px] w-full sm:mt-13 mt-8 sm:px-20 px-5 flex flex-col gap-8">
       <div className="w-full flex justify-between">
         <p className="text-2xl leading-8 font-semibold text-foreground">
           {label}
@@ -28,7 +28,7 @@ export const MoviesContainer = ({
           </Link>
         </Button>
       </div>
-      <div className="flex flex-wrap gap-8">
+      <div className="flex flex-wrap sm:gap-8 gap-5">
         {movies.slice(0, 10).map((movie) => (
           <Link key={movie.id} href={`/details/${movie.id}`}>
             <MovieCard

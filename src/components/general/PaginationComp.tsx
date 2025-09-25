@@ -18,11 +18,21 @@ export const PaginationComp = ({ page, url }: PaginationCompProps) => {
   return (
     <Pagination className="justify-end">
       <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious
+            href={`${url}page=${Number(page) - 1}`}
+            aria-disabled={Number(page) <= 1}
+            tabIndex={Number(page) <= 1 ? -1 : undefined}
+            className={
+              Number(page) <= 1 ? "pointer-events-none opacity-50" : undefined
+            }
+          />
+        </PaginationItem>
         {page !== "1" && (
           <>
-            <PaginationItem>
+            {/* <PaginationItem>
               <PaginationPrevious href={`${url}page=${Number(page) - 1}`} />
-            </PaginationItem>
+            </PaginationItem> */}
             <PaginationItem>
               <PaginationLink href={`${url}page=${Number(page) - 1}`}>
                 {Number(page) - 1}

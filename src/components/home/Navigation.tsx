@@ -1,29 +1,33 @@
-import Link from "next/link";
-import { Film } from "lucide-react";
+import React from "react";
 import {
   NavInputSearch,
+  NavLogo,
   NavMenuItem,
-  NavResponseSearch,
+  NavMobileSearch,
   ThemeToggler,
 } from "@/components/home";
+import { genreResponseType } from "@/types";
+import { getGenresList } from "@/utils/get-data";
 
 export const Navigation = async () => {
+  const movieGenresList: genreResponseType = await getGenresList();
+
   return (
     <header className="w-screen">
       <div className="sm:w-[1440px] w-full flex justify-between items-center sm:px-20 px-5 py-[11.5px] m-auto">
-        <Link
-          href="http://localhost:3000/"
-          className="flex gap-2 text-indigo-700 text-base leading-5 italic font-bold items-center"
-        >
-          <Film size={20} color="#4338CA" />
-          Movie Z
-        </Link>
+        <div className="sm:block hidden">
+          <NavLogo />
+        </div>
         <div className="sm:flex gap-6 hidden">
-          <NavMenuItem />
+          <NavMenuItem movieGenresList={movieGenresList} />
           <NavInputSearch />
         </div>
-        <NavResponseSearch />
-        <ThemeToggler />
+        <div className="sm:hidden block w-full">
+          <NavMobileSearch movieGenresList={movieGenresList} />
+        </div>
+        <div className="sm:block hidden">
+          <ThemeToggler />
+        </div>
       </div>
     </header>
   );

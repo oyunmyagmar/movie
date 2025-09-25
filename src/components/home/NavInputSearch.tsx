@@ -40,7 +40,7 @@ export const NavInputSearch = () => {
             onChange={handleInputChange}
             type="text"
             placeholder="Search.."
-            className="w-[379px] px-3 py-2 pl-[38px] border border-border-foreground rounded-lg text-foreground text-sm leading-5 flex items-center"
+            className="sm:w-[379px] w-[251px] px-3 sm:py-2 py-3 pl-[38px] sm:border border-border-foreground border-0 rounded-lg text-foreground text-sm leading-5 flex items-center sm:shadow shadow-none"
           />
         </div>
       </PopoverTrigger>
@@ -48,10 +48,10 @@ export const NavInputSearch = () => {
         onOpenAutoFocus={(e) => e.preventDefault()}
         onCloseAutoFocus={(e) => e.preventDefault()}
         side="bottom"
-        sideOffset={4.5}
+        // sideOffset={4.5}
         align="center"
         alignOffset={-100}
-        className="w-[577px] p-3 rounded-lg"
+        className="sm:w-[577px] w-[335px] sm:mt-[4.5px] mt-[11.5px] p-3 rounded-lg"
       >
         {foundMovies?.results.slice(0, 5).map((movSearched) => (
           <div key={movSearched.id}>

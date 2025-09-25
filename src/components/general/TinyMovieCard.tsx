@@ -27,13 +27,13 @@ export const TinyMovieCard = ({
   href,
 }: TinyMovieCardProps) => {
   return (
-    <Card className="w-[553px] p-2 border-none shadow-none flex flex-row gap-4">
+    <Card className="sm:w-[553px] w-[311px] p-2 border-none shadow-none flex flex-row gap-4">
       <CardContent className="p-0">
         <div className="w-[67px] h-25 rounded-md overflow-hidden relative">
           <Image src={image} alt={title} fill unoptimized />
         </div>
       </CardContent>
-      <CardHeader className="w-[454px] p-0 gap-0">
+      <CardHeader className="sm:w-[454px] w-[212px] p-0 gap-0">
         <CardTitle className="text-xl leading-7 text-foreground line-clamp-1">
           {title}
         </CardTitle>
