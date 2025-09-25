@@ -47,7 +47,7 @@ export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
           <div className="flex gap-1 mt-2.5 mb-3.5">
             <GoStarFill size={28} color="#FDE047" />
             <p className="text-lg leading-7 font-semibold text-foreground">
-              {movie.vote_average}
+              {movie.vote_average.toFixed(1)}
               <span className="text-base leading-6 font-normal text-muted-foreground">
                 /10
               </span>

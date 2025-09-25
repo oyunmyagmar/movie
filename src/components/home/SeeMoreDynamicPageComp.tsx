@@ -26,7 +26,7 @@ export const SeeMoreDynamicPageComp = async ({
 
   return (
     <div className="w-screen flex flex-col items-center">
-      <div className="w-[1440px] px-20 mt-13 mb-19">
+      <div className="sm:w-[1440px] w-full sm:px-20 px-5 sm:mt-13 mt-8 sm:mb-19 mb-8">
         <div className="flex flex-wrap gap-8">
           <div className="w-full text-3xl leading-9 font-semibold text-foreground">
             {(link.charAt(0).toLocaleUpperCase() + link.slice(1))
