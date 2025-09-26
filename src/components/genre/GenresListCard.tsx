@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { GenreType } from "@/types";
+import { GenreType, MovieType } from "@/types";
 import { FaChevronRight } from "react-icons/fa6";
 import {
   Card,
@@ -13,9 +13,10 @@ import {
 
 type GenresListCardProps = {
   genres: GenreType[];
+  id: string;
 };
 
-export const GenresListCard = ({ genres }: GenresListCardProps) => {
+export const GenresListCard = ({ genres, id }: GenresListCardProps) => {
   return (
     <Card className="p-0 border-none shadow-none gap-5 bg-background">
       <CardHeader className="p-0 gap-1">
@@ -35,7 +36,9 @@ export const GenresListCard = ({ genres }: GenresListCardProps) => {
           >
             <Badge
               variant="outline"
-              className="leading-4 font-semibold rounded-full pl-2.5 pr-1 gap-2"
+              className={`leading-4 font-semibold rounded-full pl-2.5 pr-1 gap-2 ${
+                genre.id === Number(id) && "bg-primary text-primary-foreground"
+              }`}
             >
               {genre.name}
               <FaChevronRight size={16} color="foreground" />

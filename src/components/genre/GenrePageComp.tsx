@@ -40,7 +40,7 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
         <div className="sm:block hidden">
           <ResizablePanelGroup direction="horizontal">
             <ResizablePanel>
-              <GenresListCard genres={movieGenresList.genres} />
+              <GenresListCard genres={movieGenresList.genres} id={id} />
             </ResizablePanel>
             <ResizableHandle withHandle className="mx-5" />
             <ResizablePanel>
@@ -63,7 +63,7 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
           </ResizablePanelGroup>
         </div>
         <div className="sm:hidden block">
-          <GenresListCard genres={movieGenresList.genres} />
+          <GenresListCard genres={movieGenresList.genres} id={id} />
           <div className="flex flex-col gap-8 mt-8">
             <h4 className="w-full text-xl leading-7 font-semibold text-foreground">
               {filteredMoviesByGenreId.total_results} titles in "{name}"

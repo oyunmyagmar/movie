@@ -20,13 +20,16 @@ export const NavInputSearch = () => {
     null
   );
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsLoading(true);
     const { value } = e.target;
     value.length > 0 ? setIsOpen(true) : setIsOpen(false);
     setSearchValue(value);
     const searchedMovies = await getMoviesBySearch(value, "1");
     setFoundMovies(searchedMovies);
+    setIsLoading(false);
   };
 
   return (
@@ -43,31 +46,39 @@ export const NavInputSearch = () => {
           />
         </div>
       </PopoverTrigger>
+
       <PopoverContent
         onOpenAutoFocus={(e) => e.preventDefault()}
         onCloseAutoFocus={(e) => e.preventDefault()}
         side="bottom"
         align="center"
         alignOffset={-100}
-        className="sm:w-[577px] w-[335px] sm:mt-[4.5px] mt-[11.5px] p-3 rounded-lg"
+        className="sm:w-[577px] w-[calc(80vw-25px)] sm:mt-[4.5px] mt-[11.5px] p-3 rounded-lg"
       >
-        {foundMovies?.results.slice(0, 5).map((movSearched) => (
-          <div key={movSearched.id}>
-            <TinyMovieCard
-              image={`https://image.tmdb.org/t/p/original${movSearched.poster_path}`}
-              title={movSearched.title}
-              score={movSearched.vote_average}
-              year={movSearched.release_date}
-              href={`/details/${movSearched.id}`}
-            />
-            <Separator className="my-2" />
+        {isLoading ? (
+          <div>
+            {foundMovies?.results.slice(0, 5).map((movSearched) => (
+              <div key={movSearched.id}>
+                <TinyMovieCard
+                  image={movSearched.poster_path}
+                  title={movSearched.title}
+                  score={movSearched.vote_average}
+                  year={movSearched.release_date}
+                  href={`/details/${movSearched.id}`}
+                />
+
+                <Separator className="my-2" />
+              </div>
+            ))}
+            <Button asChild variant="link" onClick={() => setIsOpen(false)}>
+              <Link href={`/search?value=${searchValue}`}>
+                See all results for "{searchValue}"
+              </Link>
+            </Button>
           </div>
-        ))}
-        <Button asChild variant="link" onClick={() => setIsOpen(false)}>
-          <Link href={`/search?value=${searchValue}`}>
-            See all results for "{searchValue}"
-          </Link>
-        </Button>
+        ) : (
+          <div>isLoading</div>
+        )}
       </PopoverContent>
     </Popover>
   );

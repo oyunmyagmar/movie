@@ -46,7 +46,7 @@ export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
       </CarouselContent>
       <CarouselPrevious className="left-11" />
       <CarouselNext className="right-11" />
-      <div className="flex gap-2 absolute bottom-[37px] left-170">
+      <div className="sm:flex hidden gap-2 absolute bottom-[37px] left-170">
         {Array.from({ length: count }).map((_, index) => (
           <div
             onClick={() => {

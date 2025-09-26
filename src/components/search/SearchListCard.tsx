@@ -15,11 +15,13 @@ import { getGenresList } from "@/utils/get-data";
 type SearchListCardProps = {
   searchValue: string;
   page: string | "1";
+  genreId: string;
 };
 
 export const SearchListCard = async ({
   searchValue,
   page,
+  genreId,
 }: SearchListCardProps) => {
   const movieGenresList: genreResponseType = await getGenresList();
 
@@ -41,7 +43,10 @@ export const SearchListCard = async ({
           >
             <Badge
               variant="outline"
-              className="font-semibold rounded-full pl-2.5 gap-2 pr-1 text-center"
+              className={`font-semibold rounded-full pl-2.5 gap-2 pr-1 text-center ${
+                genre.id === Number(genreId) &&
+                "bg-primary text-primary-foreground"
+              }`}
             >
               {genre.name}
               <FaChevronRight size={16} color="foreground" />

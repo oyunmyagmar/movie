@@ -26,6 +26,8 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
     : searchedMovies.results;
   const url = `/search?value=${value}&`;
 
+  console.log(searchedMovies, "searchedMovies");
+
   return (
     <div className="w-screen flex flex-col items-center">
       <div className="sm:w-[1440px] w-full sm:px-20 px-5 flex flex-col gap-8 sm:mt-13 sm:mb-[344px] my-8">
@@ -39,26 +41,36 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
                 <h4 className="text-xl leading-7 font-semibold text-foreground">
                   {searchedMovies.total_results} results for “{value}”
                 </h4>
-                <div className="flex flex-wrap gap-y-8 gap-x-12">
-                  {filteredMovies.slice(0, 18).map((movSearched) => (
-                    <Link
-                      key={movSearched.id}
-                      href={`/details/${movSearched.id}`}
-                    >
-                      <MedMovieCard
-                        title={movSearched.title}
-                        score={movSearched.vote_average}
-                        image={`https://image.tmdb.org/t/p/w500${movSearched.poster_path}`}
-                      />
-                    </Link>
-                  ))}
-                </div>
+                {searchedMovies.results.length ? (
+                  <div className="flex flex-wrap gap-y-8 gap-x-12">
+                    {filteredMovies.slice(0, 18).map((movSearched) => (
+                      <Link
+                        key={movSearched.id}
+                        href={`/details/${movSearched.id}`}
+                      >
+                        <MedMovieCard
+                          title={movSearched.title}
+                          score={movSearched.vote_average}
+                          image={movSearched.poster_path}
+                        />
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="border border-border text-sm font-medium pt-[44.5px] pb-[36.5px] flex justify-center">
+                    No results found.
+                  </div>
+                )}
                 <PaginationComp url={url} page={page} />
               </div>
             </ResizablePanel>
             <ResizableHandle withHandle className="mx-11" />
             <ResizablePanel>
-              <SearchListCard page={page} searchValue={value} />
+              <SearchListCard
+                page={page}
+                searchValue={value}
+                genreId={genreId}
+              />
             </ResizablePanel>
           </ResizablePanelGroup>
         </div>
@@ -80,7 +92,7 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
             </div>
             <PaginationComp url={url} page={page} />
           </div>
-          <SearchListCard page={page} searchValue={value} />
+          <SearchListCard page={page} searchValue={value} genreId={genreId} />
         </div>
       </div>
     </div>

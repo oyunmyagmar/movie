@@ -32,7 +32,7 @@ export const NavMenuItem = ({ movieGenresList }: NavMenuItemProps) => {
               See lists of movies by genre
             </p>
             <Separator className="my-4" />
-            <div className="sm:w-[577px] w-[335px] flex gap-4 flex-wrap">
+            <div className="sm:w-[577px] w-[calc(80vw-20px)] flex gap-4 flex-wrap">
               {movieGenresList.genres.map((genre) => (
                 <Link
                   key={genre.id}

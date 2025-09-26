@@ -3,9 +3,9 @@ import React from "react";
 import { useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
-import { NavInputSearch } from "./NavInputSearch";
-import { NavLogo } from "./NavLogo";
-import { NavMenuItem } from "./NavMenuItem";
+import { NavInputSearch } from "../headerAndFooter/NavInputSearch";
+import { NavLogo } from "../headerAndFooter/NavLogo";
+import { NavMenuItem } from "../headerAndFooter/NavMenuItem";
 import { genreResponseType } from "@/types";
 import { ThemeToggler } from "./ThemeToggler";
 
