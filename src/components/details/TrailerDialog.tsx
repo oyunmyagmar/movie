@@ -31,7 +31,7 @@ export const TrailerDialog = ({
         <iframe
           src={`//www.youtube-nocookie.com/embed/${trailerKey}`}
           allowFullScreen
-          className="sm:w-[997px] min-w-full sm:h-[561px] min-h-[211.17px]"
+          className="sm:w-[997px] min-w-full sm:h-[561px] aspect-[16/9] "
         />
       </DialogContent>
     </Dialog>

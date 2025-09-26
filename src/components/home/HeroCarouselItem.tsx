@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { HeroCard } from "@/components/home";
+import { HeroCard, HeroTrailerDialog } from "@/components/home";
 import { CarouselItem, Button } from "@/components/ui";
 import { MovieType, movieTrailerResponseType } from "@/types";
 import { getMovieTrailer } from "@/utils/get-data";
@@ -23,7 +23,7 @@ export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
     getTrailerFunction();
   }, []);
   return (
-    <CarouselItem key={movie.id}>
+    <CarouselItem key={movie.id} className="basis-none">
       <HeroCard
         image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
         label="Now Playing:"
@@ -39,7 +39,7 @@ export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
             <div className="text-sm leading-5 text-foreground">
               Now Playing:
             </div>
-            <div className="text-2xl leading-8 font-semibold text-foreground">
+            <div className="text-2xl leading-8 font-semibold text-foreground line-clamp-2">
               {movie.title}
             </div>
           </div>
@@ -53,12 +53,12 @@ export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
             </p>
           </div>
         </div>
-        <div className="text-sm leading-5 text-foreground mt-4">
+        <p className="text-sm leading-5 text-foreground mt-4 line-clamp-2">
           {movie.overview}
+        </p>
+        <div className="mt-4">
+          <HeroTrailerDialog trailerKey={trailerKey} />
         </div>
-        <Button className="mt-4">
-          <LuPlay size={16} /> Watch Trailer
-        </Button>
       </div>
     </CarouselItem>
   );

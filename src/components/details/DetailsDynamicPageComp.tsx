@@ -47,7 +47,7 @@ export const DetailsDynamicPageComp = async ({
           <div className="sm:block hidden">
             <DetailsImgComp movieDetails={movieDetails} />
           </div>
-          <div className="sm:w-190 w-full sm:h-107 h-[211px] sm:rounded-sm rounded-none overflow-hidden relative">
+          <div className="sm:w-190 w-full sm:h-107 aspect-[16/9] sm:rounded-sm rounded-none overflow-hidden relative">
             <Image
               src={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}
               alt={movieDetails.title}
