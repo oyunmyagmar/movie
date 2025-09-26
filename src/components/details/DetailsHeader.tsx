@@ -14,7 +14,8 @@ export const DetailsHeader = ({ movieDetails }: DetailsHeaderProps) => {
           {movieDetails.title}
         </h1>
         <p className="flex sm:text-lg text-sm sm:leading-7 leading-5 text-foreground">
-          {movieDetails.release_date} <Dot className="sm:w-7 w-5 sm:h-7 h-5" />
+          {movieDetails.release_date}
+          <Dot className="sm:w-7 w-5 sm:h-7 h-5 stroke-white-[1px]" />
           {movieDetails.adult ? "R" : "G"}
           <Dot className="sm:w-7 w-5 sm:h-7 h-5" />
           {`${Math.floor(movieDetails.runtime / 60)}h ${

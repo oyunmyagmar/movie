@@ -13,6 +13,7 @@ export const DetailsDescription = ({
   movieDetails,
   movieCredits,
 }: DetailsDescriptionProps) => {
+  console.log(movieCredits);
   return (
     <div className="sm:px-0 px-5 my-8">
       <div className="flex gap-[34px]">

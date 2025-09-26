@@ -44,8 +44,13 @@ export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
           <HeroCarouselItem key={movie.id} movie={movie} />
         ))}
       </CarouselContent>
-      <CarouselPrevious className="sm:left-11 left-1 sm:size-10 size-5" />
-      <CarouselNext className="sm:right-11 right-1 sm:size-10 size-5" />
+      <div className="sm:block hidden">
+        <CarouselPrevious className="left-11 size-10" />
+      </div>
+      <div className="sm:block hidden">
+        <CarouselNext className="right-11 size-10" />
+      </div>
+
       <div className="sm:flex hidden gap-2 absolute bottom-[37px] left-170">
         {Array.from({ length: count }).map((_, index) => (
           <div
