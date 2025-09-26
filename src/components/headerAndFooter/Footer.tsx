@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Mail, Phone, Film } from "lucide-react";
+import { NavLogo } from "@/components/headerAndFooter";
 
 type Sns = {
   label: string;

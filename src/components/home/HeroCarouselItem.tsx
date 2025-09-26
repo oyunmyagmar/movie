@@ -1,10 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { HeroCard, HeroTrailerDialog } from "@/components/home";
-import { CarouselItem, Button } from "@/components/ui";
+import { CarouselItem } from "@/components/ui";
 import { MovieType, movieTrailerResponseType } from "@/types";
 import { getMovieTrailer } from "@/utils/get-data";
-import { LuPlay } from "react-icons/lu";
 import { GoStarFill } from "react-icons/go";
 
 export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
@@ -33,7 +32,8 @@ export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
         trailerKey={trailerKey}
         href={`/details/${movie.id}`}
       />
-      <div className="p-5 sm:hidden block">
+      {/* responsive */}
+      <div className="sm:hidden block p-5">
         <div className="flex justify-between">
           <div>
             <div className="text-sm leading-5 text-foreground">

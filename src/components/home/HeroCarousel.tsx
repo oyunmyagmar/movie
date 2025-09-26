@@ -33,7 +33,7 @@ export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
 
   return (
     <Carousel
-      className="sm:w-[1440px] w-full sm:h-[600px] h-full relative"
+      className="sm:w-[1440px] w-full sm:h-[600px] aspect-[125/82] relative"
       setApi={setApi}
       plugins={[plugin.current]}
       onMouseEnter={plugin.current.stop}
@@ -44,8 +44,8 @@ export const HeroCarousel = ({ movies }: HeroCarouselProps) => {
           <HeroCarouselItem key={movie.id} movie={movie} />
         ))}
       </CarouselContent>
-      <CarouselPrevious className="left-11" />
-      <CarouselNext className="right-11" />
+      <CarouselPrevious className="sm:left-11 left-1 sm:size-10 size-5" />
+      <CarouselNext className="sm:right-11 right-1 sm:size-10 size-5" />
       <div className="sm:flex hidden gap-2 absolute bottom-[37px] left-170">
         {Array.from({ length: count }).map((_, index) => (
           <div

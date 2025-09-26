@@ -52,7 +52,7 @@ export const HeroCard = ({
           </div>
         </CardHeader>
         <CardContent>
-          <CardDescription className="w-[302px] text-xs leaging-4 text-[#FAFAFA]">
+          <CardDescription className="w-[302px] text-xs leaging-4 text-[#FAFAFA] line-clamp-5">
             {description}
           </CardDescription>
           <div className="mt-20">
