@@ -18,9 +18,12 @@ export const Footer = () => {
     <footer className="w-screen">
       <div className="sm:w-[1440px] w-full flex sm:flex-row flex-col justify-between m-auto sm:h-70 h-77 py-10 sm:px-20 px-5 bg-indigo-700 text-[#FAFAFA] text-sm leading-5">
         <div>
-          <div className="flex gap-2 italic font-bold items-center mb-3">
+          <Link
+            className="flex gap-2 italic font-bold items-center mb-3"
+            href="/"
+          >
             <Film size={20} /> Movie Z
-          </div>
+          </Link>
           <p>© 2024 Movie Z. All Rights Reserved.</p>
         </div>
         <div className="flex sm:gap-24 justify-between">
@@ -45,7 +48,7 @@ export const Footer = () => {
             Follow us
             <p className="flex sm:flex-row flex-col gap-3">
               {snss.map((sns) => (
-                <Link key={sns.label} href="" className="font-medium">
+                <Link key={sns.label} href="/" className="font-medium">
                   {sns.label}
                 </Link>
               ))}

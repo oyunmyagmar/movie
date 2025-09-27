@@ -33,7 +33,7 @@ export const MiniMovieCard = ({ title, score, image }: MiniMovieCardProps) => {
             </span>
           </p>
         </CardDescription>
-        <CardTitle className="text-lg leading-7 text-foreground font-normal min-h-14 line-clamp-2">
+        <CardTitle className="text-lg leading-7 text-foreground font-normal min-h-14 line-clamp-2 hover:underline">
           {title}
         </CardTitle>
       </CardFooter>
