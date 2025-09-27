@@ -1,12 +1,17 @@
 import React from "react";
 import { Skeleton } from "@/components/ui";
 import { TbLoaderQuarter } from "react-icons/tb";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export const HomePageSkeleton = () => {
   return (
-    <div className="w-[1440px] m-auto mt-6 mb-[51px]">
-      <Skeleton className="w-[1440px] h-[600px] flex justify-center items-center">
-        <TbLoaderQuarter size={200} className="animate-spin" />
+    <div className="sm:w-[1440px] w-full m-auto sm:mt-6 mt-0 sm:mb-[51px] mb-8">
+      <Skeleton className="sm:w-[1440px] w-full sm:h-[600px] aspect-[125/82] rounded-none flex justify-center items-center">
+        <TbLoaderQuarter size={200} className="animate-spin sm:block hidden" />
+        <AiOutlineLoading3Quarters
+          size={100}
+          className="animate-spin sm:hidden block"
+        />
       </Skeleton>
       {Array.from({ length: 3 }).map((_, index) => (
         <div
