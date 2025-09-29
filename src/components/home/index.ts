@@ -11,3 +11,4 @@ export * from "./MoreLikeDynamicPageSkeleton";
 export * from "./SeeMoreDynamicPageComp";
 export * from "./SeeMoreDynamicPageSkeleton";
 export * from "./NavMobileSearch";
+export * from "./SampleBackend";
