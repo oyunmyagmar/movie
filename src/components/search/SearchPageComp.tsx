@@ -6,6 +6,7 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
+  Label,
 } from "@/components/ui";
 import { movieResponseType } from "@/types";
 import { getMoviesBySearch } from "@/utils/get-data";
@@ -57,9 +58,9 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
                     ))}
                   </div>
                 ) : (
-                  <div className="border border-border text-sm font-medium pt-[44.5px] pb-[36.5px] flex justify-center">
+                  <Label className="w-full h-[95px] justify-center border border-border rounded-lg">
                     No results found.
-                  </div>
+                  </Label>
                 )}
                 <PaginationComp url={url} page={page} />
               </div>

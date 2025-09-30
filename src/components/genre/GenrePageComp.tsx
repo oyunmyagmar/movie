@@ -46,14 +46,15 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
             <ResizablePanel>
               <div className="flex flex-wrap gap-y-8 gap-x-12">
                 <h4 className="w-full text-xl leading-7 font-semibold text-foreground">
-                  {filteredMoviesByGenreId.total_results} titles in "{name}"
+                  {filteredMoviesByGenreId.total_results.toLocaleString("en")}{" "}
+                  titles in "{name}"
                 </h4>
                 {filteredMoviesByGenreId.results.slice(0, 18).map((movie) => (
                   <Link key={movie.id} href={`/details/${movie.id}`}>
                     <MedMovieCard
                       title={movie.title}
                       score={movie.vote_average}
-                      image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                      image={movie.poster_path}
                     />
                   </Link>
                 ))}
