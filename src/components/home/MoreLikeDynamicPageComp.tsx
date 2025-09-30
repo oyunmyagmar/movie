@@ -29,7 +29,7 @@ export const MoreLikeDynamicPageComp = async ({
               <MovieCard
                 title={simMov.title}
                 score={simMov.vote_average}
-                image={`https://image.tmdb.org/t/p/w500${simMov.poster_path}`}
+                image={simMov.poster_path}
               />
             </Link>
           ))}

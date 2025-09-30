@@ -32,7 +32,7 @@ export const MoreLikeThisMoviesContainer = ({
               <MiniMovieCard
                 title={simMov.title}
                 score={simMov.vote_average}
-                image={`https://image.tmdb.org/t/p/original${simMov.poster_path}`}
+                image={simMov.poster_path}
               />
             </div>
             <div className="sm:hidden block">

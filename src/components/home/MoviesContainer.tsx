@@ -34,7 +34,7 @@ export const MoviesContainer = ({
             <MovieCard
               title={movie.title}
               score={movie.vote_average}
-              image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+              image={movie.poster_path}
             />
           </Link>
         ))}

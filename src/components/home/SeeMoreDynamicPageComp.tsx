@@ -24,21 +24,24 @@ export const SeeMoreDynamicPageComp = async ({
   return (
     <div className="w-screen flex flex-col items-center">
       <div className="sm:w-[1440px] w-full sm:px-20 px-5 sm:mt-13 mt-8 sm:mb-19 mb-8">
-        <div className="flex flex-wrap gap-8">
-          <div className="w-full text-3xl leading-9 font-semibold text-foreground">
-            {(link.charAt(0).toLocaleUpperCase() + link.slice(1))
+        <div className="flex flex-col gap-8">
+          <div className="w-full sm:text-3xl text-2xl sm:leading-9 leading-8 font-semibold text-foreground">
+            {link
               .split("_")
+              .map((el) => el.charAt(0).toLocaleUpperCase() + el.slice(1))
               .join(" ")}
           </div>
-          {movies.results.map((mov) => (
-            <Link key={mov.id} href={`/details/${mov.id}`}>
-              <MovieCard
-                title={mov.title}
-                score={mov.vote_average}
-                image={`https://image.tmdb.org/t/p/original${mov.poster_path}`}
-              />
-            </Link>
-          ))}
+          <div className="flex flex-wrap sm:gap-8 gap-5">
+            {movies.results.map((mov) => (
+              <Link key={mov.id} href={`/details/${mov.id}`}>
+                <MovieCard
+                  title={mov.title}
+                  score={mov.vote_average}
+                  image={mov.poster_path}
+                />
+              </Link>
+            ))}
+          </div>
           <PaginationComp url={url} page={page} />
         </div>
       </div>

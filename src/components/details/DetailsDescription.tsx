@@ -54,19 +54,22 @@ export const DetailsDescription = ({
       <div className="mt-5 text-base leading-7 font-bold text-foreground flex gap-[53px] items-center">
         <p className="min-w-16">Writers</p>
         <div className="flex flex-wrap">
-          {movieCredits.crew.map(
-            (movCrew) =>
-              (movCrew.job === "Original Story" ||
-                movCrew.job === "Writer" ||
-                movCrew.job === "Story") && (
-                <p
-                  key={movCrew.credit_id}
-                  className="leading-6 font-normal flex"
-                >
-                  <Dot className="sm:w-7 w-5 sm:h-7 h-5" /> {movCrew.name}
-                </p>
-              )
-          )}
+          {movieCredits.crew
+            .filter((el) =>
+              [
+                "Writer",
+                "Original Story",
+                "Story",
+                "Characters",
+                "Comic Book",
+                // "Screenplay",
+              ].includes(el.job)
+            )
+            .map((el) => (
+              <p key={el.credit_id} className="leading-6 font-normal flex">
+                <Dot className="sm:w-7 w-5 sm:h-7 h-5" /> {el.name}
+              </p>
+            ))}
         </div>
       </div>
       <Separator className="h-[1px] mt-2 mb-1" />

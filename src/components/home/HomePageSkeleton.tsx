@@ -34,7 +34,7 @@ export const HomePageSkeleton = () => {
           key={index}
           className="sm:w-[1440px] w-full sm:mt-13 mt-8 sm:px-20 px-5 flex sm:gap-8 gap-5 flex-wrap"
         >
-          <div className="w-full flex justify-between items-center">
+          <div className="w-full flex justify-between">
             <Skeleton className="sm:w-[250px] w-[145px] h-8 rounded-full" />
             <Skeleton className="sm:w-[165px] w-[125px] h-9 rounded-full" />
           </div>

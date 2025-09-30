@@ -24,7 +24,7 @@ export const PaginationComp = ({ page, url }: PaginationCompProps) => {
             aria-disabled={Number(page) <= 1}
             tabIndex={Number(page) <= 1 ? -1 : undefined}
             className={
-              Number(page) <= 1 ? "pointer-events-none opacity-50" : undefined
+              Number(page) <= 1 ? "pointer-events-none opacity-30" : undefined
             }
           />
         </PaginationItem>

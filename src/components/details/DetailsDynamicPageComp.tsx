@@ -31,6 +31,7 @@ export const DetailsDynamicPageComp = async ({
   const id = dynamicParams.id;
   const movieDetails: MovieDetailsType = await getMovieDetails(id);
   const movieCredits: movieCreditsResponseType = await getMovieCredits(id);
+  console.log(movieCredits, "movieCredits");
   const movieTrailer: movieTrailerResponseType = await getMovieTrailer(id);
   // console.log({ id });
   const similarMovies: movieResponseType = await getSimilarMovies(id, "1");
@@ -48,12 +49,24 @@ export const DetailsDynamicPageComp = async ({
             <DetailsImgComp movieDetails={movieDetails} />
           </div>
           <div className="sm:w-190 w-full sm:h-107 aspect-[16/9] sm:rounded-sm rounded-none overflow-hidden relative">
-            <Image
-              src={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}
-              alt={movieDetails.title}
-              unoptimized
-              fill
-            />
+            {movieDetails.backdrop_path ? (
+              <Image
+                src={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}
+                alt={movieDetails.title}
+                unoptimized
+                fill
+              />
+            ) : (
+              <Image
+                src={
+                  "https://img.freepik.com/free-vector/coming-soon-background-with-focus-light-effect-design_1017-27277.jpg?semt=ais_incoming&w=740&q=80"
+                }
+                alt={movieDetails.title}
+                unoptimized
+                fill
+              />
+            )}
+
             <TrailerDialog trailerKey={trailer?.key} />
           </div>
         </div>

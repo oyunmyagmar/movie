@@ -13,7 +13,7 @@ export const SeeMoreDynamicPageSkeleton = () => {
           />
         ))}
       </div>
-      <Skeleton className="sm:w-81 w-50 h-9 mt-8 flex justify-self-end" />
+      <Skeleton className="sm:w-80 w-50 h-9 mt-8 flex justify-self-end" />
     </div>
   );
 };

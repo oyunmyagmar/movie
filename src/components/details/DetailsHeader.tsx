@@ -18,9 +18,13 @@ export const DetailsHeader = ({ movieDetails }: DetailsHeaderProps) => {
           <Dot className="sm:w-7 w-5 sm:h-7 h-5 stroke-white-[1px]" />
           {movieDetails.adult ? "R" : "G"}
           <Dot className="sm:w-7 w-5 sm:h-7 h-5" />
-          {`${Math.floor(movieDetails.runtime / 60)}h ${
-            movieDetails.runtime % 60
-          }m`}
+          {movieDetails.runtime >= 60
+            ? `${Math.floor(movieDetails.runtime / 60)}h ${
+                movieDetails.runtime % 60 > 0
+                  ? `${movieDetails.runtime % 60}m`
+                  : ""
+              }`
+            : `${movieDetails.runtime}m`}
         </p>
       </div>
       <div className="sm:py-1 pt-1 pr-3 sm:ml-0 ml-5">
