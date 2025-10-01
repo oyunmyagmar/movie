@@ -20,6 +20,7 @@ export const SeeMoreDynamicPageComp = async ({
   const { page = "1" } = await searchParams;
   const movies: movieResponseType = await getMoviesList(link, page);
   const url = `/seeMore/${link}?`;
+  const totalPages = movies.total_pages;
 
   return (
     <div className="w-screen flex flex-col items-center">
@@ -42,7 +43,7 @@ export const SeeMoreDynamicPageComp = async ({
               </Link>
             ))}
           </div>
-          <PaginationComp url={url} page={page} />
+          <PaginationComp url={url} page={page} totalPages={totalPages} />
         </div>
       </div>
     </div>

@@ -14,11 +14,11 @@ type GenrePageProps = {
 
 export const generateMetadata = async ({ searchParams }: GenrePageProps) => {
   const movieGenresList: genreResponseType = await getGenresList();
-
   const { id } = await searchParams;
   const genreName = movieGenresList.genres.find(
     (genre) => genre.id === Number(id)
   );
+
   return {
     title: `MovieZ | Genre: ${genreName?.name}`,
   };

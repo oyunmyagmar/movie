@@ -13,8 +13,13 @@ import {
 type PaginationCompProps = {
   page: string;
   url: string;
+  totalPages: number;
 };
-export const PaginationComp = ({ page, url }: PaginationCompProps) => {
+export const PaginationComp = ({
+  page,
+  url,
+  totalPages,
+}: PaginationCompProps) => {
   return (
     <Pagination className="justify-end">
       <PaginationContent>
@@ -42,16 +47,26 @@ export const PaginationComp = ({ page, url }: PaginationCompProps) => {
             {page}
           </PaginationLink>
         </PaginationItem>
+        {Number(page) < totalPages && (
+          <>
+            <PaginationItem>
+              <PaginationLink href={`${url}page=${Number(page) + 1}`}>
+                {Number(page) + 1}
+              </PaginationLink>
+            </PaginationItem>
+          </>
+        )}
         <PaginationItem>
-          <PaginationLink href={`${url}page=${Number(page) + 1}`}>
-            {Number(page) + 1}
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationNext href={`${url}page=${Number(page) + 1}`} />
+          <PaginationNext
+            href={`${url}page=${Number(page) + 1}`}
+            aria-disabled={Number(page) >= totalPages}
+            tabIndex={Number(page) >= totalPages ? -1 : undefined}
+            className={
+              Number(page) >= totalPages
+                ? "pointer-events-none opacity-30"
+                : undefined
+            }
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

@@ -26,9 +26,9 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
       )
     : searchedMovies.results;
   const url = `/search?value=${value}&`;
+  const totalPages = searchedMovies.total_pages;
 
-  console.log(searchedMovies, "searchedMovies");
-
+  console.log(searchedMovies, "searched");
   return (
     <div className="w-screen flex flex-col items-center">
       <div className="sm:w-[1440px] w-full sm:px-20 px-5 flex flex-col gap-8 sm:mt-13 sm:mb-[344px] my-8">
@@ -40,7 +40,8 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
             <ResizablePanel collapsible>
               <div className="flex flex-col gap-8">
                 <h4 className="text-xl leading-7 font-semibold text-foreground">
-                  {searchedMovies.total_results} results for “{value}”
+                  {searchedMovies.total_results.toLocaleString("en")} results
+                  for “{value}”
                 </h4>
                 {searchedMovies.results.length ? (
                   <div className="flex flex-wrap gap-y-8 gap-x-12">
@@ -62,7 +63,7 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
                     No results found.
                   </Label>
                 )}
-                <PaginationComp url={url} page={page} />
+                <PaginationComp url={url} page={page} totalPages={totalPages} />
               </div>
             </ResizablePanel>
             <ResizableHandle withHandle className="mx-11" />
@@ -75,23 +76,34 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
             </ResizablePanel>
           </ResizablePanelGroup>
         </div>
+        {/* responsive */}
         <div className="sm:hidden block">
           <div className="flex flex-col gap-8 mb-8">
             <h4 className="text-xl leading-7 font-semibold text-foreground">
-              {searchedMovies.total_results} results for “{value}”
+              {searchedMovies.total_results.toLocaleString("en")} results for “
+              {value}”
             </h4>
-            <div className="flex flex-wrap gap-5">
-              {filteredMovies.slice(0, 18).map((movSearched) => (
-                <Link key={movSearched.id} href={`/details/${movSearched.id}`}>
-                  <MovieCard
-                    title={movSearched.title}
-                    score={movSearched.vote_average}
-                    image={`https://image.tmdb.org/t/p/w500${movSearched.poster_path}`}
-                  />
-                </Link>
-              ))}
-            </div>
-            <PaginationComp url={url} page={page} />
+            {searchedMovies.results.length ? (
+              <div className="flex flex-wrap gap-5">
+                {filteredMovies.slice(0, 18).map((movSearched) => (
+                  <Link
+                    key={movSearched.id}
+                    href={`/details/${movSearched.id}`}
+                  >
+                    <MovieCard
+                      title={movSearched.title}
+                      score={movSearched.vote_average}
+                      image={movSearched.poster_path}
+                    />
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <Label className="w-full h-[95px] justify-center border border-border rounded-lg">
+                No results found.
+              </Label>
+            )}
+            <PaginationComp url={url} page={page} totalPages={totalPages} />
           </div>
           <SearchListCard page={page} searchValue={value} genreId={genreId} />
         </div>

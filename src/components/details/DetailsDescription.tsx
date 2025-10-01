@@ -32,7 +32,7 @@ export const DetailsDescription = ({
               </Badge>
             ))}
           </div>
-          <p className="mt-5 text-base leading-6 text-foreground">
+          <p className="mt-5 text-base leading-6 text-foreground line-clamp-10">
             {movieDetails.overview}
           </p>
         </div>

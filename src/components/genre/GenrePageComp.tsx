@@ -28,8 +28,8 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
     id,
     page
   );
-  // console.log({ filteredMoviesByGenreId });
   const url = `/genre/?id=${id}&name=${name}&`;
+  const totalPages = filteredMoviesByGenreId.total_pages;
 
   return (
     <div className="w-screen flex flex-col items-center">
@@ -58,16 +58,18 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
                     />
                   </Link>
                 ))}
-                <PaginationComp url={url} page={page} />
+                <PaginationComp url={url} page={page} totalPages={totalPages} />
               </div>
             </ResizablePanel>
           </ResizablePanelGroup>
         </div>
+        {/* responsive */}
         <div className="sm:hidden block">
           <GenresListCard genres={movieGenresList.genres} id={id} />
           <div className="flex flex-col gap-8 mt-8">
             <h4 className="w-full text-xl leading-7 font-semibold text-foreground">
-              {filteredMoviesByGenreId.total_results} titles in "{name}"
+              {filteredMoviesByGenreId.total_results.toLocaleString("en")}{" "}
+              titles in "{name}"
             </h4>
             <div className="flex flex-wrap gap-5">
               {filteredMoviesByGenreId.results.slice(0, 18).map((movie) => (
@@ -75,12 +77,12 @@ export const GenrePageComp = async ({ searchParams }: GenrePageCompProps) => {
                   <MovieCard
                     title={movie.title}
                     score={movie.vote_average}
-                    image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                    image={movie.poster_path}
                   />
                 </Link>
               ))}
             </div>
-            <PaginationComp url={url} page={page} />
+            <PaginationComp url={url} page={page} totalPages={totalPages} />
           </div>
         </div>
       </div>
