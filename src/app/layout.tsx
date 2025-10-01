@@ -16,8 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Movie Z",
-  description: "Movies Information",
+  title: "MovieZ: Movie Information Site",
+  description:
+    "Now Playing, Upcoming, Popular, Top Rated movie lists, view movies by genre and search filter",
 };
 
 export default function RootLayout({

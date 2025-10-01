@@ -12,12 +12,11 @@ type DetailsPageProps = {
 };
 
 export const generateMetadata = async ({ params }: DetailsPageProps) => {
-  const dynamicParams = await params;
-  const id = dynamicParams.id;
+  const { id } = await params;
   const movieDetails: MovieDetailsType = await getMovieDetails(id);
 
   return {
-    title: `MovieZ | ${movieDetails.title}`,
+    title: `MovieZ | ${movieDetails?.title}`,
   };
 };
 

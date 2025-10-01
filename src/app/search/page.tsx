@@ -10,6 +10,14 @@ type SearchPageProps = {
   }>;
 };
 
+export const generateMetadata = async ({ searchParams }: SearchPageProps) => {
+  const { value } = await searchParams;
+
+  return {
+    title: `MovieZ | Search Results for "${value}"`,
+  };
+};
+
 const SearchPage = ({ searchParams }: SearchPageProps) => {
   return (
     <Suspense fallback={<SearchPageSkeleton />}>
