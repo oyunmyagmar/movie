@@ -2,6 +2,7 @@ import React from "react";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogTitle,
   DialogTrigger,
   Button,
@@ -36,7 +37,8 @@ export const HeroTrailerDialog = ({
             src={`//www.youtube-nocookie.com/embed/${trailerKey}`}
             allowFullScreen
             className="sm:w-[997px] min-w-full sm:h-[561px] aspect-[16/9]"
-          ></iframe>
+          />
+          <DialogDescription className="hidden" />
         </DialogContent>
       </Dialog>
     </div>

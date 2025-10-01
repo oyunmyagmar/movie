@@ -1,4 +1,3 @@
-export * from "./ThemeToggler";
 export * from "./HeroCard";
 export * from "./HeroCarousel";
 export * from "./MoviesContainer";
@@ -6,8 +5,3 @@ export * from "./HeroCarouselItem";
 export * from "./HeroTrailerDialog";
 export * from "./HomePageComp";
 export * from "./HomePageSkeleton";
-export * from "./MoreLikeDynamicPageComp";
-export * from "./MoreLikeDynamicPageSkeleton";
-export * from "./SeeMoreDynamicPageComp";
-export * from "./SeeMoreDynamicPageSkeleton";
-export * from "./NavMobileSearch";

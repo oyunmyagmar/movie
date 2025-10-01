@@ -1,13 +1,14 @@
 "use client";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
-import { Button } from "@/components/ui/button";
-import { NavInputSearch } from "../headerAndFooter/NavInputSearch";
-import { NavLogo } from "../headerAndFooter/NavLogo";
-import { NavMenuItem } from "../headerAndFooter/NavMenuItem";
+import { Button } from "@/components/ui";
+import {
+  NavInputSearch,
+  NavMenuItem,
+  NavLogo,
+  ThemeToggler,
+} from "@/components/headerAndFooter";
 import { genreResponseType } from "@/types";
-import { ThemeToggler } from "./ThemeToggler";
 
 type NavMobileSearch = {
   movieGenresList: genreResponseType;

@@ -1,5 +1,4 @@
-import React from "react";
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { SearchPageComp, SearchPageSkeleton } from "@/components/search";
 
 type SearchPageProps = {

@@ -1,9 +1,10 @@
 import React from "react";
-import { NavMobileSearch, ThemeToggler } from "@/components/home";
 import {
   NavLogo,
   NavMenuItem,
   NavInputSearch,
+  NavMobileSearch,
+  ThemeToggler,
 } from "@/components/headerAndFooter";
 import { genreResponseType } from "@/types";
 import { getGenresList } from "@/utils/get-data";

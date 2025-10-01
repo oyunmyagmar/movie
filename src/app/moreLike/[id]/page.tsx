@@ -1,9 +1,8 @@
-import React from "react";
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import {
   MoreLikeDynamicPageComp,
   MoreLikeDynamicPageSkeleton,
-} from "@/components/home";
+} from "@/components/more";
 
 type MoreLikePageProps = {
   params: Promise<{ id: string }>;

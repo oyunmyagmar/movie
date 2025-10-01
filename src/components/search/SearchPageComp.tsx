@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { SearchListCard } from "@/components/search";
-import { MedMovieCard, MovieCard, PaginationComp } from "@/components/general";
+import { SearchListCard, SearchMobileComp } from "@/components/search";
+import { MedMovieCard, PaginationComp } from "@/components/general";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -26,9 +26,21 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
       )
     : searchedMovies.results;
   const url = `/search?value=${value}&`;
-  const totalPages = searchedMovies.total_pages;
 
-  console.log(searchedMovies, "searched");
+  const totalPages =
+    genreId && filteredMovies && filteredMovies.length < 20
+      ? 1
+      : searchedMovies && searchedMovies.total_pages
+      ? searchedMovies.total_pages
+      : 1;
+
+  const resultNumber =
+    genreId && filteredMovies
+      ? filteredMovies.length
+      : searchedMovies && searchedMovies.total_results
+      ? searchedMovies.total_results
+      : 0;
+
   return (
     <div className="w-screen flex flex-col items-center">
       <div className="sm:w-[1440px] w-full sm:px-20 px-5 flex flex-col gap-8 sm:mt-13 sm:mb-[344px] my-8">
@@ -40,10 +52,9 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
             <ResizablePanel collapsible>
               <div className="flex flex-col gap-8">
                 <h4 className="text-xl leading-7 font-semibold text-foreground">
-                  {searchedMovies.total_results.toLocaleString("en")} results
-                  for “{value}”
+                  {resultNumber.toLocaleString("en")} results for "{value}"
                 </h4>
-                {searchedMovies.results.length ? (
+                {resultNumber > 0 && totalPages !== 0 ? (
                   <div className="flex flex-wrap gap-y-8 gap-x-12">
                     {filteredMovies.slice(0, 18).map((movSearched) => (
                       <Link
@@ -76,37 +87,15 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
             </ResizablePanel>
           </ResizablePanelGroup>
         </div>
-        {/* responsive */}
-        <div className="sm:hidden block">
-          <div className="flex flex-col gap-8 mb-8">
-            <h4 className="text-xl leading-7 font-semibold text-foreground">
-              {searchedMovies.total_results.toLocaleString("en")} results for “
-              {value}”
-            </h4>
-            {searchedMovies.results.length ? (
-              <div className="flex flex-wrap gap-5">
-                {filteredMovies.slice(0, 18).map((movSearched) => (
-                  <Link
-                    key={movSearched.id}
-                    href={`/details/${movSearched.id}`}
-                  >
-                    <MovieCard
-                      title={movSearched.title}
-                      score={movSearched.vote_average}
-                      image={movSearched.poster_path}
-                    />
-                  </Link>
-                ))}
-              </div>
-            ) : (
-              <Label className="w-full h-[95px] justify-center border border-border rounded-lg">
-                No results found.
-              </Label>
-            )}
-            <PaginationComp url={url} page={page} totalPages={totalPages} />
-          </div>
-          <SearchListCard page={page} searchValue={value} genreId={genreId} />
-        </div>
+        <SearchMobileComp
+          resultNumber={resultNumber}
+          value={value}
+          totalPages={totalPages}
+          filteredMovies={filteredMovies}
+          url={url}
+          page={page}
+          genreId={genreId}
+        />
       </div>
     </div>
   );

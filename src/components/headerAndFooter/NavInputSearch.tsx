@@ -46,7 +46,6 @@ export const NavInputSearch = () => {
           />
         </div>
       </PopoverTrigger>
-
       <PopoverContent
         onOpenAutoFocus={(e) => e.preventDefault()}
         onCloseAutoFocus={(e) => e.preventDefault()}
@@ -66,7 +65,6 @@ export const NavInputSearch = () => {
                 year={movSearched.release_date}
                 href={`/details/${movSearched.id}`}
               />
-
               <Separator className="my-2" />
             </div>
           ))}

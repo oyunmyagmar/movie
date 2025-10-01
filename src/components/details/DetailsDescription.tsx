@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { Badge, Separator } from "@/components/ui";
 import { MovieDetailsType, movieCreditsResponseType } from "@/types";
 import { Dot } from "lucide-react";
@@ -13,7 +12,6 @@ export const DetailsDescription = ({
   movieDetails,
   movieCredits,
 }: DetailsDescriptionProps) => {
-  console.log(movieCredits);
   return (
     <div className="sm:px-0 px-5 my-8">
       <div className="flex gap-[34px]">

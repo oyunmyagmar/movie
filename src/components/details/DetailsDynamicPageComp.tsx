@@ -63,7 +63,6 @@ export const DetailsDynamicPageComp = async ({
                 fill
               />
             )}
-
             <TrailerDialog trailerKey={trailer?.key} />
           </div>
         </div>
