@@ -1,12 +1,15 @@
 import React from "react";
 import Link from "next/link";
 import { SearchListCard, SearchMobileComp } from "@/components/search";
-import { MedMovieCard, PaginationComp } from "@/components/general";
+import {
+  MedMovieCard,
+  NoResultsMsgComp,
+  PaginationComp,
+} from "@/components/general";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-  Label,
 } from "@/components/ui";
 import { movieResponseType } from "@/types";
 import { getMoviesBySearch } from "@/utils/get-data";
@@ -40,11 +43,6 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
   } else if (searchedMovies && searchedMovies.total_results) {
     resultNumber = searchedMovies.total_results;
   }
-  // genreId && filteredMovies
-  //   ? filteredMovies.length
-  //   : searchedMovies && searchedMovies.total_results
-  //   ? searchedMovies.total_results
-  //   : 0;
 
   return (
     <div className="w-screen flex flex-col items-center">
@@ -75,23 +73,18 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
                     ))}
                   </div>
                 ) : (
-                  <Label className="w-full h-[95px] justify-center border border-border rounded-lg">
-                    No results found.
-                  </Label>
+                  <NoResultsMsgComp />
                 )}
                 <PaginationComp url={url} page={page} totalPages={totalPages} />
               </div>
             </ResizablePanel>
             <ResizableHandle withHandle className="mx-11" />
             <ResizablePanel>
-              <SearchListCard
-                page={page}
-                searchValue={value}
-                genreId={genreId}
-              />
+              <SearchListCard searchValue={value} genreId={genreId} />
             </ResizablePanel>
           </ResizablePanelGroup>
         </div>
+
         <SearchMobileComp
           resultNumber={resultNumber}
           value={value}

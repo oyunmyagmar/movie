@@ -1,6 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import { MovieCard, PaginationComp } from "@/components/general";
+import {
+  MovieCard,
+  PaginationComp,
+  NoResultsMsgComp,
+} from "@/components/general";
 import { movieResponseType } from "@/types";
 import { getSimilarMovies } from "@/utils/get-data";
 
@@ -17,6 +21,7 @@ export const MoreLikeDynamicPageComp = async ({
   const similarMovies: movieResponseType = await getSimilarMovies(id, page);
   const url = `/moreLike/${id}?`;
   const totalPages = similarMovies.total_pages;
+  const resultNumber = similarMovies.total_results;
 
   return (
     <div className="w-screen flex flex-col items-center">
@@ -24,17 +29,21 @@ export const MoreLikeDynamicPageComp = async ({
         <h3 className="w-full sm:text-3xl text-2xl sm:leading-9 leading-8 font-semibold text-foreground">
           More like this
         </h3>
-        <div className="flex flex-wrap sm:gap-8 gap-5">
-          {similarMovies.results.map((simMov) => (
-            <Link key={simMov.id} href={`/details/${simMov.id}`}>
-              <MovieCard
-                title={simMov.title}
-                score={simMov.vote_average}
-                image={simMov.poster_path}
-              />
-            </Link>
-          ))}
-        </div>
+        {resultNumber > 0 && totalPages !== 0 ? (
+          <div className="flex flex-wrap sm:gap-8 gap-5">
+            {similarMovies.results.map((simMov) => (
+              <Link key={simMov.id} href={`/details/${simMov.id}`}>
+                <MovieCard
+                  title={simMov.title}
+                  score={simMov.vote_average}
+                  image={simMov.poster_path}
+                />
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <NoResultsMsgComp />
+        )}
         <PaginationComp url={url} page={page} totalPages={totalPages} />
       </div>
     </div>

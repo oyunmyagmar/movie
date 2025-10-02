@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
-  Button,
-} from "@/components/ui";
+import { Dialog, DialogTrigger, Button } from "@/components/ui";
 import { LuPlay } from "react-icons/lu";
+import { TrailerContentComp } from "@/components/general";
 
 export const TrailerDialog = ({
   trailerKey,
@@ -27,15 +21,7 @@ export const TrailerDialog = ({
           <span className="text-base leading-6 text-white">Play Trailer</span>
         </div>
       </DialogTrigger>
-      <DialogContent className="sm:min-w-[997px] min-w-full sm:min-h-[561px] min-h-full p-0 border-none bg-black rounded-none flex justify-center items-center gap-0">
-        <DialogTitle className="hidden" />
-        <iframe
-          src={`//www.youtube-nocookie.com/embed/${trailerKey}`}
-          allowFullScreen
-          className="sm:w-[997px] min-w-full sm:h-[561px] aspect-[16/9] "
-        />
-        <DialogDescription className="hidden" />
-      </DialogContent>
+      <TrailerContentComp trailerKey={trailerKey} />
     </Dialog>
   );
 };

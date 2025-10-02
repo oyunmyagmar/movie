@@ -10,10 +10,10 @@ import {
 } from "@/components/headerAndFooter";
 import { genreResponseType } from "@/types";
 
-type NavMobileSearch = {
+type NavMobileSearchProps = {
   movieGenresList: genreResponseType;
 };
-export const NavMobileSearch = ({ movieGenresList }: NavMobileSearch) => {
+export const NavMobileSearch = ({ movieGenresList }: NavMobileSearchProps) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="w-full">

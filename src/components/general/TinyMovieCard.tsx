@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import {
   Card,
@@ -11,6 +10,7 @@ import {
 } from "@/components/ui";
 import { GoStarFill } from "react-icons/go";
 import { ArrowRight } from "lucide-react";
+import { ImgComp } from "@/components/general";
 
 type TinyMovieCardProps = {
   title: string;
@@ -30,23 +30,7 @@ export const TinyMovieCard = ({
     <Card className="p-2 border-none shadow-none flex flex-row gap-4">
       <CardContent className="p-0">
         <div className="w-[67px] h-25 rounded-md overflow-hidden relative">
-          {image ? (
-            <Image
-              src={`https://image.tmdb.org/t/p/original${image}`}
-              alt=""
-              fill
-              unoptimized
-            />
-          ) : (
-            <Image
-              src={
-                "https://img.freepik.com/free-vector/coming-soon-background-with-focus-light-effect-design_1017-27277.jpg?semt=ais_incoming&w=740&q=80"
-              }
-              alt=""
-              fill
-              unoptimized
-            />
-          )}
+          <ImgComp image={image} />
         </div>
       </CardContent>
       <CardHeader className="p-0 gap-0 flex-1">
@@ -79,4 +63,3 @@ export const TinyMovieCard = ({
     </Card>
   );
 };
-//className="object-fill"

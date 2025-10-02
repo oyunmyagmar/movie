@@ -5,3 +5,4 @@ export * from "./HeroCarouselItem";
 export * from "./HeroTrailerDialog";
 export * from "./HomePageComp";
 export * from "./HomePageSkeleton";
+export * from "./HeroCarouselItemMobileComp";

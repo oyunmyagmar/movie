@@ -1,5 +1,4 @@
 import * as React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import {
   Card,
@@ -10,6 +9,7 @@ import {
 } from "@/components/ui";
 import { HeroTrailerDialog } from "@/components/home";
 import { GoStarFill } from "react-icons/go";
+import { ImgComp } from "@/components/general";
 
 type HeroCardProps = {
   image: string;
@@ -33,27 +33,8 @@ export const HeroCard = ({
   return (
     <Card className="sm:w-[1440px] w-full sm:h-150 aspect-[125/82] relative p-0 border-0">
       <Link href={href}>
-        {image ? (
-          <Image
-            src={`https://image.tmdb.org/t/p/original${image}`}
-            alt=""
-            fill
-            unoptimized
-            priority
-          />
-        ) : (
-          <Image
-            src={
-              "https://img.freepik.com/free-vector/coming-soon-background-with-focus-light-effect-design_1017-27277.jpg?semt=ais_incoming&w=740&q=80"
-            }
-            alt=""
-            fill
-            unoptimized
-            priority
-          />
-        )}
+        <ImgComp image={image} />
       </Link>
-
       <div className="absolute top-[178px] left-29 flex-col gap-4 sm:block hidden">
         <CardHeader className="gap-0">
           <p className="text-base leading-6 text-white">{label}</p>

@@ -1,5 +1,4 @@
-import React from "react";
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { GenrePageComp, GenrePageSkeleton } from "@/components/genre";
 import { getGenresList } from "@/utils/get-data";
 import { genreResponseType } from "@/types";

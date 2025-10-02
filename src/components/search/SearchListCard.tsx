@@ -14,13 +14,11 @@ import { getGenresList } from "@/utils/get-data";
 
 type SearchListCardProps = {
   searchValue: string;
-  page: string | "1";
   genreId: string;
 };
 
 export const SearchListCard = async ({
   searchValue,
-  page,
   genreId,
 }: SearchListCardProps) => {
   const movieGenresList: genreResponseType = await getGenresList();

@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import {
   MovieDetailsType,
   movieTrailerResponseType,
@@ -19,6 +18,7 @@ import {
   TrailerDialog,
   DetailsImgComp,
 } from "@/components/details";
+import { ImgComp } from "@/components/general";
 
 type DetailsDynamicPageCompProps = {
   params: Promise<{ id: string }>;
@@ -36,6 +36,7 @@ export const DetailsDynamicPageComp = async ({
   const trailer = movieTrailer.results.find(
     (trailer) => trailer.type === "Trailer"
   );
+  const image = movieDetails.backdrop_path;
 
   return (
     <div className="w-screen flex flex-col items-center">
@@ -46,25 +47,7 @@ export const DetailsDynamicPageComp = async ({
             <DetailsImgComp movieDetails={movieDetails} />
           </div>
           <div className="sm:w-190 w-full sm:h-107 aspect-[16/9] sm:rounded-sm rounded-none overflow-hidden relative">
-            {movieDetails.backdrop_path ? (
-              <Image
-                src={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}
-                alt=""
-                unoptimized
-                fill
-                priority
-              />
-            ) : (
-              <Image
-                src={
-                  "https://img.freepik.com/free-vector/coming-soon-background-with-focus-light-effect-design_1017-27277.jpg?semt=ais_incoming&w=740&q=80"
-                }
-                alt=""
-                unoptimized
-                fill
-                priority
-              />
-            )}
+            <ImgComp image={image} />
             <TrailerDialog trailerKey={trailer?.key} />
           </div>
         </div>
