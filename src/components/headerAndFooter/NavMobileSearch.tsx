@@ -8,6 +8,14 @@ import {
   NavLogo,
   ThemeToggler,
 } from "@/components/headerAndFooter";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui";
 import { genreResponseType } from "@/types";
 
 type NavMobileSearchProps = {

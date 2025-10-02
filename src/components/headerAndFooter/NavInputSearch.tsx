@@ -27,11 +27,16 @@ export const NavInputSearch = () => {
     const { value } = e.target;
     value.length > 0 ? setIsOpen(true) : setIsOpen(false);
     setSearchValue(value);
+
     const searchedMovies = await getMoviesBySearch(value, "1");
     setFoundMovies(searchedMovies);
     // setIsLoading(false);
   };
 
+  function handleSeeAllResults() {
+    setIsOpen(false);
+    setSearchValue("");
+  }
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger>
@@ -43,6 +48,9 @@ export const NavInputSearch = () => {
             type="text"
             placeholder="Search.."
             className="sm:w-[379px] w-[251px] px-3 sm:py-2 py-3 pl-[38px] sm:border border-border-foreground border-0 rounded-lg text-foreground text-sm leading-5 flex items-center sm:shadow shadow-none"
+            onKeyDown={(e) =>
+              (e.key === "ArrowDown" || e.key === "ArrowUp") && alert()
+            }
           />
         </div>
       </PopoverTrigger>
@@ -68,7 +76,7 @@ export const NavInputSearch = () => {
               <Separator className="my-2" />
             </div>
           ))}
-          <Button asChild variant="link" onClick={() => setIsOpen(false)}>
+          <Button asChild variant="link" onClick={handleSeeAllResults}>
             <Link href={`/search?value=${searchValue}`}>
               See all results for "{searchValue}"
             </Link>

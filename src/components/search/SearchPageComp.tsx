@@ -43,7 +43,6 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
   } else if (searchedMovies && searchedMovies.total_results) {
     resultNumber = searchedMovies.total_results;
   }
-
   return (
     <div className="w-screen flex flex-col items-center">
       <div className="sm:w-[1440px] w-full sm:px-20 px-5 flex flex-col gap-8 sm:mt-13 sm:mb-[344px] my-8">

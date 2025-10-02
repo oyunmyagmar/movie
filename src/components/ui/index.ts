@@ -11,5 +11,6 @@ export * from "./pagination";
 export * from "./popover";
 export * from "./resizable";
 export * from "./separator";
+export * from "./sheet";
 export * from "./skeleton";
 export * from "./toggle";
