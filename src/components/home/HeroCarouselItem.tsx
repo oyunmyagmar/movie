@@ -24,7 +24,7 @@ export const HeroCarouselItem = ({ movie }: { movie: MovieType }) => {
   return (
     <CarouselItem key={movie.id} className="basis-none">
       <HeroCard
-        image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+        image={movie.backdrop_path}
         label="Now Playing:"
         title={movie.title}
         score={movie.vote_average}

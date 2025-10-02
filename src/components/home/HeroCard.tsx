@@ -7,7 +7,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui";
 import { HeroTrailerDialog } from "@/components/home";
 import { GoStarFill } from "react-icons/go";
 
@@ -33,8 +33,27 @@ export const HeroCard = ({
   return (
     <Card className="sm:w-[1440px] w-full sm:h-150 aspect-[125/82] relative p-0 border-0">
       <Link href={href}>
-        <Image src={image} alt={title} fill unoptimized />
+        {image ? (
+          <Image
+            src={`https://image.tmdb.org/t/p/original${image}`}
+            alt=""
+            fill
+            unoptimized
+            priority
+          />
+        ) : (
+          <Image
+            src={
+              "https://img.freepik.com/free-vector/coming-soon-background-with-focus-light-effect-design_1017-27277.jpg?semt=ais_incoming&w=740&q=80"
+            }
+            alt=""
+            fill
+            unoptimized
+            priority
+          />
+        )}
       </Link>
+
       <div className="absolute top-[178px] left-29 flex-col gap-4 sm:block hidden">
         <CardHeader className="gap-0">
           <p className="text-base leading-6 text-white">{label}</p>
@@ -52,7 +71,7 @@ export const HeroCard = ({
           </div>
         </CardHeader>
         <CardContent>
-          <CardDescription className="w-[302px] text-xs leaging-4 text-[#FAFAFA] line-clamp-5">
+          <CardDescription className="w-[302px] text-xs leading-4 text-[#FAFAFA] line-clamp-5">
             {description}
           </CardDescription>
           <div className="mt-20">

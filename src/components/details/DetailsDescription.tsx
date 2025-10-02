@@ -8,6 +8,7 @@ type DetailsDescriptionProps = {
   movieDetails: MovieDetailsType;
   movieCredits: movieCreditsResponseType;
 };
+
 export const DetailsDescription = ({
   movieDetails,
   movieCredits,
@@ -52,20 +53,19 @@ export const DetailsDescription = ({
       <div className="mt-5 text-base leading-7 font-bold text-foreground flex gap-[53px] items-center">
         <p className="min-w-16">Writers</p>
         <div className="flex flex-wrap">
-          {movieCredits.crew
-            .filter((el) =>
-              [
-                "Writer",
-                "Original Story",
-                "Story",
-                "Characters",
-                "Comic Book",
-                // "Screenplay",
-              ].includes(el.job)
-            )
-            .map((el) => (
-              <p key={el.credit_id} className="leading-6 font-normal flex">
-                <Dot className="sm:w-7 w-5 sm:h-7 h-5" /> {el.name}
+          {movieCredits.crew.filter(
+            (el) =>
+              el.job === "Writer" ||
+              el.job === "Original Story" ||
+              el.job === "Story" ||
+              el.job === "Characters" ||
+              el.job === "Comic Book" ||
+              el.job === "Screenplay"
+          ).map!((el) => el.name)
+            .filter((el, i, arr) => arr.indexOf(el) === i)
+            .map((el, i) => (
+              <p key={i} className="leading-6 font-normal flex">
+                <Dot className="sm:w-7 w-5 sm:h-7 h-5" /> {el}
               </p>
             ))}
         </div>

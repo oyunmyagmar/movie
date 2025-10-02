@@ -6,7 +6,7 @@ import {
   CardDescription,
   CardFooter,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui";
 
 type MovieCardProps = {
   title: string;
@@ -24,6 +24,7 @@ export const MovieCard = ({ title, score, image }: MovieCardProps) => {
             alt=""
             fill
             unoptimized
+            priority
           />
         ) : (
           <Image
@@ -33,6 +34,7 @@ export const MovieCard = ({ title, score, image }: MovieCardProps) => {
             alt=""
             fill
             unoptimized
+            priority
           />
         )}
       </CardContent>

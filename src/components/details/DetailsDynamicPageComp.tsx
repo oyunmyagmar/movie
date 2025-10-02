@@ -49,18 +49,20 @@ export const DetailsDynamicPageComp = async ({
             {movieDetails.backdrop_path ? (
               <Image
                 src={`https://image.tmdb.org/t/p/original${movieDetails.backdrop_path}`}
-                alt={movieDetails.title}
+                alt=""
                 unoptimized
                 fill
+                priority
               />
             ) : (
               <Image
                 src={
                   "https://img.freepik.com/free-vector/coming-soon-background-with-focus-light-effect-design_1017-27277.jpg?semt=ais_incoming&w=740&q=80"
                 }
-                alt={movieDetails.title}
+                alt=""
                 unoptimized
                 fill
+                priority
               />
             )}
             <TrailerDialog trailerKey={trailer?.key} />

@@ -34,12 +34,17 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
       ? searchedMovies.total_pages
       : 1;
 
-  const resultNumber =
-    genreId && filteredMovies
-      ? filteredMovies.length
-      : searchedMovies && searchedMovies.total_results
-      ? searchedMovies.total_results
-      : 0;
+  let resultNumber = 0;
+  if (genreId && filteredMovies) {
+    resultNumber = filteredMovies.length;
+  } else if (searchedMovies && searchedMovies.total_results) {
+    resultNumber = searchedMovies.total_results;
+  }
+  // genreId && filteredMovies
+  //   ? filteredMovies.length
+  //   : searchedMovies && searchedMovies.total_results
+  //   ? searchedMovies.total_results
+  //   : 0;
 
   return (
     <div className="w-screen flex flex-col items-center">
