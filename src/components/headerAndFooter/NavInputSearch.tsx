@@ -47,7 +47,7 @@ export const NavInputSearch = () => {
             onChange={handleInputChange}
             type="text"
             placeholder="Search.."
-            className="sm:w-[379px] w-[251px] px-3 sm:py-2 py-3 pl-[38px] sm:border border-border-foreground border-0 rounded-lg text-foreground text-sm leading-5 flex items-center sm:shadow shadow-none"
+            className="sm:w-[379px] max-w-[251px] px-3 sm:py-2 py-3 pl-[38px] sm:border border-border-foreground border-0 rounded-lg text-foreground text-sm leading-5 flex items-center sm:shadow shadow-none"
             onKeyDown={(e) =>
               (e.key === "ArrowDown" || e.key === "ArrowUp") && alert()
             }
