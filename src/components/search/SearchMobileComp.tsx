@@ -6,7 +6,7 @@ import {
   PaginationComp,
 } from "@/components/general";
 import { SearchListCard } from "@/components/search";
-import { MovieType } from "@/types";
+import { MovieType, genreResponseType } from "@/types";
 
 type SearchMobileCompProps = {
   resultNumber: number;
@@ -16,6 +16,7 @@ type SearchMobileCompProps = {
   url: string;
   page: string;
   genreId: string;
+  movieGenresList: genreResponseType;
 };
 
 export const SearchMobileComp = ({
@@ -26,12 +27,17 @@ export const SearchMobileComp = ({
   url,
   page,
   genreId,
+  movieGenresList,
 }: SearchMobileCompProps) => {
   return (
     <div className="sm:hidden block">
       <div className="flex flex-col gap-8 mb-8">
         <h4 className="text-xl leading-7 font-semibold text-foreground">
-          {resultNumber.toLocaleString("en")} results for "{value}"
+          {resultNumber.toLocaleString("en")} results for "{value}"{" "}
+          {genreId &&
+            movieGenresList.genres
+              .filter((genre) => genre.id === Number(genreId))
+              .map((el) => <span>in {el.name}</span>)}
         </h4>
         {resultNumber > 0 && totalPages !== 0 ? (
           <div className="flex flex-wrap gap-5">

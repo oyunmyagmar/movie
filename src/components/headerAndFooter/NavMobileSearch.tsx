@@ -8,14 +8,6 @@ import {
   NavLogo,
   ThemeToggler,
 } from "@/components/headerAndFooter";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui";
 import { genreResponseType } from "@/types";
 
 type NavMobileSearchProps = {
@@ -26,16 +18,14 @@ export const NavMobileSearch = ({ movieGenresList }: NavMobileSearchProps) => {
   return (
     <div className="w-full">
       {isOpen ? (
-        <div className="flex items-center">
+        <div className="flex items-center justify-between">
           <div className="mr-6">
             <NavMenuItem movieGenresList={movieGenresList} />
           </div>
           <NavInputSearch />
-          <div className="ml-3">
-            <Button variant={"ghost"} onClick={() => setIsOpen(false)}>
-              X
-            </Button>
-          </div>
+          <Button variant={"ghost"} onClick={() => setIsOpen(false)}>
+            X
+          </Button>
         </div>
       ) : (
         <div className="flex justify-between">

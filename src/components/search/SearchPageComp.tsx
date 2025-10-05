@@ -11,13 +11,18 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui";
-import { movieResponseType } from "@/types";
-import { getMoviesBySearch } from "@/utils/get-data";
+import { movieResponseType, genreResponseType } from "@/types";
+import { getMoviesBySearch, getGenresList } from "@/utils/get-data";
 
 type SearchPageCompProps = {
-  searchParams: Promise<{ value: string; genreId: string; page: string }>;
+  searchParams: Promise<{
+    value: string;
+    genreId: string;
+    page: string;
+  }>;
 };
 export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
+  const movieGenresList: genreResponseType = await getGenresList();
   const { value, genreId, page = "1" } = await searchParams;
   const searchedMovies: movieResponseType = await getMoviesBySearch(
     value,
@@ -43,6 +48,7 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
   } else if (searchedMovies && searchedMovies.total_results) {
     resultNumber = searchedMovies.total_results;
   }
+
   return (
     <div className="w-screen flex flex-col items-center">
       <div className="sm:w-[1440px] w-full sm:px-20 px-5 flex flex-col gap-8 sm:mt-13 sm:mb-[344px] my-8">
@@ -54,7 +60,11 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
             <ResizablePanel collapsible>
               <div className="flex flex-col gap-8">
                 <h4 className="text-xl leading-7 font-semibold text-foreground">
-                  {resultNumber.toLocaleString("en")} results for "{value}"
+                  {resultNumber.toLocaleString("en")} results for "{value}"{" "}
+                  {genreId &&
+                    movieGenresList.genres
+                      .filter((genre) => genre.id === Number(genreId))
+                      .map((el) => <span>in {el.name}</span>)}
                 </h4>
                 {resultNumber > 0 && totalPages !== 0 ? (
                   <div className="flex flex-wrap gap-y-8 gap-x-12">
@@ -85,6 +95,7 @@ export const SearchPageComp = async ({ searchParams }: SearchPageCompProps) => {
         </div>
 
         <SearchMobileComp
+          movieGenresList={movieGenresList}
           resultNumber={resultNumber}
           value={value}
           totalPages={totalPages}
