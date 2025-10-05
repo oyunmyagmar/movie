@@ -21,8 +21,7 @@ export const NavMobileSearch = ({ movieGenresList }: NavMobileSearchProps) => {
       {isOpen ? (
         <div className="flex items-center justify-between">
           <div className="mr-6">
-            <NavMenuItem movieGenresList={movieGenresList} />
-            {/* <NavMobileMenuItem /> */}
+            <NavMobileMenuItem movieGenresList={movieGenresList} />
           </div>
           <NavInputSearch />
           <Button variant={"ghost"} onClick={() => setIsOpen(false)}>

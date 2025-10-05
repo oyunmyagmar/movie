@@ -7,7 +7,7 @@ type ImgCompProps = {
 
 export const ImgComp = ({ image }: ImgCompProps) => {
   return (
-    <div>
+    <div className="relative w-full h-full">
       {image ? (
         <Image
           src={`https://image.tmdb.org/t/p/original${image}`}

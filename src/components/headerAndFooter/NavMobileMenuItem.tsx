@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
 import {
   Sheet,
@@ -9,9 +10,11 @@ import {
   SheetTrigger,
   Badge,
   Separator,
+  Button,
 } from "@/components/ui";
 import { ChevronRight } from "lucide-react";
 import { genreResponseType } from "@/types";
+import { IoChevronDown } from "react-icons/io5";
 
 type NavMobileMenuItemProps = {
   movieGenresList: genreResponseType;
@@ -20,38 +23,46 @@ type NavMobileMenuItemProps = {
 export const NavMobileMenuItem = ({
   movieGenresList,
 }: NavMobileMenuItemProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function handleCloseSheet() {
+    setIsOpen(false);
+  }
   return (
-    <Sheet>
-      <SheetTrigger>Open</SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>Are you absolutely sure?</SheetTitle>
-          <SheetDescription>
-            <h3 className="text-2xl leading-8 font-semibold text-foreground mb-1">
-              Genres
-            </h3>
-            <p className="text-base leading-6 text-foreground">
-              See lists of movies by genre
-            </p>
-            <Separator className="my-4" />
-            <div className="sm:w-[577px] w-[calc(80vw-20px)] flex gap-4 flex-wrap">
-              {movieGenresList.genres.map((genre) => (
-                <Link
-                  key={genre.id}
-                  href={`/genre?id=${genre.id}&name=${genre.name}`}
-                >
-                  <Badge
-                    variant="outline"
-                    className="leading-4 font-semibold rounded-full pl-2.5 pr-1 gap-2"
-                  >
-                    {genre.name}
-                    <ChevronRight size={16} />
-                  </Badge>
-                </Link>
-              ))}
-            </div>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+      <SheetTrigger asChild>
+        <Button variant="outline">
+          <IoChevronDown size={16} />
+        </Button>
+      </SheetTrigger>
+      <SheetContent
+        className="p-5 left-0 right-0 top-[52px] w-[calc(80vw)] rounded-lg gap-0"
+        side="top"
+      >
+        <SheetHeader className="p-0 gap-1">
+          <SheetTitle className="text-2xl leading-8">Genres</SheetTitle>
+          <SheetDescription className="text-base leading-6 text-foreground">
+            See lists of movies by genre
           </SheetDescription>
         </SheetHeader>
+        <Separator className="my-4" />
+        <div className="flex gap-4 flex-wrap">
+          {movieGenresList.genres.map((genre) => (
+            <Link
+              key={genre.id}
+              href={`/genre?id=${genre.id}&name=${genre.name}`}
+              onClick={handleCloseSheet}
+            >
+              <Badge
+                variant="outline"
+                className="leading-4 font-semibold rounded-full pl-2.5 pr-1 gap-2"
+              >
+                {genre.name}
+                <ChevronRight size={16} />
+              </Badge>
+            </Link>
+          ))}
+        </div>
       </SheetContent>
     </Sheet>
   );

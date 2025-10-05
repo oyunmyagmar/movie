@@ -37,7 +37,7 @@ export const SearchMobileComp = ({
           {genreId &&
             movieGenresList.genres
               .filter((genre) => genre.id === Number(genreId))
-              .map((el) => <span>in {el.name}</span>)}
+              .map((el) => <span key={el.id}>in {el.name}</span>)}
         </h4>
         {resultNumber > 0 && totalPages !== 0 ? (
           <div className="flex flex-wrap gap-5">
