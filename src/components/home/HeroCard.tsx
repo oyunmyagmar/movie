@@ -31,7 +31,7 @@ export const HeroCard = ({
   href,
 }: HeroCardProps) => {
   return (
-    <Card className="sm:w-[1440px] w-full sm:h-150 aspect-[125/82] relative p-0 border-0">
+    <Card className="sm:w-[1440px] w-full sm:h-150 aspect-[125/82] relative p-0 border-0 rounded-none shadow-none">
       <Link href={href}>
         <ImgComp image={image} />
       </Link>
