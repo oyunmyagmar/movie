@@ -36,7 +36,7 @@ export const NavMobileMenuItem = ({
         </Button>
       </SheetTrigger>
       <SheetContent
-        className="p-5 left-0 right-0 top-[52px] w-[calc(80vw)] rounded-lg gap-0"
+        className="p-5 top-[52px] w-[85vw] rounded-lg gap-0 mx-5"
         side="top"
       >
         <SheetHeader className="p-0 gap-1">

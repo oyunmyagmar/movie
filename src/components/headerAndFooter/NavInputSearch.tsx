@@ -99,7 +99,7 @@ export const NavInputSearch = () => {
         side="bottom"
         align="center"
         alignOffset={-100}
-        className="sm:w-[577px] w-[calc(80vw-25px)] sm:mt-[4.5px] mt-[11.5px] p-3 rounded-lg"
+        className="sm:w-[577px] w-[80vw] sm:mt-[4.5px] mt-[11.5px] p-3 rounded-lg mx-5"
       >
         <div>
           {isLoading ? (
