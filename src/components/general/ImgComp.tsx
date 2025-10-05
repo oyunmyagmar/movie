@@ -14,7 +14,7 @@ export const ImgComp = ({ image }: ImgCompProps) => {
           alt=""
           fill
           unoptimized
-          // priority
+          priority
         />
       ) : (
         <Image
@@ -24,7 +24,7 @@ export const ImgComp = ({ image }: ImgCompProps) => {
           alt=""
           fill
           unoptimized
-          // priority
+          priority
         />
       )}
     </div>

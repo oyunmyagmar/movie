@@ -13,6 +13,7 @@ import {
   Button,
 } from "@/components/ui";
 import { TinyMovieCard } from "@/components/general";
+import { useRouter } from "next/navigation";
 
 export const NavInputSearch = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -20,23 +21,55 @@ export const NavInputSearch = () => {
     null
   );
   const [isOpen, setIsOpen] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [index, setIndex] = useState<number>(-1);
+  const router = useRouter();
 
   const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    // setIsLoading(true);
     const { value } = e.target;
     value.length > 0 ? setIsOpen(true) : setIsOpen(false);
     setSearchValue(value);
+    setIndex(-1);
 
     const searchedMovies = await getMoviesBySearch(value, "1");
     setFoundMovies(searchedMovies);
-    // setIsLoading(false);
   };
 
   function handleSeeAllResults() {
     setIsOpen(false);
     setSearchValue("");
   }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!foundMovies?.results?.length) return;
+
+    switch (e.key) {
+      case "Enter":
+        e.preventDefault();
+        if (index >= 0 && index < foundMovies.results.length) {
+          const selectedMovie = foundMovies.results[index];
+          router.push(`/details/${selectedMovie.id}`);
+        } else if (searchValue.trim()) {
+          router.push(`/search?value=${encodeURIComponent(searchValue)}`);
+        }
+        setIsOpen(false);
+        setSearchValue("");
+        setIndex(-1);
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        setIndex((prev) =>
+          prev <= 0 ? foundMovies.results.length - 1 : prev - 1
+        );
+        break;
+      case "ArrowDown":
+        e.preventDefault();
+        setIndex((prev) =>
+          prev >= foundMovies.results.length - 1 ? 0 : prev + 1
+        );
+        break;
+    }
+  };
+
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger>
@@ -48,9 +81,7 @@ export const NavInputSearch = () => {
             type="text"
             placeholder="Search.."
             className="sm:w-[379px] w-full px-3 sm:py-2 py-3 pl-[38px] sm:border border-border-foreground border-0 rounded-lg text-foreground text-sm leading-5 flex items-center sm:shadow shadow-none"
-            onKeyDown={(e) =>
-              (e.key === "ArrowDown" || e.key === "ArrowUp") && alert()
-            }
+            onKeyDown={handleKeyDown}
           />
         </div>
       </PopoverTrigger>
@@ -62,25 +93,49 @@ export const NavInputSearch = () => {
         alignOffset={-100}
         className="sm:w-[577px] w-[calc(80vw-25px)] sm:mt-[4.5px] mt-[11.5px] p-3 rounded-lg"
       >
-        {/* {isLoading ? ( */}
         <div>
-          {foundMovies?.results.slice(0, 5).map((movSearched) => (
-            <div key={movSearched.id}>
-              <TinyMovieCard
-                image={movSearched.poster_path}
-                title={movSearched.title}
-                score={movSearched.vote_average}
-                year={movSearched.release_date}
-                href={`/details/${movSearched.id}`}
-              />
+          {foundMovies?.results.slice(0, 5).map((movSearched, i) => (
+            <div>
+              <div
+                key={movSearched.id}
+                className={
+                  i === index
+                    ? "bg-muted-foreground rounded-xl py-0.5 px-0.5"
+                    : ""
+                }
+                onMouseEnter={() => setIndex(i)}
+                onClick={() => {
+                  setIsOpen(false);
+                  setSearchValue("");
+                  setIndex(-1);
+                }}
+              >
+                <TinyMovieCard
+                  image={movSearched.poster_path}
+                  title={movSearched.title}
+                  score={movSearched.vote_average}
+                  year={movSearched.release_date}
+                  href={`/details/${movSearched.id}`}
+                />
+              </div>
               <Separator className="my-2" />
             </div>
           ))}
-          <Button asChild variant="link" onClick={handleSeeAllResults}>
-            <Link href={`/search?value=${searchValue}`}>
-              See all results for "{searchValue}"
-            </Link>
-          </Button>
+          {searchValue === "" ? (
+            ""
+          ) : foundMovies?.results.length === 0 ? (
+            <Button asChild variant="link" onClick={handleSeeAllResults}>
+              <Link href={`/search?value=${searchValue}`}>
+                No results found.
+              </Link>
+            </Button>
+          ) : (
+            <Button asChild variant="link" onClick={handleSeeAllResults}>
+              <Link href={`/search?value=${searchValue}`}>
+                See all results for "{searchValue}"
+              </Link>
+            </Button>
+          )}
         </div>
       </PopoverContent>
     </Popover>
