@@ -6,3 +6,4 @@ export * from "./Footer";
 export * from "./NavMobileSearch";
 export * from "./ThemeToggler";
 export * from "./NavLoading";
+export * from "./NavMobileMenuItem";

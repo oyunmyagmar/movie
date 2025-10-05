@@ -24,27 +24,22 @@ export const NavInputSearch = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [index, setIndex] = useState<number>(-1);
   const [isLoading, setIsLoading] = useState(false);
-
   const router = useRouter();
 
   const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setSearchValue(value);
     setIndex(-1);
-
     if (value.length === 0) {
       setIsOpen(false);
       setFoundMovies(null);
       setIsLoading(false);
       return;
     }
-
     setIsOpen(true);
     setIsLoading(true);
-
     const searchedMovies = await getMoviesBySearch(value, "1");
     setFoundMovies(searchedMovies);
-
     setIsLoading(false);
   };
 
@@ -55,7 +50,6 @@ export const NavInputSearch = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!foundMovies?.results?.length) return;
-
     switch (e.key) {
       case "Enter":
         e.preventDefault();

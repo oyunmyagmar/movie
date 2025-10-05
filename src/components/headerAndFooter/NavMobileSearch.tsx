@@ -7,6 +7,7 @@ import {
   NavMenuItem,
   NavLogo,
   ThemeToggler,
+  NavMobileMenuItem,
 } from "@/components/headerAndFooter";
 import { genreResponseType } from "@/types";
 
@@ -21,6 +22,7 @@ export const NavMobileSearch = ({ movieGenresList }: NavMobileSearchProps) => {
         <div className="flex items-center justify-between">
           <div className="mr-6">
             <NavMenuItem movieGenresList={movieGenresList} />
+            {/* <NavMobileMenuItem /> */}
           </div>
           <NavInputSearch />
           <Button variant={"ghost"} onClick={() => setIsOpen(false)}>
